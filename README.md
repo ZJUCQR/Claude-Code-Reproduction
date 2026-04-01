@@ -1,80 +1,83 @@
-# Open-Claude-Code
+# Claude-Code Reproduction
 
-Open-Claude-Code is a Bun-based Claude Code-compatible CLI that can run locally
-with either official Anthropic credentials or DashScope Qwen credentials.
+This is a Command Line Interface (CLI) tool designed to reproduce and be compatible with the core interactive features of Claude Code. 
 
-> Warning: 仅供学习使用。Please verify license, compliance, and redistribution
-> rights before any public or commercial use.
+> ⚠️ Disclaimer and Warning: > The code in this project is based on the reproduction of leaked Claude Code related code. It is only for personal learning, technical research, and security testing purposes.
 
-## Features
+## ✨ Core Features
 
-- Interactive mode with `bun run cc`
-- Non-interactive mode with `--print`
-- Official Anthropic API support
-- DashScope Qwen support through compatible gateway mode
+- **Interactive Mode**: Provides an immersive terminal chat experience.
+- **Non-Interactive Mode**: Supports single quick Q&A sessions via command-line arguments.
+- **Model API Support**: Natively compatible with the official Anthropic API, while seamlessly supporting Alibaba Cloud DashScope models via a compatible gateway mode.
 
-## Quick Start
+## 🚀 Quick Start
 
-Install Bun globally with npm:
+### 1. Environment Setup
 
-```sh
+This project requires the Bun runtime. First, please install Bun globally via npm:
+
+```
 npm install -g bun
 ```
 
-Install dependencies:
+### 2. Install Dependencies
 
-```sh
+After cloning this project locally, run the following command in the project root directory:
+
+```
 bun install
 ```
 
-Start the interactive CLI:
+### 3. Basic Commands
 
-```sh
+- **Start the interactive terminal**:
+
+  ```
+  bun run cc
+  ```
+
+- **Run a single prompt (non-interactive mode)**:
+
+  ```
+  bun run cc --print "Hello, please introduce yourself"
+  ```
+
+- **Enable debug mode for logging**:
+
+  ```
+  bun run cc --debug-to-stderr
+  ```
+
+## 📖 Usage Guide
+
+You can run this project in any of the following modes depending on the API key you possess.
+
+### Mode 1: Using Official Anthropic
+
+Configure your official key and run the tool.
+
+**Windows (PowerShell):**
+
+```
+$env:ANTHROPIC_API_KEY="your-official-key"
 bun run cc
 ```
 
-Run a single prompt:
+### Mode 2: Using Alibaba Cloud DashScope
 
-```sh
-bun run cc --print "hello"
+If you use DashScope models, please configure the following environment variables.
+
+**Windows (PowerShell):**
+
 ```
-
-Debug startup:
-
-```sh
-bun run cc --debug-to-stderr
-```
-
-## Official Anthropic
-
-```powershell
-$env:ANTHROPIC_API_KEY='your-key'
-
+$env:DASHSCOPE_API_KEY="your-dashscope-key"
+$env:DASHSCOPE_BASE_URL="your-dashscope-key"
+$env:DASHSCOPE_MODEL="qwen3.5-plus"
 bun run cc
 ```
 
-## DashScope / Qwen
+> 💡 Tip: If the program detects that `DASHSCOPE_API_KEY` is set in the current environment, the current process will automatically switch to DashScope mode and ignore any Anthropic settings for that specific run.
 
-```powershell
-$env:DASHSCOPE_API_KEY='your-key'
-$env:DASHSCOPE_BASE_URL='https://dashscope.aliyuncs.com/compatible-mode/v1'
-$env:DASHSCOPE_MODEL='qwen3.5-plus'
+## 📄 License
 
-bun run cc
-```
-
-Useful DashScope environment variables:
-
-- `DASHSCOPE_API_KEY`
-- `DASHSCOPE_BASE_URL`
-- `DASHSCOPE_MODEL`
-- `DASHSCOPE_DEFAULT_OPUS_MODEL`
-- `DASHSCOPE_DEFAULT_SONNET_MODEL`
-- `DASHSCOPE_DEFAULT_HAIKU_MODEL`
-
-If `DASHSCOPE_API_KEY` is set, the current process switches to DashScope mode
-and ignores inherited Anthropic auth settings for that run.
-
-## License
-
-This repository includes an MIT license template in [LICENSE](./LICENSE).
+An MIT open-source license template is provided in the root directory of this project . Please note that due to the special nature of the code's source, this license only restricts the portions of the code that have been secondarily modified or independently written within this repository.
