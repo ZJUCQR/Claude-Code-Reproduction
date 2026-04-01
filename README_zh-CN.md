@@ -1,6 +1,6 @@
 # Claude-Code 命令行复刻版 (Reproduction)
 
-[English](README.md) | [简体中文](https://www.google.com/search?q=README_zh-CN.md)
+[English](README.md) | [简体中文](README_zh-CN.md)
 
 这是一个命令行界面 (CLI) 工具，旨在复刻并兼容 Claude Code 的核心交互功能。
 

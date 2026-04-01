@@ -1,6 +1,6 @@
 # Claude-Code Reproduction
 
-[English](README.md) | [简体中文](https://www.google.com/search?q=README_zh-CN.md)
+[English](README.md) | [简体中文](README_zh-CN.md)
 
 This is a Command Line Interface (CLI) tool designed to reproduce and be compatible with the core interactive features of Claude Code.
 
