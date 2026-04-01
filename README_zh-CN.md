@@ -1,4 +1,4 @@
-# Claude-Code 命令行复刻版 (Reproduction)
+# Claude-Code Reproduction
 
 [English](README.md) | [简体中文](README_zh-CN.md)
 
