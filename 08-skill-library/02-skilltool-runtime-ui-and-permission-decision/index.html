@@ -1,0 +1,3890 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01-skill-discovery-loading-and-indexing/">
+      
+      
+        <link rel="next" href="../03-slash-command-translation-and-fork-execution/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>SkillTool 运行时、UI 与权限决策 - Claude Code Analysis</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#skilltool-ui" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Claude Code Analysis
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SkillTool 运行时、UI 与权限决策
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Claude Code Analysis
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AgentLoop 与 Tool
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AgentLoop 与 Tool
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入口与启动装配
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query 回合状态机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool 编排与并发策略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool 执行、权限与错误封装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming/StopHooks/输出边界
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-agentloop-tool/agentloop-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    记忆系统
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    记忆系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-system/01-memory-loading-and-prompt-injection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    加载与 Prompt 注入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-system/02-session-memory-extraction-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SessionMemory 抽取链路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-system/03-memory-files-forked-write-and-aging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文件写入、隔离执行与时效
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-system/04-gates-failure-modes-and-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gate、失败模式与可观测性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-memory-system/memory-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt 与上下文压缩
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prompt 与上下文压缩
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-prompt-context-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Prompt 组装与优先级
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Token 预算与自动压缩判定
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Microcompact 与 SessionMemory Compact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    压缩后清理与消息折叠
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多 Agent 协同策略
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    多 Agent 协同策略
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-multi-agent-coordination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spawn 入口与模型继承
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend 选择（in-process / tmux / iTerm）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    权限同步、Mailbox 与团队状态
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Worktree 生命周期与清理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP 协议
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP 协议
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    连接生命周期与鉴权
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools/Resources/Commands 发现
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    结果转换与 Elicitation 重试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI/UI 管理与插件集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hook 机制
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hook 机制
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-hook-mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    配置注册与匹配器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent/HTTP/Prompt 三类执行器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool 权限决策与安全防护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session/File Hook 与进度反馈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流式处理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    流式处理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-streaming-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型流到 CLI 渲染管线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured I/O 协议与请求关联
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传输层（SSE / WebSocket / Hybrid）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streaming Tool Executor、背压与错误传播
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill 技能库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill 技能库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-skill-discovery-loading-and-indexing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    发现、加载与索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillTool 运行时、UI 与权限决策
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillTool 运行时、UI 与权限决策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) End-to-end Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 命令汇总先做 MCP 精确过滤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-validateinput-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 validateInput：失败前移到 permission 之前
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-checkpermissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 checkPermissions：顺序就是策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 call：三条执行路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-inline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 inline 不是“立即执行工具”，而是注入后续上下文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 fork：隔离执行并回收结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-remote-canonicalsession-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 remote canonical：session discovery 驱动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-tool_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 最终统一成 tool_result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Guard / Decision Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-validate-permission-guards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 validate / permission guards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-execution-guards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 execution guards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 validate 阶段失败优先
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-deny" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 deny 的强终态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 fork 失败与状态清理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-remote-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 remote load 失败显式化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-inline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 inline 处理失败不静默
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10) Source Anchors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skilltool-runtime-permission-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillTool runtime / permission / execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-execution-helpers-command-surfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shared execution helpers / command surfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-slash-command-translation-and-fork-execution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slash 转译与 Fork 执行
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bundled Skills 分类与使用场景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skill-library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI 命令行界面
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI 命令行界面
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入口 fast-path 与启动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Commander 装配、preAction 与初始化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/03-command-registry-and-slash-routing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    命令注册与 Slash 路由
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/04-structured-print-interactive-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured/Print/Interactive 输出模式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plugin/Bridge/Install 命令族
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cross-cutting 运行专题
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cross-cutting 运行专题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-cross-cutting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-cross-cutting/01-kairos-persistent-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KAIROS 持久助手运行链
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-cross-cutting/02-buddy-mechanism-and-commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BUDDY 机制与命令投影
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10-cross-cutting/03-ban-risk-closure-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    风险闭环（Auth/Policy/Refusal/Telemetry）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    覆盖报告
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    覆盖报告
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coverage/coverage-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../coverage/uncategorized-resolutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    未归类处置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) End-to-end Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 命令汇总先做 MCP 精确过滤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-validateinput-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 validateInput：失败前移到 permission 之前
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-checkpermissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 checkPermissions：顺序就是策略
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 call：三条执行路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-inline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 inline 不是“立即执行工具”，而是注入后续上下文
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 fork：隔离执行并回收结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-remote-canonicalsession-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 remote canonical：session discovery 驱动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-tool_result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 最终统一成 tool_result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5) Guard / Decision Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-validate-permission-guards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 validate / permission guards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-execution-guards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 execution guards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 validate 阶段失败优先
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-deny" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 deny 的强终态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 fork 失败与状态清理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-remote-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 remote load 失败显式化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-inline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 inline 处理失败不静默
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10) Source Anchors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skilltool-runtime-permission-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SkillTool runtime / permission / execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-execution-helpers-command-surfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shared execution helpers / command surfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="skilltool-ui">SkillTool 运行时、UI 与权限决策（深潜审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页只覆盖 08 模块里“<strong>模型平面如何通过 SkillTool 调用 skill</strong>”的运行时层：</p>
+<ul>
+<li>skill 输入校验</li>
+<li>deny/allow/ask 权限顺序</li>
+<li>inline/fork/remote canonical 执行分叉</li>
+<li>tool_result 统一回传语义</li>
+<li>与 command registry 的关系</li>
+</ul>
+<p>证据范围：</p>
+<ul>
+<li><code>src/tools/SkillTool/SkillTool.ts</code></li>
+<li><code>src/commands.ts</code></li>
+<li><code>src/utils/forkedAgent.ts</code></li>
+<li><code>src/utils/argumentSubstitution.ts</code>（用于参数语义锚点）</li>
+</ul>
+<p>不覆盖：</p>
+<ul>
+<li>discovery/frontmatter/loading（见 01）</li>
+<li>slash 用户入口与后台 fork 回注（见 03）</li>
+<li>bundled/plugin/MCP taxonomy（见 04）</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>SkillTool 不是“模型版 slash 包装器”，而是同一命令事实源上的<strong>授权执行壳</strong>。它做四件事：</p>
+<ol>
+<li>把可调用目标限定为 prompt skill；</li>
+<li>把权限判决序列固定为 deny-first；</li>
+<li>把 inline/fork/remote canonical 三条执行通路统一回 <code>tool_result</code> 协议；</li>
+<li>把来源差异（本地/MCP/remote）在正确层面恢复，而不是混成一条“统一安全假设”。</li>
+</ol>
+<hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键函数</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行期命令汇总态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>getAllCommands</code></td>
+<td>本地 commands + MCP skill commands 合流</td>
+</tr>
+<tr>
+<td>输入校验态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>validateInput</code></td>
+<td>阻断空输入、未知 skill、非 prompt、禁模型调用</td>
+</tr>
+<tr>
+<td>权限裁决态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>checkPermissions</code></td>
+<td>deny &gt; (canonical allow) &gt; allow &gt; safe-auto-allow &gt; ask</td>
+</tr>
+<tr>
+<td>执行分叉态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>call</code>, <code>executeForkedSkill</code>, <code>executeRemoteSkill</code></td>
+<td>inline/fork/remote 路由</td>
+</tr>
+<tr>
+<td>上下文补丁态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>contextModifier</code></td>
+<td>allowedTools/model/effort 注入后续上下文</td>
+</tr>
+<tr>
+<td>结果协议态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>mapToolResultToToolResultBlockParam</code></td>
+<td>fork/inline 结果统一 tool_result 输出</td>
+</tr>
+<tr>
+<td>命令投影视图态</td>
+<td><code>commands.ts</code></td>
+<td><code>getSkillToolCommands</code>, <code>getMcpSkillCommands</code>, <code>getSlashCommandToolSkills</code></td>
+<td>不同 consumer 的可见命令面分层</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow</h2>
+<h3 id="41-mcp">4.1 命令汇总先做 MCP 精确过滤</h3>
+<p><code>getAllCommands()</code> 不把所有 MCP prompt 放进来，只纳入 <code>loadedFrom === 'mcp'</code> 的 skill：</p>
+<pre><code class="language-ts">const mcpSkills = context
+  .getAppState()
+  .mcp.commands.filter(
+    cmd =&gt; cmd.type === 'prompt' &amp;&amp; cmd.loadedFrom === 'mcp',
+  )
+if (mcpSkills.length === 0) return getCommands(getProjectRoot())
+const localCommands = await getCommands(getProjectRoot())
+return uniqBy([...localCommands, ...mcpSkills], 'name')
+</code></pre>
+<p>这一步阻断了“猜中 mcp prompt 名字就可走 SkillTool”的绕行入口。</p>
+<h3 id="42-validateinput-permission">4.2 validateInput：失败前移到 permission 之前</h3>
+<p><code>validateInput()</code> 把大多数错误前置：</p>
+<pre><code class="language-ts">const trimmed = skill.trim()
+if (!trimmed) return { result: false, message: `Invalid skill format: ${skill}`, errorCode: 1 }
+
+const normalizedCommandName = trimmed.startsWith('/') ? trimmed.substring(1) : trimmed
+...
+const foundCommand = findCommand(normalizedCommandName, commands)
+if (!foundCommand) return { result: false, message: `Unknown skill: ${normalizedCommandName}`, errorCode: 2 }
+
+if (foundCommand.disableModelInvocation) return { result: false, ... errorCode: 4 }
+if (foundCommand.type !== 'prompt') return { result: false, ... errorCode: 5 }
+</code></pre>
+<p>remote canonical（<code>_canonical_&lt;slug&gt;</code>）在本地 lookup 前被拦截：</p>
+<pre><code class="language-ts">const slug = remoteSkillModules!.stripCanonicalPrefix(normalizedCommandName)
+if (slug !== null) {
+  const meta = remoteSkillModules!.getDiscoveredRemoteSkill(slug)
+  if (!meta) return { result: false, ... errorCode: 6 }
+  return { result: true }
+}
+</code></pre>
+<h3 id="43-checkpermissions">4.3 checkPermissions：顺序就是策略</h3>
+<p>判决顺序按代码固定，不是注释约定：</p>
+<p>1) deny rules</p>
+<pre><code class="language-ts">const denyRules = getRuleByContentsForTool(permissionContext, SkillTool as Tool, 'deny')
+for (const [ruleContent, rule] of denyRules.entries()) {
+  if (ruleMatches(ruleContent)) {
+    return { behavior: 'deny', message: `Skill execution blocked by permission rules`, decisionReason: { type: 'rule', rule } }
+  }
+}
+</code></pre>
+<p>2) remote canonical auto-allow（但在 deny 之后）</p>
+<pre><code class="language-ts">const slug = remoteSkillModules!.stripCanonicalPrefix(commandName)
+if (slug !== null) {
+  return { behavior: 'allow', updatedInput: { skill, args }, decisionReason: undefined }
+}
+</code></pre>
+<p>3) allow rules</p>
+<pre><code class="language-ts">const allowRules = getRuleByContentsForTool(permissionContext, SkillTool as Tool, 'allow')
+for (const [ruleContent, rule] of allowRules.entries()) {
+  if (ruleMatches(ruleContent)) {
+    return { behavior: 'allow', updatedInput: { skill, args }, decisionReason: { type: 'rule', rule } }
+  }
+}
+</code></pre>
+<p>4) safe auto-allow</p>
+<pre><code class="language-ts">if (commandObj?.type === 'prompt' &amp;&amp; skillHasOnlySafeProperties(commandObj)) {
+  return { behavior: 'allow', updatedInput: { skill, args }, decisionReason: undefined }
+}
+</code></pre>
+<p>5) ask（并附规则建议）</p>
+<pre><code class="language-ts">return {
+  behavior: 'ask',
+  message: `Execute skill: ${commandName}`,
+  suggestions,
+  updatedInput: { skill, args },
+  metadata: commandObj ? { command: commandObj } : undefined,
+}
+</code></pre>
+<p>其中 <code>ruleMatches()</code> 同时处理 exact 与 <code>:*</code> 前缀规则，且统一去掉前导 <code>/</code>，保证 slash 命名与 SkillTool 命名一致：</p>
+<pre><code class="language-ts">const normalizedRule = ruleContent.startsWith('/') ? ruleContent.substring(1) : ruleContent
+if (normalizedRule === commandName) return true
+if (normalizedRule.endsWith(':*')) {
+  const prefix = normalizedRule.slice(0, -2)
+  return commandName.startsWith(prefix)
+}
+</code></pre>
+<h3 id="44-call">4.4 call：三条执行路径</h3>
+<p><code>call()</code> 的执行顺序：</p>
+<ol>
+<li>canonical skill -&gt; <code>executeRemoteSkill</code></li>
+<li><code>context==='fork'</code> -&gt; <code>executeForkedSkill</code></li>
+<li>默认 inline -&gt; 复用 <code>processPromptSlashCommand</code></li>
+</ol>
+<pre><code class="language-ts">const slug = remoteSkillModules!.stripCanonicalPrefix(commandName)
+if (slug !== null) {
+  return executeRemoteSkill(slug, commandName, parentMessage, context)
+}
+...
+if (command?.type === 'prompt' &amp;&amp; command.context === 'fork') {
+  return executeForkedSkill(...)
+}
+...
+const processedCommand = await processPromptSlashCommand(commandName, args || '', commands, context)
+if (!processedCommand.shouldQuery) {
+  throw new Error('Command processing failed')
+}
+</code></pre>
+<p>这点非常关键：SkillTool inline 路径并不自建 prompt 展开逻辑，而是复用 slash 的 prompt 主链。</p>
+<h3 id="45-inline">4.5 inline 不是“立即执行工具”，而是注入后续上下文</h3>
+<p><code>contextModifier()</code> 做的是下一跳上下文补丁：</p>
+<pre><code class="language-ts">if (allowedTools.length &gt; 0) {
+  const previousGetAppState = modifiedContext.getAppState
+  modifiedContext = {
+    ...modifiedContext,
+    getAppState() {
+      const appState = previousGetAppState()
+      return {
+        ...appState,
+        toolPermissionContext: {
+          ...appState.toolPermissionContext,
+          alwaysAllowRules: {
+            ...appState.toolPermissionContext.alwaysAllowRules,
+            command: [...new Set([...(appState.toolPermissionContext.alwaysAllowRules.command || []), ...allowedTools])],
+          },
+        },
+      }
+    },
+  }
+}
+</code></pre>
+<p>model/effort 也通过同一 modifier 链注入：</p>
+<pre><code class="language-ts">if (model) {
+  modifiedContext = {
+    ...modifiedContext,
+    options: {
+      ...modifiedContext.options,
+      mainLoopModel: resolveSkillModelOverride(model, ctx.options.mainLoopModel),
+    },
+  }
+}
+...
+if (effort !== undefined) {
+  const previousGetAppState = modifiedContext.getAppState
+  modifiedContext = {
+    ...modifiedContext,
+    getAppState() {
+      const appState = previousGetAppState()
+      return { ...appState, effortValue: effort }
+    },
+  }
+}
+</code></pre>
+<h3 id="46-fork">4.6 fork：隔离执行并回收结果</h3>
+<p><code>executeForkedSkill()</code> 复用 <code>prepareForkedCommandContext()</code>，走独立 <code>runAgent()</code>：</p>
+<pre><code class="language-ts">const { modifiedGetAppState, baseAgent, promptMessages, skillContent } =
+  await prepareForkedCommandContext(command, args || '', context)
+...
+for await (const message of runAgent({
+  agentDefinition,
+  promptMessages,
+  toolUseContext: { ...context, getAppState: modifiedGetAppState },
+  canUseTool,
+  isAsync: false,
+  querySource: 'agent:custom',
+  model: command.model as ModelAlias | undefined,
+  availableTools: context.options.tools,
+  override: { agentId },
+})) {
+  agentMessages.push(message)
+}
+</code></pre>
+<p>结果抽取与收尾：</p>
+<pre><code class="language-ts">const resultText = extractResultText(agentMessages, 'Skill execution completed')
+...
+return { data: { success: true, commandName, status: 'forked', agentId, result: resultText } }
+...
+finally { clearInvokedSkillsForAgent(agentId) }
+</code></pre>
+<h3 id="47-remote-canonicalsession-discovery">4.7 remote canonical：session discovery 驱动</h3>
+<p><code>executeRemoteSkill()</code> 先确认 session 已发现，再加载远端 skill 内容：</p>
+<pre><code class="language-ts">const meta = getDiscoveredRemoteSkill(slug)
+if (!meta) {
+  throw new Error(`Remote skill ${slug} was not discovered in this session...`)
+}
+...
+loadResult = await loadRemoteSkill(slug, meta.url)
+</code></pre>
+<p>随后把 frontmatter body 内容注入消息，并做 <code>${CLAUDE_SKILL_DIR}</code> / <code>${CLAUDE_SESSION_ID}</code> 替换：</p>
+<pre><code class="language-ts">const { content: bodyContent } = parseFrontmatter(content, skillPath)
+const skillDir = dirname(skillPath)
+...
+let finalContent = `Base directory for this skill: ${normalizedDir}\n\n${bodyContent}`
+finalContent = finalContent.replace(/\$\{CLAUDE_SKILL_DIR\}/g, normalizedDir)
+finalContent = finalContent.replace(/\$\{CLAUDE_SESSION_ID\}/g, getSessionId())
+</code></pre>
+<p>并通过 <code>addInvokedSkill(...)</code> 进入压缩保留状态。</p>
+<h3 id="48-tool_result">4.8 最终统一成 tool_result</h3>
+<p><code>mapToolResultToToolResultBlockParam()</code> 区分 fork 与 inline 文案，但协议一致：</p>
+<pre><code class="language-ts">if ('status' in result &amp;&amp; result.status === 'forked') {
+  return { type: 'tool_result', tool_use_id: toolUseID, content: `Skill &quot;${result.commandName}&quot; completed (forked execution)...` }
+}
+return { type: 'tool_result', tool_use_id: toolUseID, content: `Launching skill: ${result.commandName}` }
+</code></pre>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<h3 id="51-validate-permission-guards">5.1 validate / permission guards</h3>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>动作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>empty-input guard</td>
+<td><code>skill.trim()===''</code></td>
+<td>validate fail</td>
+<td>立即止损</td>
+</tr>
+<tr>
+<td>slash-prefix guard</td>
+<td>skill 以 <code>/</code> 开头</td>
+<td>归一化去前缀</td>
+<td>slash/SkillTool 语义一致</td>
+</tr>
+<tr>
+<td>remote-discovery guard</td>
+<td>canonical slug 未发现</td>
+<td>validate fail(errorCode 6)</td>
+<td>禁止凭空调用远端 skill</td>
+</tr>
+<tr>
+<td>unknown-skill guard</td>
+<td><code>findCommand</code> miss</td>
+<td>validate fail(errorCode 2)</td>
+<td>不进入 permission</td>
+</tr>
+<tr>
+<td>model-invocation guard</td>
+<td><code>disableModelInvocation</code></td>
+<td>validate fail(errorCode 4)</td>
+<td>模型入口硬阻断</td>
+</tr>
+<tr>
+<td>prompt-type guard</td>
+<td><code>type !== 'prompt'</code></td>
+<td>validate fail(errorCode 5)</td>
+<td>SkillTool 语义收敛</td>
+</tr>
+<tr>
+<td>deny-first guard</td>
+<td>deny rule 命中</td>
+<td><code>behavior:'deny'</code></td>
+<td>显式否决优先</td>
+</tr>
+<tr>
+<td>canonical-auto-allow guard</td>
+<td>canonical slug 命中</td>
+<td>allow</td>
+<td>系统特例，但晚于 deny</td>
+</tr>
+<tr>
+<td>allow-rule guard</td>
+<td>allow rule 命中</td>
+<td>allow</td>
+<td>用户显式放行</td>
+</tr>
+<tr>
+<td>safe-props guard</td>
+<td>仅安全属性</td>
+<td>allow</td>
+<td>降低 ask 噪音</td>
+</tr>
+<tr>
+<td>ask fallback guard</td>
+<td>无匹配规则</td>
+<td>ask + suggestions</td>
+<td>可审计授权闭环</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-execution-guards">5.2 execution guards</h3>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>动作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>remote-route guard</td>
+<td>canonical slug</td>
+<td><code>executeRemoteSkill</code></td>
+<td>绕过本地 slash expansion</td>
+</tr>
+<tr>
+<td>fork-route guard</td>
+<td><code>command.context==='fork'</code></td>
+<td><code>executeForkedSkill</code></td>
+<td>子代理隔离执行</td>
+</tr>
+<tr>
+<td>inline-route guard</td>
+<td>其他 prompt skill</td>
+<td><code>processPromptSlashCommand</code></td>
+<td>与 slash 展开保持一致</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h3 id="61-validate">6.1 validate 阶段失败优先</h3>
+<p>SkillTool 把“不可执行”的状态前置到 validate：</p>
+<ul>
+<li>未知/空 skill</li>
+<li>非 prompt command</li>
+<li><code>disable-model-invocation</code></li>
+<li>未发现 canonical 远端 skill</li>
+</ul>
+<p>避免进入 permission 弹窗和执行路径，减少无意义分支。</p>
+<h3 id="62-deny">6.2 deny 的强终态</h3>
+<p>一旦 deny 命中立即返回，不再继续 allow/safe/canonical 放行分支。终态可解释：</p>
+<pre><code class="language-ts">message: `Skill execution blocked by permission rules`
+</code></pre>
+<h3 id="63-fork">6.3 fork 失败与状态清理</h3>
+<p>fork 路径使用 <code>finally { clearInvokedSkillsForAgent(agentId) }</code>，即使异常也会清理 skill state，避免跨 agent 污染。</p>
+<h3 id="64-remote-load">6.4 remote load 失败显式化</h3>
+<p><code>executeRemoteSkill()</code> 加载异常直接抛出明确错误，并记录 telemetry，不回退本地命令：</p>
+<pre><code class="language-ts">throw new Error(`Failed to load remote skill ${slug}: ${msg}`)
+</code></pre>
+<h3 id="65-inline">6.5 inline 处理失败不静默</h3>
+<p>当 <code>processPromptSlashCommand()</code> 返回 <code>shouldQuery=false</code> 时直接抛错：</p>
+<pre><code class="language-ts">if (!processedCommand.shouldQuery) {
+  throw new Error('Command processing failed')
+}
+</code></pre>
+<p>防止半成品 prompt 注入。</p>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li>SkillTool 只执行 prompt skill。  </li>
+<li><code>disableModelInvocation</code> 必须在 validate 阶段硬阻断。  </li>
+<li>权限顺序必须是 deny-first。  </li>
+<li>remote canonical 可以默认 allow，但必须服从 deny。  </li>
+<li>inline 和 fork 虽执行语义不同，但都必须回到统一 tool_result 协议。  </li>
+<li>SkillTool inline prompt 展开必须复用 slash 主链函数，避免双轨实现。</li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>对 01：02 消费 discovery 后 command facts，不重新解释 frontmatter。  </li>
+<li>对 03：02 是模型平面；03 是用户平面入口。两者共享命令事实源与 prompt 展开核心。  </li>
+<li>对 04：02 承接来源差异，不把 bundled/plugin/MCP/remote 抹平成同一安全假设。  </li>
+<li>对 <code>commands.ts</code>：02 依赖其 surface 过滤，不自建第二套 registry。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<ol>
+<li>新增 prompt command 属性时，默认应落入 ask（除非显式加入 <code>SAFE_SKILL_PROPERTIES</code>）；</li>
+<li>不要把 validate 逻辑后移到 call（会增加无意义 permission/execution 路径）；</li>
+<li>不要让 SkillTool 重写一份 prompt expansion 逻辑，必须继续复用 <code>processPromptSlashCommand</code>；</li>
+<li>远端 canonical 扩展必须继续保持“先发现后调用”的 session 语义；</li>
+<li>deny-first 顺序是安全底座，变更需有强证据和全链路回归。</li>
+</ol>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors</h2>
+<h3 id="skilltool-runtime-permission-execution">SkillTool runtime / permission / execution</h3>
+<ul>
+<li><code>src/tools/SkillTool/SkillTool.ts:getAllCommands</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:validateInput</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:checkPermissions</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:call</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:executeForkedSkill</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:skillHasOnlySafeProperties</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:executeRemoteSkill</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:mapToolResultToToolResultBlockParam</code></li>
+</ul>
+<h3 id="shared-execution-helpers-command-surfaces">shared execution helpers / command surfaces</h3>
+<ul>
+<li><code>src/utils/forkedAgent.ts:prepareForkedCommandContext</code></li>
+<li><code>src/utils/forkedAgent.ts:extractResultText</code></li>
+<li><code>src/commands.ts:getCommands</code></li>
+<li><code>src/commands.ts:getMcpSkillCommands</code></li>
+<li><code>src/commands.ts:getSkillToolCommands</code></li>
+<li><code>src/commands.ts:getSlashCommandToolSkills</code></li>
+<li><code>src/commands.ts:findCommand</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

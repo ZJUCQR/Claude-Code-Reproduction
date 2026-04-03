@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../02-buddy-mechanism-and-commands/">
       
-        <link rel="next" href="01-agentloop-tool/">
+      
+        <link rel="next" href="../../coverage/coverage-summary/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Claude Code Analysis</title>
+        <title>风险闭环（Auth/Policy/Refusal/Telemetry） - Claude Code Analysis</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#claude-code" class="md-skip">
+        <a href="#auth-policy-refusal-telemetry" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              架构总览
+              风险闭环（Auth/Policy/Refusal/Telemetry）
             
           </span>
         </div>
@@ -176,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -191,37 +193,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    架构总览
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -237,37 +212,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        十大模块
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -333,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/" class="md-nav__link">
         
   
   
@@ -361,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
         
   
   
@@ -389,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
         
   
   
@@ -417,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
         
   
   
@@ -445,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
         
   
   
@@ -473,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
         
   
   
@@ -501,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/agentloop-tool/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/agentloop-tool/" class="md-nav__link">
         
   
   
@@ -590,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/" class="md-nav__link">
+      <a href="../../02-memory-system/" class="md-nav__link">
         
   
   
@@ -618,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/01-memory-loading-and-prompt-injection/" class="md-nav__link">
+      <a href="../../02-memory-system/01-memory-loading-and-prompt-injection/" class="md-nav__link">
         
   
   
@@ -646,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/02-session-memory-extraction-pipeline/" class="md-nav__link">
+      <a href="../../02-memory-system/02-session-memory-extraction-pipeline/" class="md-nav__link">
         
   
   
@@ -674,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/03-memory-files-forked-write-and-aging/" class="md-nav__link">
+      <a href="../../02-memory-system/03-memory-files-forked-write-and-aging/" class="md-nav__link">
         
   
   
@@ -702,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/04-gates-failure-modes-and-observability/" class="md-nav__link">
+      <a href="../../02-memory-system/04-gates-failure-modes-and-observability/" class="md-nav__link">
         
   
   
@@ -730,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/memory-system/" class="md-nav__link">
+      <a href="../../02-memory-system/memory-system/" class="md-nav__link">
         
   
   
@@ -819,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/" class="md-nav__link">
         
   
   
@@ -847,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
         
   
   
@@ -875,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
         
   
   
@@ -903,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
         
   
   
@@ -931,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
         
   
   
@@ -959,7 +903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
         
   
   
@@ -1048,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/" class="md-nav__link">
         
   
   
@@ -1076,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
         
   
   
@@ -1104,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
         
   
   
@@ -1132,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
         
   
   
@@ -1160,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
         
   
   
@@ -1188,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
         
   
   
@@ -1277,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/" class="md-nav__link">
         
   
   
@@ -1305,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
         
   
   
@@ -1333,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
         
   
   
@@ -1361,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
         
   
   
@@ -1389,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
         
   
   
@@ -1417,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/mcp-protocol/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
         
   
   
@@ -1506,7 +1450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/" class="md-nav__link">
         
   
   
@@ -1534,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
         
   
   
@@ -1562,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
         
   
   
@@ -1590,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
         
   
   
@@ -1618,7 +1562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
         
   
   
@@ -1646,7 +1590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/hook-mechanism/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
         
   
   
@@ -1735,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/" class="md-nav__link">
+      <a href="../../07-streaming-processing/" class="md-nav__link">
         
   
   
@@ -1763,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
+      <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
         
   
   
@@ -1791,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
+      <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
         
   
   
@@ -1819,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
+      <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
         
   
   
@@ -1847,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
+      <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
         
   
   
@@ -1875,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/streaming-processing/" class="md-nav__link">
+      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
         
   
   
@@ -1964,7 +1908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/" class="md-nav__link">
+      <a href="../../08-skill-library/" class="md-nav__link">
         
   
   
@@ -1992,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/01-skill-discovery-loading-and-indexing/" class="md-nav__link">
+      <a href="../../08-skill-library/01-skill-discovery-loading-and-indexing/" class="md-nav__link">
         
   
   
@@ -2020,7 +1964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="md-nav__link">
+      <a href="../../08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="md-nav__link">
         
   
   
@@ -2048,7 +1992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/03-slash-command-translation-and-fork-execution/" class="md-nav__link">
+      <a href="../../08-skill-library/03-slash-command-translation-and-fork-execution/" class="md-nav__link">
         
   
   
@@ -2076,7 +2020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
+      <a href="../../08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
         
   
   
@@ -2104,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/skill-library/" class="md-nav__link">
+      <a href="../../08-skill-library/skill-library/" class="md-nav__link">
         
   
   
@@ -2193,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/" class="md-nav__link">
         
   
   
@@ -2221,7 +2165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
         
   
   
@@ -2249,7 +2193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="md-nav__link">
         
   
   
@@ -2277,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/03-command-registry-and-slash-routing/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/03-command-registry-and-slash-routing/" class="md-nav__link">
         
   
   
@@ -2305,7 +2249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/04-structured-print-interactive-modes/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/04-structured-print-interactive-modes/" class="md-nav__link">
         
   
   
@@ -2333,7 +2277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/05-plugin-bridge-install-command-families/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="md-nav__link">
         
   
   
@@ -2361,7 +2305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/cli-command-interface/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
         
   
   
@@ -2393,8 +2337,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -2405,13 +2351,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
@@ -2432,7 +2376,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_11">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2450,7 +2394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2478,7 +2422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/01-kairos-persistent-assistant/" class="md-nav__link">
+      <a href="../01-kairos-persistent-assistant/" class="md-nav__link">
         
   
   
@@ -2506,7 +2450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/02-buddy-mechanism-and-commands/" class="md-nav__link">
+      <a href="../02-buddy-mechanism-and-commands/" class="md-nav__link">
         
   
   
@@ -2531,10 +2475,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="10-cross-cutting/03-ban-risk-closure-loop/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    风险闭环（Auth/Policy/Refusal/Telemetry）
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2550,6 +2521,186 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 认证失效恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 MCP 重授权退化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Bridge 恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 上报退化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchors
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2623,7 +2774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="coverage/coverage-summary/" class="md-nav__link">
+      <a href="../../coverage/coverage-summary/" class="md-nav__link">
         
   
   
@@ -2651,7 +2802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="coverage/uncategorized-resolutions/" class="md-nav__link">
+      <a href="../../coverage/uncategorized-resolutions/" class="md-nav__link">
         
   
   
@@ -2706,10 +2857,159 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        十大模块
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 认证失效恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 MCP 重授权退化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Bridge 恢复
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 上报退化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchors
       
     </span>
   </a>
@@ -2733,25 +3033,227 @@
 
 
 
-<h1 id="claude-code">Claude Code 源码架构总览</h1>
-<p>本页为站点首页与架构总览合并页，仅保留十个核心模块入口。</p>
-<h2 id="_1">十大模块</h2>
+<h1 id="auth-policy-refusal-telemetry">风险闭环：Auth / Policy / Refusal / Telemetry（深潜审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页只覆盖客户端可证实的“风险相关执行闭环”：认证失效处理、策略阻断、模型 refusal 显示、遥测上报与本地状态清理。</p>
+<p>证据范围：</p>
+<ul>
+<li><code>src/utils/auth.ts</code></li>
+<li><code>src/services/api/withRetry.ts</code></li>
+<li><code>src/services/api/errors.ts</code></li>
+<li><code>src/services/api/sessionIngress.ts</code></li>
+<li><code>src/services/mcp/auth.ts</code></li>
+<li><code>src/services/mcp/client.ts</code></li>
+<li><code>src/bridge/trustedDevice.ts</code></li>
+<li><code>src/bridge/bridgeApi.ts</code></li>
+<li><code>src/bridge/remoteBridgeCore.ts</code></li>
+<li><code>src/services/policyLimits/index.ts</code></li>
+<li><code>src/services/remoteManagedSettings/*</code></li>
+<li><code>src/services/analytics/sink.ts</code></li>
+<li><code>src/services/analytics/firstPartyEventLoggingExporter.ts</code></li>
+</ul>
+<p>不覆盖：</p>
+<ul>
+<li>服务端封禁评分模型；</li>
+<li>上游 moderation 具体判定算法。</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>从客户端源码可证实的不是“本地封号引擎”，而是<strong>分布式阻断与恢复闭环</strong>：</p>
 <ol>
-<li><a href="01-agentloop-tool/">AgentLoop 与 Tool</a></li>
-<li><a href="02-memory-system/">记忆系统</a></li>
-<li><a href="03-prompt-context-compression/">Prompt 与上下文压缩</a></li>
-<li><a href="04-multi-agent-coordination/">多 Agent 协同</a></li>
-<li><a href="05-mcp-protocol/">MCP 协议集成层</a></li>
-<li><a href="06-hook-mechanism/">Hook 机制</a></li>
-<li><a href="07-streaming-processing/">流式处理</a></li>
-<li><a href="08-skill-library/">Skill 技能库</a></li>
-<li><a href="09-cli-command-interface/">CLI 命令行界面</a></li>
-<li><a href="10-cross-cutting/">Cross-cutting 运行专题</a></li>
+<li>认证失败会触发刷新/重试/清理；</li>
+<li>组织策略可阻断能力面；</li>
+<li>refusal 由上游裁决，客户端负责语义投影；</li>
+<li>关键失败会进入 telemetry 与可追踪状态。</li>
 </ol>
 <hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键函数</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OAuth 认证态</td>
+<td><code>auth.ts</code> + <code>withRetry.ts</code></td>
+<td><code>handleOAuth401Error</code> / <code>withRetry</code></td>
+<td>401/403 revoked 刷新与恢复</td>
+</tr>
+<tr>
+<td>API 错误语义态</td>
+<td><code>errors.ts</code></td>
+<td><code>getAssistantMessageFromError</code> / <code>getErrorMessageIfRefusal</code></td>
+<td>将上游错误映射为用户可读终态</td>
+</tr>
+<tr>
+<td>MCP 重授权态</td>
+<td><code>mcp/auth.ts</code> + <code>mcp/client.ts</code></td>
+<td><code>revokeServerTokens</code> / <code>wrapFetchWithStepUpDetection</code></td>
+<td>invalid_grant / insufficient_scope / needs-auth</td>
+</tr>
+<tr>
+<td>bridge 高敏认证态</td>
+<td><code>trustedDevice.ts</code> + <code>bridgeApi.ts</code></td>
+<td><code>enrollTrustedDevice</code></td>
+<td>trusted device 与 bridge 401/403/410 分流</td>
+</tr>
+<tr>
+<td>policy 阻断态</td>
+<td><code>policyLimits/index.ts</code></td>
+<td><code>isPolicyAllowed</code> / <code>loadPolicyLimits</code></td>
+<td>组织策略能力门禁</td>
+</tr>
+<tr>
+<td>telemetry 状态</td>
+<td><code>analytics/sink.ts</code> + 1P exporter</td>
+<td><code>initializeAnalyticsSink</code></td>
+<td>事件扇出、失败落盘与回放</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow</h2>
+<ol>
+<li>请求阶段命中 <code>withRetry</code> / <code>withOAuth401Retry</code>；</li>
+<li>遇到 401/403 revoked 时执行 token 失效处理与重试；</li>
+<li>若仍失败，<code>errors.ts</code> 生成结构化用户态错误；</li>
+<li>MCP/Bridge 走各自认证恢复链（step-up、trusted-device、transport rebuild）；</li>
+<li>policy/managed settings 在能力面上进一步 gate；</li>
+<li>关键事件经 sink 扇出到 Datadog/1P，并在失败时本地持久化重放。</li>
+</ol>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>行为</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oauth retry guard</td>
+<td>401 或 revoked 403</td>
+<td>清缓存 + 刷新 + 一次重试</td>
+<td>减少瞬时失效</td>
+</tr>
+<tr>
+<td>organization gate</td>
+<td>org 不允许 OAuth/功能</td>
+<td>显式拒绝</td>
+<td>能力面 fail-stop</td>
+</tr>
+<tr>
+<td>mcp invalid_grant guard</td>
+<td>refresh token 失效</td>
+<td>清本地 token + re-auth</td>
+<td>防无效循环刷新</td>
+</tr>
+<tr>
+<td>mcp step-up guard</td>
+<td>insufficient_scope</td>
+<td>触发交互式权限提升</td>
+<td>权限提升可解释</td>
+</tr>
+<tr>
+<td>trusted-device guard</td>
+<td>bridge 高敏能力</td>
+<td>设备凭据校验/注册</td>
+<td>限制远程滥用</td>
+</tr>
+<tr>
+<td>policy guard</td>
+<td>policy 不允许</td>
+<td>屏蔽特定能力</td>
+<td>企业治理生效</td>
+</tr>
+<tr>
+<td>refusal mapping guard</td>
+<td>stop_reason=refusal</td>
+<td>Usage Policy 终态文案</td>
+<td>审核结果可见</td>
+</tr>
+<tr>
+<td>telemetry failover guard</td>
+<td>发送失败</td>
+<td>本地队列落盘与回放</td>
+<td>可观测性连续</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h3 id="61">6.1 认证失效恢复</h3>
 <ul>
-<li>覆盖统计：<a href="coverage/coverage-summary/"><code>coverage/coverage-summary.md</code></a></li>
-<li>模块映射：<code>coverage/src-module-mapping.csv</code></li>
+<li>能恢复：刷新 token 后继续；</li>
+<li>不能恢复：进入 authentication_failed/token_revoked 等终态。</li>
+</ul>
+<h3 id="62-mcp">6.2 MCP 重授权退化</h3>
+<p><code>invalid_grant</code> 或 <code>needs-auth</code> 命中后短路连接，等待显式 re-auth，避免无意义重试风暴。</p>
+<h3 id="63-bridge">6.3 Bridge 恢复</h3>
+<p>SSE 401 后重建 transport；恢复窗口中的控制帧丢弃，防旧会话污染新链路。</p>
+<h3 id="64">6.4 上报退化</h3>
+<p>上报异常时本地 JSONL 队列持久化，后续回放；业务链不被 telemetry 阻塞。</p>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li>客户端不做独立封号判决，只消费上游裁决信号。  </li>
+<li>认证失败必须有显式恢复或显式终态。  </li>
+<li>MCP/Bridge 高敏路径必须额外门控。  </li>
+<li>policy gate 必须早于能力执行。  </li>
+<li>refusal 必须映射为可解释用户终态。  </li>
+<li>telemetry 失败不能阻断主执行链。</li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>对 05：本页解释 MCP auth 闭环，不替代 MCP 生命周期主文。  </li>
+<li>对 07：refusal 是流式终态之一，展示逻辑由 streaming/output 投影承接。  </li>
+<li>对 09：bridge/auth gate 属 CLI 管理面入口，具体风险语义在本页统一。  </li>
+<li>对 01：风险处理结果必须消息化，不得破坏主状态机收敛。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<p>新增风险控制逻辑时需先明确：</p>
+<ol>
+<li>属于认证恢复、策略阻断还是内容拒绝投影；</li>
+<li>fail-open / fail-stop 语义是否与现有链一致；</li>
+<li>是否会产生无限重试或缓存污染；</li>
+<li>是否补齐 telemetry 事件与脱敏字段。</li>
+</ol>
+<p>建议回归：</p>
+<ul>
+<li>OAuth 401/revoked 403 路径；</li>
+<li>MCP invalid_grant + insufficient_scope + needs-auth 缓存；</li>
+<li>bridge trusted-device 与 401 恢复重建；</li>
+<li>policy allow/deny 场景；</li>
+<li>refusal 终态文案与上报链。</li>
+</ul>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors</h2>
+<ul>
+<li><code>src/utils/auth.ts</code></li>
+<li><code>src/services/api/withRetry.ts:withRetry</code></li>
+<li><code>src/services/api/errors.ts:getErrorMessageIfRefusal</code></li>
+<li><code>src/services/api/errors.ts:getAssistantMessageFromError</code></li>
+<li><code>src/services/api/sessionIngress.ts:clearSession</code></li>
+<li><code>src/services/mcp/auth.ts:revokeServerTokens</code></li>
+<li><code>src/services/mcp/auth.ts:wrapFetchWithStepUpDetection</code></li>
+<li><code>src/services/mcp/client.ts</code></li>
+<li><code>src/bridge/trustedDevice.ts:enrollTrustedDevice</code></li>
+<li><code>src/bridge/bridgeApi.ts</code></li>
+<li><code>src/bridge/remoteBridgeCore.ts</code></li>
+<li><code>src/services/policyLimits/index.ts:isPolicyAllowed</code></li>
+<li><code>src/services/policyLimits/index.ts:loadPolicyLimits</code></li>
+<li><code>src/services/analytics/sink.ts:initializeAnalyticsSink</code></li>
+<li><code>src/services/analytics/firstPartyEventLoggingExporter.ts</code></li>
 </ul>
 
 
@@ -2802,10 +3304,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

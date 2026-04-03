@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../04-gates-failure-modes-and-observability/">
       
-        <link rel="next" href="01-agentloop-tool/">
+      
+        <link rel="next" href="../../03-prompt-context-compression/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Claude Code Analysis</title>
+        <title>历史单篇深度文 - Claude Code Analysis</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#claude-code" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              架构总览
+              历史单篇深度文
             
           </span>
         </div>
@@ -176,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -191,37 +193,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    架构总览
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -237,37 +212,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        十大模块
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -333,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/" class="md-nav__link">
         
   
   
@@ -361,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
         
   
   
@@ -389,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
         
   
   
@@ -417,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
         
   
   
@@ -445,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
         
   
   
@@ -473,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
         
   
   
@@ -501,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/agentloop-tool/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/agentloop-tool/" class="md-nav__link">
         
   
   
@@ -533,8 +477,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -545,13 +491,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -572,7 +516,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -590,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -618,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/01-memory-loading-and-prompt-injection/" class="md-nav__link">
+      <a href="../01-memory-loading-and-prompt-injection/" class="md-nav__link">
         
   
   
@@ -646,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/02-session-memory-extraction-pipeline/" class="md-nav__link">
+      <a href="../02-session-memory-extraction-pipeline/" class="md-nav__link">
         
   
   
@@ -674,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/03-memory-files-forked-write-and-aging/" class="md-nav__link">
+      <a href="../03-memory-files-forked-write-and-aging/" class="md-nav__link">
         
   
   
@@ -702,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/04-gates-failure-modes-and-observability/" class="md-nav__link">
+      <a href="../04-gates-failure-modes-and-observability/" class="md-nav__link">
         
   
   
@@ -727,10 +671,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="02-memory-system/memory-system/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    历史单篇深度文
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -746,6 +717,236 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership（跨文件总表）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow（跨层时序）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) End-to-end Flow（跨层时序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-loadmemoryprompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 读侧：loadMemoryPrompt 注入链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sessionmemory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 写侧：SessionMemory 增量抽取链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-extractmemories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 回合末：长期 extractMemories 背景整理链
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix（全链）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation（全链）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation（全链）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 注入失败链：目录不可达/关闭场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-session-stale-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Session 抽取等待链：stale + timeout 双保险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-session-startedcompleted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Session 抽取失败链：started/completed 生命周期收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-best-effort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 长期抽取失败链：best-effort，不上抛主链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-fail-closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 写权限失败链：fail-closed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants（跨文件强约束）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchor-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchor Index
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -819,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/" class="md-nav__link">
         
   
   
@@ -847,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
         
   
   
@@ -875,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
         
   
   
@@ -903,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
         
   
   
@@ -931,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
         
   
   
@@ -959,7 +1160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
         
   
   
@@ -1048,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/" class="md-nav__link">
         
   
   
@@ -1076,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
         
   
   
@@ -1104,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
         
   
   
@@ -1132,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
         
   
   
@@ -1160,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
         
   
   
@@ -1188,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
         
   
   
@@ -1277,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/" class="md-nav__link">
         
   
   
@@ -1305,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
         
   
   
@@ -1333,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
         
   
   
@@ -1361,7 +1562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
         
   
   
@@ -1389,7 +1590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
         
   
   
@@ -1417,7 +1618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/mcp-protocol/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
         
   
   
@@ -1506,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/" class="md-nav__link">
         
   
   
@@ -1534,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
         
   
   
@@ -1562,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
         
   
   
@@ -1590,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
         
   
   
@@ -1618,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
         
   
   
@@ -1646,7 +1847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/hook-mechanism/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
         
   
   
@@ -1735,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/" class="md-nav__link">
+      <a href="../../07-streaming-processing/" class="md-nav__link">
         
   
   
@@ -1763,7 +1964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
+      <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
         
   
   
@@ -1791,7 +1992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
+      <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
         
   
   
@@ -1819,7 +2020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
+      <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
         
   
   
@@ -1847,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
+      <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
         
   
   
@@ -1875,7 +2076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/streaming-processing/" class="md-nav__link">
+      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
         
   
   
@@ -1964,7 +2165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/" class="md-nav__link">
+      <a href="../../08-skill-library/" class="md-nav__link">
         
   
   
@@ -1992,7 +2193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/01-skill-discovery-loading-and-indexing/" class="md-nav__link">
+      <a href="../../08-skill-library/01-skill-discovery-loading-and-indexing/" class="md-nav__link">
         
   
   
@@ -2020,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="md-nav__link">
+      <a href="../../08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="md-nav__link">
         
   
   
@@ -2048,7 +2249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/03-slash-command-translation-and-fork-execution/" class="md-nav__link">
+      <a href="../../08-skill-library/03-slash-command-translation-and-fork-execution/" class="md-nav__link">
         
   
   
@@ -2076,7 +2277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
+      <a href="../../08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
         
   
   
@@ -2104,7 +2305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/skill-library/" class="md-nav__link">
+      <a href="../../08-skill-library/skill-library/" class="md-nav__link">
         
   
   
@@ -2193,7 +2394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/" class="md-nav__link">
         
   
   
@@ -2221,7 +2422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
         
   
   
@@ -2249,7 +2450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="md-nav__link">
         
   
   
@@ -2277,7 +2478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/03-command-registry-and-slash-routing/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/03-command-registry-and-slash-routing/" class="md-nav__link">
         
   
   
@@ -2305,7 +2506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/04-structured-print-interactive-modes/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/04-structured-print-interactive-modes/" class="md-nav__link">
         
   
   
@@ -2333,7 +2534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/05-plugin-bridge-install-command-families/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="md-nav__link">
         
   
   
@@ -2361,7 +2562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/cli-command-interface/" class="md-nav__link">
+      <a href="../../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
         
   
   
@@ -2450,7 +2651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/" class="md-nav__link">
+      <a href="../../10-cross-cutting/" class="md-nav__link">
         
   
   
@@ -2478,7 +2679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/01-kairos-persistent-assistant/" class="md-nav__link">
+      <a href="../../10-cross-cutting/01-kairos-persistent-assistant/" class="md-nav__link">
         
   
   
@@ -2506,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/02-buddy-mechanism-and-commands/" class="md-nav__link">
+      <a href="../../10-cross-cutting/02-buddy-mechanism-and-commands/" class="md-nav__link">
         
   
   
@@ -2534,7 +2735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/03-ban-risk-closure-loop/" class="md-nav__link">
+      <a href="../../10-cross-cutting/03-ban-risk-closure-loop/" class="md-nav__link">
         
   
   
@@ -2623,7 +2824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="coverage/coverage-summary/" class="md-nav__link">
+      <a href="../../coverage/coverage-summary/" class="md-nav__link">
         
   
   
@@ -2651,7 +2852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="coverage/uncategorized-resolutions/" class="md-nav__link">
+      <a href="../../coverage/uncategorized-resolutions/" class="md-nav__link">
         
   
   
@@ -2706,10 +2907,209 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        十大模块
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership（跨文件总表）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow（跨层时序）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) End-to-end Flow（跨层时序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-loadmemoryprompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 读侧：loadMemoryPrompt 注入链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-sessionmemory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 写侧：SessionMemory 增量抽取链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-extractmemories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 回合末：长期 extractMemories 背景整理链
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix（全链）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation（全链）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation（全链）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 注入失败链：目录不可达/关闭场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-session-stale-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Session 抽取等待链：stale + timeout 双保险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-session-startedcompleted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Session 抽取失败链：started/completed 生命周期收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-best-effort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 长期抽取失败链：best-effort，不上抛主链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-fail-closed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 写权限失败链：fail-closed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants（跨文件强约束）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchor-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchor Index
       
     </span>
   </a>
@@ -2733,25 +3133,318 @@
 
 
 
-<h1 id="claude-code">Claude Code 源码架构总览</h1>
-<p>本页为站点首页与架构总览合并页，仅保留十个核心模块入口。</p>
-<h2 id="_1">十大模块</h2>
+<h1 id="_1">记忆系统（总览审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页是 02 模块总览收敛页，聚焦以下执行平面：</p>
+<ul>
+<li><code>src/memdir/memdir.ts</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts</code></li>
+<li><code>src/services/compact/autoCompact.ts</code></li>
+</ul>
+<p>本页目标不是复述 01~04 子页细节，而是建立统一语义地图：</p>
+<ul>
+<li>读侧提示注入在何处 gate；</li>
+<li>写侧抽取在何处串行与限权；</li>
+<li>失败路径如何 fail-open/fail-closed；</li>
+<li>哪些不变量跨文件成立。</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>Memory 子系统本质是“<strong>受门控的事实提炼与注入层</strong>”，不是“上下文越多越好”的缓存层。它由三段组成：</p>
 <ol>
-<li><a href="01-agentloop-tool/">AgentLoop 与 Tool</a></li>
-<li><a href="02-memory-system/">记忆系统</a></li>
-<li><a href="03-prompt-context-compression/">Prompt 与上下文压缩</a></li>
-<li><a href="04-multi-agent-coordination/">多 Agent 协同</a></li>
-<li><a href="05-mcp-protocol/">MCP 协议集成层</a></li>
-<li><a href="06-hook-mechanism/">Hook 机制</a></li>
-<li><a href="07-streaming-processing/">流式处理</a></li>
-<li><a href="08-skill-library/">Skill 技能库</a></li>
-<li><a href="09-cli-command-interface/">CLI 命令行界面</a></li>
-<li><a href="10-cross-cutting/">Cross-cutting 运行专题</a></li>
+<li><strong>Prompt 注入层（memdir）</strong>：决定“是否把 memory 机制暴露给模型”；</li>
+<li><strong>Session 增量层（SessionMemory）</strong>：按阈值与时机抽取短周期会话事实；</li>
+<li><strong>长期整理层（extractMemories）</strong>：在 stop 后台合并事实并写入主题文件。</li>
+</ol>
+<p>核心工程价值：</p>
+<ul>
+<li>把“记忆失败”从主对话执行面剥离；</li>
+<li>把“记忆写入权限”收敛为最小文件级授权；</li>
+<li>把“过期风险”显式化为 freshness 提示，而非隐式假设。</li>
+</ul>
+<hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership（跨文件总表）</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键字段/机制</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注入开关状态</td>
+<td><code>memdir.ts</code></td>
+<td><code>isAutoMemoryEnabled()</code> / TEAMMEM / KAIROS 分支</td>
+<td>决定是否返回 memory prompt</td>
+</tr>
+<tr>
+<td>Session 抽取游标</td>
+<td><code>sessionMemory.ts</code> + <code>sessionMemoryUtils.ts</code></td>
+<td><code>lastMemoryMessageUuid</code>、<code>lastSummarizedMessageId</code>、<code>tokensAtLastExtraction</code></td>
+<td>决定“从哪开始抽”与“何时再抽”</td>
+</tr>
+<tr>
+<td>Session 抽取生命周期</td>
+<td><code>sessionMemoryUtils.ts</code></td>
+<td><code>extractionStartedAt</code> + wait timeout/stale 阈值</td>
+<td>防止主链无限等待后台抽取</td>
+</tr>
+<tr>
+<td>长期抽取并发态</td>
+<td><code>extractMemories.ts</code></td>
+<td><code>inProgress</code>、<code>pendingContext</code>、<code>inFlightExtractions</code></td>
+<td>决定 coalesce/trailing run 行为</td>
+</tr>
+<tr>
+<td>自动压缩联动态</td>
+<td><code>autoCompact.ts</code></td>
+<td><code>trySessionMemoryCompaction</code> 分支 + reset summarized id</td>
+<td>先尝试 session-memory compact，再 fallback legacy compact</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow（跨层时序）</h2>
+<h3 id="41-loadmemoryprompt">4.1 读侧：loadMemoryPrompt 注入链</h3>
+<pre><code class="language-ts">// src/memdir/memdir.ts
+export async function loadMemoryPrompt(): Promise&lt;string | null&gt; {
+  const autoEnabled = isAutoMemoryEnabled()
+
+  if (feature('KAIROS') &amp;&amp; autoEnabled &amp;&amp; getKairosActive()) {
+    return buildAssistantDailyLogPrompt(skipIndex)
+  }
+
+  if (feature('TEAMMEM')) {
+    if (teamMemPaths!.isTeamMemoryEnabled()) {
+      await ensureMemoryDirExists(teamDir)
+      return teamMemPrompts!.buildCombinedMemoryPrompt(...)
+    }
+  }
+
+  if (autoEnabled) {
+    await ensureMemoryDirExists(autoDir)
+    return buildMemoryLines('auto memory', autoDir, ...).join('\n')
+  }
+
+  logEvent('tengu_memdir_disabled', ...)
+  return null
+}
+</code></pre>
+<p>语义：注入逻辑是“多门控分流 + 目录保障 + 可降级 return null”。</p>
+<h3 id="42-sessionmemory">4.2 写侧：SessionMemory 增量抽取链</h3>
+<pre><code class="language-ts">// src/services/SessionMemory/sessionMemory.ts
+const extractSessionMemory = sequential(async function (context) {
+  if (querySource !== 'repl_main_thread') return
+  if (!isSessionMemoryGateEnabled()) return
+  if (!shouldExtractMemory(messages)) return
+
+  markExtractionStarted()
+  const setupContext = createSubagentContext(toolUseContext)
+  const { memoryPath, currentMemory } = await setupSessionMemoryFile(setupContext)
+  const userPrompt = await buildSessionMemoryUpdatePrompt(currentMemory, memoryPath)
+
+  await runForkedAgent({
+    promptMessages: [createUserMessage({ content: userPrompt })],
+    canUseTool: createMemoryFileCanUseTool(memoryPath),
+    querySource: 'session_memory',
+    forkLabel: 'session_memory',
+    overrides: { readFileState: setupContext.readFileState },
+  })
+
+  recordExtractionTokenCount(tokenCountWithEstimation(messages))
+  updateLastSummarizedMessageIdIfSafe(messages)
+  markExtractionCompleted()
+})
+</code></pre>
+<p>语义：主线程守卫、阈值守卫、受限写权限、成功后推进游标。</p>
+<h3 id="43-extractmemories">4.3 回合末：长期 extractMemories 背景整理链</h3>
+<pre><code class="language-ts">// src/services/extractMemories/extractMemories.ts
+if (inProgress) {
+  pendingContext = { context, appendSystemMessage }
+  return
+}
+
+await runExtraction({ context, appendSystemMessage })
+
+// finally
+const trailing = pendingContext
+pendingContext = undefined
+if (trailing) {
+  await runExtraction({ context: trailing.context, isTrailingRun: true })
+}
+</code></pre>
+<p>语义：重入时仅保留最新上下文；当前轮结束后补跑 trailing，避免并发风暴。</p>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix（全链）</h2>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>Guard</th>
+<th>动作</th>
+<th>终态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注入层</td>
+<td><code>auto memory disabled</code></td>
+<td><code>loadMemoryPrompt -&gt; null</code></td>
+<td>无 memory 注入但主链继续</td>
+</tr>
+<tr>
+<td>注入层</td>
+<td>TEAMMEM enabled + cohort hit</td>
+<td>ensure dir + combined prompt</td>
+<td>auto+team 策略注入</td>
+</tr>
+<tr>
+<td>Session 抽取</td>
+<td><code>querySource !== repl_main_thread</code></td>
+<td>直接 return</td>
+<td>子线程不抽取</td>
+</tr>
+<tr>
+<td>Session 抽取</td>
+<td>gate disabled</td>
+<td>直接 return（可打点）</td>
+<td>静默降级</td>
+</tr>
+<tr>
+<td>Session 抽取</td>
+<td><code>shouldExtractMemory=false</code></td>
+<td>不触发 fork</td>
+<td>等待下一阈值点</td>
+</tr>
+<tr>
+<td>Session 权限</td>
+<td>非 <code>Edit(memoryPath)</code></td>
+<td>deny</td>
+<td>fail-closed</td>
+</tr>
+<tr>
+<td>长期抽取</td>
+<td><code>inProgress=true</code></td>
+<td>stash 为 <code>pendingContext</code></td>
+<td>coalesced</td>
+</tr>
+<tr>
+<td>长期抽取</td>
+<td>direct write detected</td>
+<td>skip fork + 推进 cursor</td>
+<td>避免重复抽取</td>
+</tr>
+<tr>
+<td>compact 联动</td>
+<td>session memory compaction 成功</td>
+<td>reset summarized id + cleanup</td>
+<td>跳过 legacy compact</td>
+</tr>
+<tr>
+<td>compact 联动</td>
+<td>session memory compaction 失败</td>
+<td>fallback <code>compactConversation</code></td>
+<td>旧路径继续</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation（全链）</h2>
+<h3 id="61">6.1 注入失败链：目录不可达/关闭场景</h3>
+<p><code>loadMemoryPrompt</code> 在禁用时直接 <code>null</code>，并记录 <code>tengu_memdir_disabled</code>；不会阻断 query 主链。</p>
+<h3 id="62-session-stale-timeout">6.2 Session 抽取等待链：stale + timeout 双保险</h3>
+<p><code>waitForSessionMemoryExtraction()</code> 不是无限阻塞：</p>
+<ul>
+<li>抽取年龄 &gt; stale 阈值（60s）则不再等待；</li>
+<li>总等待 &gt; timeout（15s）则继续主流程。</li>
+</ul>
+<p>这保证“后台抽取异常不挟持前台交互”。</p>
+<h3 id="63-session-startedcompleted">6.3 Session 抽取失败链：started/completed 生命周期收敛</h3>
+<p><code>manuallyExtractSessionMemory</code> 在 <code>finally</code> 中 <code>markExtractionCompleted()</code>；自动路径成功末尾也会 completed，避免“永远 in-progress 幻象”。</p>
+<h3 id="64-best-effort">6.4 长期抽取失败链：best-effort，不上抛主链</h3>
+<p><code>runExtraction</code> <code>catch</code> 仅日志与埋点（<code>tengu_extract_memories_error</code>），不中断 stop 后续逻辑。</p>
+<h3 id="65-fail-closed">6.5 写权限失败链：fail-closed</h3>
+<p><code>createMemoryFileCanUseTool</code> 明确只允许 <code>Edit</code> 目标 memory 文件；其它工具或其它路径一律 deny，防止子 agent 越界。</p>
+<hr />
+<h2 id="7-invariants">7) Invariants（跨文件强约束）</h2>
+<ol>
+<li>memory 功能禁用时必须退化为“无注入”，不得报错阻断 query。  </li>
+<li>Session 抽取仅允许主 REPL 线程触发，子 agent 不得并入该路径。  </li>
+<li>抽取触发必须同时尊重 token/tool-call/turn-break 语义阈值。  </li>
+<li>memory 写入权限必须收敛到目标文件级（<code>Edit(memoryPath)</code>）。  </li>
+<li><code>lastMemoryMessageUuid</code> 只能在成功或显式 skip（direct write）后推进。  </li>
+<li>in-progress 抽取重入必须 coalesce，不能并发重复 fork。  </li>
+<li>trailing run 只能消费“新追加区间”，不能重扫全量历史。  </li>
+<li>session memory/compact 联动后需重置 summarized cursor，防止悬挂 UUID。  </li>
+<li>记忆内容是“历史上下文提示”，不是当前代码真值；用户行动前需回读源码确认。  </li>
 </ol>
 <hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
 <ul>
-<li>覆盖统计：<a href="coverage/coverage-summary/"><code>coverage/coverage-summary.md</code></a></li>
-<li>模块映射：<code>coverage/src-module-mapping.csv</code></li>
+<li>对 <code>query.ts</code>：memory 是附属能力，失败不击穿主回合状态机。  </li>
+<li>对 compact（03）：<code>autoCompactIfNeeded</code> 可先走 session-memory compact，但必须保持可回退至 legacy compact。  </li>
+<li>对 hooks（06/01）：extractMemories 常在 stop 阶段触发，但返回语义必须是“可丢失增强”，不是“硬阻断治理”。  </li>
+<li>对 Tool 执行层（01-04）：memory fork 子 agent 依赖统一权限与工具事务语义，不自建旁路执行协议。  </li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<p>修改 02 模块时优先自检三问：</p>
+<ol>
+<li>这个改动会不会让“记忆失败”影响主对话可用性？</li>
+<li>这个改动会不会放宽 memory 子 agent 文件权限边界？</li>
+<li>这个改动会不会导致 cursor 推进与真实写入不一致？</li>
+</ol>
+<p>若任一答案是“可能”，至少补：</p>
+<ul>
+<li>明确 gate 与 fallback 分支顺序；</li>
+<li>明确成功/失败时 cursor 与 in-progress 的生命周期；</li>
+<li>明确 telemetry 事件以支持线上失稳定位。</li>
+</ul>
+<p>建议回归场景：</p>
+<ul>
+<li>auto memory disabled + 正常对话；</li>
+<li>session extraction 命中阈值与未命中阈值；</li>
+<li>抽取中重入触发 coalesced + trailing；</li>
+<li>目录可读不可写/写权限拒绝；</li>
+<li>session memory compaction 成功与 fallback legacy compact。</li>
+</ul>
+<hr />
+<h2 id="10-source-anchor-index">10) Source Anchor Index</h2>
+<ul>
+<li><code>src/memdir/memdir.ts:buildMemoryLines</code></li>
+<li><code>src/memdir/memdir.ts:buildMemoryPrompt</code></li>
+<li><code>src/memdir/memdir.ts:loadMemoryPrompt</code></li>
+<li><code>src/memdir/memdir.ts:ensureMemoryDirExists</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:shouldExtractMemory</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:extractSessionMemory</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:manuallyExtractSessionMemory</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:createMemoryFileCanUseTool</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts:waitForSessionMemoryExtraction</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts:markExtractionStarted</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts:markExtractionCompleted</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:initExtractMemories</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:runExtraction</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:executeExtractMemories</code></li>
+<li>
+<p><code>src/services/compact/autoCompact.ts:autoCompactIfNeeded</code></p>
+</li>
+<li>
+<p>子页深潜：</p>
+</li>
+<li><code>./01-memory-loading-and-prompt-injection.md</code></li>
+<li><code>./02-session-memory-extraction-pipeline.md</code></li>
+<li><code>./03-memory-files-forked-write-and-aging.md</code></li>
+<li>
+<p><code>./04-gates-failure-modes-and-observability.md</code></p>
+</li>
+<li>
+<p>覆盖映射：<code>../coverage/src-module-mapping.csv</code></p>
+</li>
 </ul>
 
 
@@ -2802,10 +3495,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

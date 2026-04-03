@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../03-command-registry-and-slash-routing/">
       
-        <link rel="next" href="01-agentloop-tool/">
+      
+        <link rel="next" href="../05-plugin-bridge-install-command-families/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Claude Code Analysis</title>
+        <title>Structured/Print/Interactive 输出模式 - Claude Code Analysis</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -44,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#claude-code" class="md-skip">
+        <a href="#structured-print-interactive" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              架构总览
+              Structured/Print/Interactive 输出模式
             
           </span>
         </div>
@@ -176,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -191,37 +193,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    架构总览
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -237,37 +212,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        十大模块
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -333,7 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/" class="md-nav__link">
         
   
   
@@ -361,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="md-nav__link">
         
   
   
@@ -389,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/02-query-loop-state-machine/" class="md-nav__link">
         
   
   
@@ -417,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="md-nav__link">
         
   
   
@@ -445,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="md-nav__link">
         
   
   
@@ -473,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="md-nav__link">
         
   
   
@@ -501,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="01-agentloop-tool/agentloop-tool/" class="md-nav__link">
+      <a href="../../01-agentloop-tool/agentloop-tool/" class="md-nav__link">
         
   
   
@@ -590,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/" class="md-nav__link">
+      <a href="../../02-memory-system/" class="md-nav__link">
         
   
   
@@ -618,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/01-memory-loading-and-prompt-injection/" class="md-nav__link">
+      <a href="../../02-memory-system/01-memory-loading-and-prompt-injection/" class="md-nav__link">
         
   
   
@@ -646,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/02-session-memory-extraction-pipeline/" class="md-nav__link">
+      <a href="../../02-memory-system/02-session-memory-extraction-pipeline/" class="md-nav__link">
         
   
   
@@ -674,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/03-memory-files-forked-write-and-aging/" class="md-nav__link">
+      <a href="../../02-memory-system/03-memory-files-forked-write-and-aging/" class="md-nav__link">
         
   
   
@@ -702,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/04-gates-failure-modes-and-observability/" class="md-nav__link">
+      <a href="../../02-memory-system/04-gates-failure-modes-and-observability/" class="md-nav__link">
         
   
   
@@ -730,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="02-memory-system/memory-system/" class="md-nav__link">
+      <a href="../../02-memory-system/memory-system/" class="md-nav__link">
         
   
   
@@ -819,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/" class="md-nav__link">
         
   
   
@@ -847,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="md-nav__link">
         
   
   
@@ -875,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="md-nav__link">
         
   
   
@@ -903,7 +847,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="md-nav__link">
         
   
   
@@ -931,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="md-nav__link">
         
   
   
@@ -959,7 +903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
+      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
         
   
   
@@ -1048,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/" class="md-nav__link">
         
   
   
@@ -1076,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="md-nav__link">
         
   
   
@@ -1104,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="md-nav__link">
         
   
   
@@ -1132,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="md-nav__link">
         
   
   
@@ -1160,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="md-nav__link">
         
   
   
@@ -1188,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
+      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
         
   
   
@@ -1277,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/" class="md-nav__link">
         
   
   
@@ -1305,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="md-nav__link">
         
   
   
@@ -1333,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="md-nav__link">
         
   
   
@@ -1361,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="md-nav__link">
         
   
   
@@ -1389,7 +1333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="md-nav__link">
         
   
   
@@ -1417,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="05-mcp-protocol/mcp-protocol/" class="md-nav__link">
+      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
         
   
   
@@ -1506,7 +1450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/" class="md-nav__link">
         
   
   
@@ -1534,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="md-nav__link">
         
   
   
@@ -1562,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="md-nav__link">
         
   
   
@@ -1590,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="md-nav__link">
         
   
   
@@ -1618,7 +1562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="md-nav__link">
         
   
   
@@ -1646,7 +1590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="06-hook-mechanism/hook-mechanism/" class="md-nav__link">
+      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
         
   
   
@@ -1735,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/" class="md-nav__link">
+      <a href="../../07-streaming-processing/" class="md-nav__link">
         
   
   
@@ -1763,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
+      <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="md-nav__link">
         
   
   
@@ -1791,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
+      <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="md-nav__link">
         
   
   
@@ -1819,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
+      <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="md-nav__link">
         
   
   
@@ -1847,7 +1791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
+      <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="md-nav__link">
         
   
   
@@ -1875,7 +1819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="07-streaming-processing/streaming-processing/" class="md-nav__link">
+      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
         
   
   
@@ -1964,7 +1908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/" class="md-nav__link">
+      <a href="../../08-skill-library/" class="md-nav__link">
         
   
   
@@ -1992,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/01-skill-discovery-loading-and-indexing/" class="md-nav__link">
+      <a href="../../08-skill-library/01-skill-discovery-loading-and-indexing/" class="md-nav__link">
         
   
   
@@ -2020,7 +1964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="md-nav__link">
+      <a href="../../08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="md-nav__link">
         
   
   
@@ -2048,7 +1992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/03-slash-command-translation-and-fork-execution/" class="md-nav__link">
+      <a href="../../08-skill-library/03-slash-command-translation-and-fork-execution/" class="md-nav__link">
         
   
   
@@ -2076,7 +2020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
+      <a href="../../08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="md-nav__link">
         
   
   
@@ -2104,7 +2048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="08-skill-library/skill-library/" class="md-nav__link">
+      <a href="../../08-skill-library/skill-library/" class="md-nav__link">
         
   
   
@@ -2136,8 +2080,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -2148,13 +2094,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
@@ -2175,7 +2119,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2193,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -2221,7 +2165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
+      <a href="../01-cli-entrypoint-fast-paths-and-bootstrap/" class="md-nav__link">
         
   
   
@@ -2249,7 +2193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="md-nav__link">
+      <a href="../02-commander-assembly-preaction-and-init/" class="md-nav__link">
         
   
   
@@ -2277,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/03-command-registry-and-slash-routing/" class="md-nav__link">
+      <a href="../03-command-registry-and-slash-routing/" class="md-nav__link">
         
   
   
@@ -2302,10 +2246,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="09-cli-command-interface/04-structured-print-interactive-modes/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured/Print/Interactive 输出模式
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2321,6 +2292,280 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flowprintstructured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow（print/structured 主链）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) End-to-end Flow（print/structured 主链）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 print 前置参数与运行环境守卫
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-structuredio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 统一构建 structuredIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-stream-json-stdout-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 stream-json 输出先安装 stdout guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-sandbox-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 sandbox 与 hook 事件在结构化通道里显式投影
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 非法 output 组合前置拒绝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-runheadlessstreaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 runHeadlessStreaming 负责消息循环与归约
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-permission-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 permission prompt 适配是懒解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 参数组合错误早失败
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-sandbox-hard-fail-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 sandbox 不可用时区分 hard-fail 与 warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 输出异常保持可消费终态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-permission-prompt-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 permission prompt tool 不存在时显式退出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-help-suggestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 help / suggestion 退化路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchors
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2333,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/05-plugin-bridge-install-command-families/" class="md-nav__link">
+      <a href="../05-plugin-bridge-install-command-families/" class="md-nav__link">
         
   
   
@@ -2361,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09-cli-command-interface/cli-command-interface/" class="md-nav__link">
+      <a href="../cli-command-interface/" class="md-nav__link">
         
   
   
@@ -2450,7 +2695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/" class="md-nav__link">
+      <a href="../../10-cross-cutting/" class="md-nav__link">
         
   
   
@@ -2478,7 +2723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/01-kairos-persistent-assistant/" class="md-nav__link">
+      <a href="../../10-cross-cutting/01-kairos-persistent-assistant/" class="md-nav__link">
         
   
   
@@ -2506,7 +2751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/02-buddy-mechanism-and-commands/" class="md-nav__link">
+      <a href="../../10-cross-cutting/02-buddy-mechanism-and-commands/" class="md-nav__link">
         
   
   
@@ -2534,7 +2779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10-cross-cutting/03-ban-risk-closure-loop/" class="md-nav__link">
+      <a href="../../10-cross-cutting/03-ban-risk-closure-loop/" class="md-nav__link">
         
   
   
@@ -2623,7 +2868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="coverage/coverage-summary/" class="md-nav__link">
+      <a href="../../coverage/coverage-summary/" class="md-nav__link">
         
   
   
@@ -2651,7 +2896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="coverage/uncategorized-resolutions/" class="md-nav__link">
+      <a href="../../coverage/uncategorized-resolutions/" class="md-nav__link">
         
   
   
@@ -2706,10 +2951,253 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#1-scope-evidence-boundary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        十大模块
+        1) Scope 与 Evidence Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-core-thesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) Core Thesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-state-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Runtime State Ownership
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-end-to-end-flowprintstructured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) End-to-end Flow（print/structured 主链）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4) End-to-end Flow（print/structured 主链）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 print 前置参数与运行环境守卫
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-structuredio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 统一构建 structuredIO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-stream-json-stdout-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 stream-json 输出先安装 stdout guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-sandbox-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 sandbox 与 hook 事件在结构化通道里显式投影
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 非法 output 组合前置拒绝
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-runheadlessstreaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 runHeadlessStreaming 负责消息循环与归约
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-permission-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 permission prompt 适配是懒解析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-guard-decision-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Guard / Decision Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Failure / Recovery / Degradation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 参数组合错误早失败
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-sandbox-hard-fail-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 sandbox 不可用时区分 hard-fail 与 warning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 输出异常保持可消费终态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-permission-prompt-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 permission prompt tool 不存在时显式退出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-help-suggestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 help / suggestion 退化路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-invariants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7) Invariants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-cross-module-contracts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8) Cross-module Contracts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Engineering Constraints / Evolution Guidance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-source-anchors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Source Anchors
       
     </span>
   </a>
@@ -2733,25 +3221,301 @@
 
 
 
-<h1 id="claude-code">Claude Code 源码架构总览</h1>
-<p>本页为站点首页与架构总览合并页，仅保留十个核心模块入口。</p>
-<h2 id="_1">十大模块</h2>
+<h1 id="structured-print-interactive">Structured / Print / Interactive 输出投影层（深潜审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页只覆盖 09 模块里的 <strong>输出投影与非交互执行表面</strong>：</p>
+<ul>
+<li><code>src/cli/print.ts</code> 中 text/json/stream-json 输出路径；</li>
+<li><code>StructuredIO</code> / <code>RemoteIO</code> 选择与 stream guard；</li>
+<li>headless <code>runHeadlessStreaming</code> 的消息收敛策略；</li>
+<li>HelpV2 与命令建议系统如何投影 registry（不创建第二命令系统）。</li>
+</ul>
+<p>证据范围：</p>
+<ul>
+<li><code>src/cli/print.ts:getStructuredIO</code></li>
+<li><code>src/cli/print.ts:runHeadlessStreaming</code></li>
+<li><code>src/cli/print.ts:getCanUseToolFn</code></li>
+<li><code>src/components/HelpV2/HelpV2.tsx:HelpV2</code></li>
+<li><code>src/components/HelpV2/Commands.tsx:Commands</code></li>
+<li><code>src/commands/help/help.tsx:call</code></li>
+<li><code>src/utils/suggestions/commandSuggestions.ts:generateCommandSuggestions</code></li>
+<li><code>src/utils/suggestions/commandSuggestions.ts:applyCommandSuggestion</code></li>
+<li><code>src/utils/suggestions/commandSuggestions.ts:findSlashCommandPositions</code></li>
+</ul>
+<p>不覆盖：</p>
+<ul>
+<li>argv fast-path 分流（见 01）；</li>
+<li>Commander/preAction 启动屏障（见 02）；</li>
+<li>registry/slash 主路由定义（见 03）；</li>
+<li>bridge 管理平面状态机（见 05）。</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>04 的核心不是“打印结果”，而是 <strong>同一消息语义在多输出协议上的稳定投影</strong>：</p>
 <ol>
-<li><a href="01-agentloop-tool/">AgentLoop 与 Tool</a></li>
-<li><a href="02-memory-system/">记忆系统</a></li>
-<li><a href="03-prompt-context-compression/">Prompt 与上下文压缩</a></li>
-<li><a href="04-multi-agent-coordination/">多 Agent 协同</a></li>
-<li><a href="05-mcp-protocol/">MCP 协议集成层</a></li>
-<li><a href="06-hook-mechanism/">Hook 机制</a></li>
-<li><a href="07-streaming-processing/">流式处理</a></li>
-<li><a href="08-skill-library/">Skill 技能库</a></li>
-<li><a href="09-cli-command-interface/">CLI 命令行界面</a></li>
-<li><a href="10-cross-cutting/">Cross-cutting 运行专题</a></li>
+<li>text/json/stream-json 是协议投影，不是执行语义分叉；</li>
+<li><code>StructuredIO</code> 与 <code>RemoteIO</code> 仅改变 I/O 通道，不改变 turn 语义；</li>
+<li>HelpV2/建议系统消费同一个 command facts；</li>
+<li>非法组合（如 <code>--print --output-format=stream-json</code> 但无 <code>--verbose</code>）必须前置拒绝。</li>
 </ol>
 <hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键函数</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>headless 输出主控态</td>
+<td><code>print.ts</code></td>
+<td>print 主流程 + <code>runHeadlessStreaming</code></td>
+<td>非交互回合循环、消息筛选、最终输出</td>
+</tr>
+<tr>
+<td>IO 通道选择态</td>
+<td><code>print.ts</code></td>
+<td><code>getStructuredIO</code></td>
+<td><code>sdkUrl</code> 下 <code>RemoteIO</code>，否则 <code>StructuredIO</code></td>
+</tr>
+<tr>
+<td>stream 协议守护态</td>
+<td><code>print.ts</code></td>
+<td>stream-json guard 分支</td>
+<td>防 stdout 杂音破坏 NDJSON</td>
+</tr>
+<tr>
+<td>权限提示桥接态</td>
+<td><code>print.ts</code></td>
+<td><code>getCanUseToolFn</code></td>
+<td>stdio/MCP permission prompt 适配</td>
+</tr>
+<tr>
+<td>help UI 投影态</td>
+<td><code>HelpV2.tsx</code> + <code>Commands.tsx</code></td>
+<td><code>HelpV2</code>, <code>Commands</code></td>
+<td>builtin/custom 命令列表展示与去重</td>
+</tr>
+<tr>
+<td>输入建议投影态</td>
+<td><code>commandSuggestions.ts</code></td>
+<td><code>generateCommandSuggestions</code>, <code>applyCommandSuggestion</code></td>
+<td>slash 补全、别名匹配、中段 slash 高亮</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flowprintstructured">4) End-to-end Flow（print/structured 主链）</h2>
+<h3 id="41-print">4.1 print 前置参数与运行环境守卫</h3>
+<p><code>print.ts</code> 在创建 IO 前做参数互斥和 standalone 约束检查（如 <code>--resume-session-at</code> 依赖 <code>--resume</code>，<code>--rewind-files</code> 不能和 prompt 并用）。</p>
+<h3 id="42-structuredio">4.2 统一构建 <code>structuredIO</code></h3>
+<p><code>src/cli/print.ts:getStructuredIO</code>：</p>
+<pre><code class="language-ts">function getStructuredIO(inputPrompt, options): StructuredIO {
+  let inputStream: AsyncIterable&lt;string&gt;
+  if (typeof inputPrompt === 'string') {
+    if (inputPrompt.trim() !== '') {
+      inputStream = fromArray([
+        jsonStringify({ type: 'user', message: { role: 'user', content: inputPrompt }, ... })
+      ])
+    } else {
+      inputStream = fromArray([])
+    }
+  } else {
+    inputStream = inputPrompt
+  }
+
+  return options.sdkUrl
+    ? new RemoteIO(options.sdkUrl, inputStream, options.replayUserMessages)
+    : new StructuredIO(inputStream, options.replayUserMessages)
+}
+</code></pre>
+<p>这保证字符串 prompt 与流式输入在下游统一为流语义。</p>
+<h3 id="43-stream-json-stdout-guard">4.3 stream-json 输出先安装 stdout guard</h3>
+<pre><code class="language-ts">if (options.outputFormat === 'stream-json') {
+  installStreamJsonStdoutGuard()
+}
+</code></pre>
+<p>目标是防止非 JSON stray stdout 污染 SDK 的逐行 JSON 解析。</p>
+<h3 id="44-sandbox-hook">4.4 sandbox 与 hook 事件在结构化通道里显式投影</h3>
 <ul>
-<li>覆盖统计：<a href="coverage/coverage-summary/"><code>coverage/coverage-summary.md</code></a></li>
-<li>模块映射：<code>coverage/src-module-mapping.csv</code></li>
+<li>sandbox 不可用时给出错误/警告并可能终止；</li>
+<li><code>stream-json + verbose</code> 下注册 hook 事件并 <code>structuredIO.write(...)</code>。</li>
+</ul>
+<h3 id="45-output">4.5 非法 output 组合前置拒绝</h3>
+<pre><code class="language-ts">if (options.outputFormat === 'stream-json' &amp;&amp; !options.verbose) {
+  process.stderr.write('Error: When using --print, --output-format=stream-json requires --verbose\n')
+  gracefulShutdownSync(1)
+  return
+}
+</code></pre>
+<h3 id="46-runheadlessstreaming">4.6 <code>runHeadlessStreaming</code> 负责消息循环与归约</h3>
+<p>主循环：</p>
+<pre><code class="language-ts">for await (const message of runHeadlessStreaming(...)) {
+  if (transformToStreamlined) {
+    const transformed = transformToStreamlined(message)
+    if (transformed) await structuredIO.write(transformed)
+  } else if (options.outputFormat === 'stream-json' &amp;&amp; options.verbose) {
+    await structuredIO.write(message)
+  }
+
+  if (/* 非 control/system 流噪音 */) {
+    if (needsFullArray) messages.push(message)
+    lastMessage = message
+  }
+}
+</code></pre>
+<p>然后按 outputFormat 输出：</p>
+<ul>
+<li><code>json</code>: 输出 <code>lastMessage</code> 或全数组（verbose）；</li>
+<li><code>stream-json</code>: 由上游循环持续写出；</li>
+<li><code>text</code>: 仅根据 <code>result.subtype</code> 显示终态文本。</li>
+</ul>
+<h3 id="47-permission-prompt">4.7 permission prompt 适配是懒解析</h3>
+<p><code>getCanUseToolFn</code>：</p>
+<ul>
+<li><code>permissionPromptToolName === 'stdio'</code> 时走 <code>structuredIO.createCanUseTool</code>；</li>
+<li>指定 MCP tool 时首次调用再从 <code>getMcpTools()</code> 解析，避免初始化时机竞态；</li>
+<li>找不到或 schema 不匹配时 stderr+shutdown+throw。</li>
+</ul>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>行为</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input contract guard</td>
+<td><code>--resume-session-at</code>/<code>--rewind-files</code> 依赖不满足</td>
+<td>stderr + shutdown</td>
+<td>参数语义明确</td>
+</tr>
+<tr>
+<td>stream-json purity guard</td>
+<td>outputFormat=stream-json</td>
+<td>安装 stdout guard</td>
+<td>保证 NDJSON 可解析</td>
+</tr>
+<tr>
+<td>stream-json verbose guard</td>
+<td>stream-json 且非 verbose</td>
+<td>快速失败</td>
+<td>避免半结构化协议</td>
+</tr>
+<tr>
+<td>sandbox availability guard</td>
+<td>sandbox required 但不可用</td>
+<td>直接失败；非 required 则警告</td>
+<td>安全边界可见</td>
+</tr>
+<tr>
+<td>hook event stream guard</td>
+<td>stream-json + verbose</td>
+<td>hook 事件写入 structuredIO</td>
+<td>生命周期可观测</td>
+</tr>
+<tr>
+<td>output reduction guard</td>
+<td>non-verbose text/json</td>
+<td>仅保留 <code>lastMessage</code></td>
+<td>降低内存/噪音</td>
+</tr>
+<tr>
+<td>control-event filter guard</td>
+<td>control/session_state/task_* 等</td>
+<td>不参与结果归约</td>
+<td>终态稳定</td>
+</tr>
+<tr>
+<td>permission prompt tool guard</td>
+<td>指定 MCP prompt tool</td>
+<td>懒解析 + schema 校验</td>
+<td>避免启动竞态与类型漂移</td>
+</tr>
+<tr>
+<td>IO backend guard</td>
+<td>是否有 <code>sdkUrl</code></td>
+<td><code>RemoteIO</code> / <code>StructuredIO</code></td>
+<td>本地与远端协议统一</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h3 id="61">6.1 参数组合错误早失败</h3>
+<p><code>--resume-session-at</code>、<code>--rewind-files</code>、<code>stream-json without verbose</code> 都在主循环前终止，避免半启动状态。</p>
+<h3 id="62-sandbox-hard-fail-warning">6.2 sandbox 不可用时区分 hard-fail 与 warning</h3>
+<ul>
+<li>required 模式：拒绝启动；</li>
+<li>非 required：提示“无沙箱运行”，继续执行。</li>
+</ul>
+<h3 id="63">6.3 输出异常保持可消费终态</h3>
+<p><code>text</code> 模式根据 <code>result.subtype</code> 输出明确错误文本（如 structured output retries 超限）。</p>
+<h3 id="64-permission-prompt-tool">6.4 permission prompt tool 不存在时显式退出</h3>
+<p>MCP tool 名称不匹配或非 MCP tool 会立即报错并 shutdown，不静默回退到宽松权限。</p>
+<h3 id="65-help-suggestion">6.5 help / suggestion 退化路径</h3>
+<ul>
+<li>HelpV2 对 hidden/custom 空列表可展示空态；</li>
+<li>suggestion 无匹配时返回空数组，不污染输入编辑流。</li>
+</ul>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li><code>getStructuredIO</code> 必须把字符串 prompt 归一为流输入语义。  </li>
+<li><code>stream-json</code> 协议必须防 stdout 污染并保持结构化可解析。  </li>
+<li>输出模式切换只能改变表示层，不改变命令执行语义。  </li>
+<li><code>runHeadlessStreaming</code> 的结果归约必须排除 control/system 噪音事件。  </li>
+<li>HelpV2 与建议系统必须消费同一命令事实源（<code>commands</code>）。  </li>
+<li>permission prompt tool 解析失败必须显式报错，不可静默降级。</li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>对 03：04 直接消费 registry 与 slash 结果，不定义命令存在性。  </li>
+<li>对 02：04 假定 preAction/init 已完成，专注非交互输出协议。  </li>
+<li>对 05：04 可承载 remote/bridge 事件输出，但不拥有 bridge 生命周期。  </li>
+<li>对 Help 系统：<code>src/commands/help/help.tsx:call</code> 仅挂载 <code>HelpV2</code>，命令数据仍来自 runtime <code>commands</code>。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<p>扩展 output mode 或建议/帮助 surface 时应检查：</p>
+<ol>
+<li>是否复用 <code>runHeadlessStreaming</code> 统一消息流，而非新增独立执行循环；</li>
+<li>是否定义了 output mode 的非法组合前置校验；</li>
+<li>是否保持 control/system 事件过滤一致；</li>
+<li>是否在 <code>RemoteIO</code> 与 <code>StructuredIO</code> 两侧都保持兼容；</li>
+<li>suggestion 排序/去重是否保持 <code>getCommandName/alias/isHidden</code> 语义一致。</li>
+</ol>
+<p>建议回归：</p>
+<ul>
+<li>text/json/stream-json 三模式；</li>
+<li>sdkUrl on/off（RemoteIO/StructuredIO）；</li>
+<li>stream-json verbose 约束；</li>
+<li>sandbox required/unavailable；</li>
+<li>HelpV2 builtin/custom 列表与 hidden 去重；</li>
+<li>suggestion 的 alias 匹配、mid-input slash、apply 行为。</li>
+</ul>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors</h2>
+<ul>
+<li><code>src/cli/print.ts:getStructuredIO</code></li>
+<li><code>src/cli/print.ts:runHeadlessStreaming</code></li>
+<li><code>src/cli/print.ts:getCanUseToolFn</code></li>
+<li><code>src/components/HelpV2/HelpV2.tsx:HelpV2</code></li>
+<li><code>src/components/HelpV2/Commands.tsx:Commands</code></li>
+<li><code>src/commands/help/help.tsx:call</code></li>
+<li><code>src/utils/suggestions/commandSuggestions.ts:generateCommandSuggestions</code></li>
+<li><code>src/utils/suggestions/commandSuggestions.ts:applyCommandSuggestion</code></li>
+<li><code>src/utils/suggestions/commandSuggestions.ts:findSlashCommandPositions</code></li>
 </ul>
 
 
@@ -2802,10 +3566,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
