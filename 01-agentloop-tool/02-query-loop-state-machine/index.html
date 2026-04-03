@@ -23,7 +23,7 @@
     
     
       
-        <title>Query 回合状态机 - Claude Code Analysis</title>
+        <title>查询回合状态机 - 克劳德代码源码分析</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#agentloop-toolquery" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="克劳德代码源码分析" class="md-header__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,13 +94,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Claude Code Analysis
+            克劳德代码源码分析
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Query 回合状态机
+              查询回合状态机
             
           </span>
         </div>
@@ -178,13 +178,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="克劳德代码源码分析" class="md-nav__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Claude Code Analysis
+    克劳德代码源码分析
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -248,7 +248,7 @@
   <span class="md-ellipsis">
     
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
     
@@ -264,7 +264,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
           </label>
@@ -349,7 +349,7 @@
   <span class="md-ellipsis">
     
   
-    Query 回合状态机
+    查询回合状态机
   
 
     
@@ -367,7 +367,7 @@
   <span class="md-ellipsis">
     
   
-    Query 回合状态机
+    查询回合状态机
   
 
     
@@ -393,10 +393,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -404,10 +404,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -415,22 +415,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3) Runtime State Ownership">
+    <nav class="md-nav" aria-label="3)运行时状态所有权">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-query" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 query() 负责外壳生命周期
+        3.1 () 负责外壳生命周期
       
     </span>
   </a>
@@ -438,10 +438,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-queryloop" class="md-nav__link">
+  <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 queryLoop() 持有唯一主状态
+        3.2 () 持有唯一主状态
       
     </span>
   </a>
@@ -449,10 +449,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-querytracking" class="md-nav__link">
+  <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 追踪状态 queryTracking
+        3.3 追踪状态 ``
       
     </span>
   </a>
@@ -465,15 +465,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow（单轮完整切片）
+        4)端到端流程（单轮完整切片）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4) End-to-end Flow（单轮完整切片）">
+    <nav class="md-nav" aria-label="4)端到端流程（单轮完整切片）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -510,10 +510,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-stop-hooks" class="md-nav__link">
+  <a href="#44" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 stop hooks / 终止阶段
+        4.4/终止阶段
       
     </span>
   </a>
@@ -526,10 +526,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix
+        5)守卫与决策矩阵
       
     </span>
   </a>
@@ -537,22 +537,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+    <nav class="md-nav" aria-label="6)失败、恢复与降级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-streaming-fallback" class="md-nav__link">
+  <a href="#61" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 streaming fallback：先清理旧流，再重建执行器
+        6.1：先清理旧流，再重建执行器
       
     </span>
   </a>
@@ -560,22 +560,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-withheld-413-media" class="md-nav__link">
+  <a href="#62-413" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 withheld 错误恢复链（413 / media）
+        6.2 错误恢复链（413/）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6.2 withheld 错误恢复链（413 / media）">
+    <nav class="md-nav" aria-label="6.2 错误恢复链（413/）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#collapse" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        collapse 优先
+        优先
       
     </span>
   </a>
@@ -583,10 +583,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reactive-compact" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reactive compact 次级恢复
+        次级恢复
       
     </span>
   </a>
@@ -594,10 +594,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#surface-error-stop-hooks" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        不可恢复时直接 surface error（跳过 stop hooks）
+        不可恢复时直接（跳过）
       
     </span>
   </a>
@@ -610,10 +610,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-max_output_tokens" class="md-nav__link">
+  <a href="#63-__" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 max_output_tokens 三段恢复
+        6.3 __ 三段恢复
       
     </span>
   </a>
@@ -621,10 +621,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-stop-hook-blocking" class="md-nav__link">
+  <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 stop hook blocking：回灌错误并继续
+        6.4：回灌错误并继续
       
     </span>
   </a>
@@ -632,10 +632,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#65-abort-tool_result" class="md-nav__link">
+  <a href="#65" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 abort 语义：必须补齐 tool_result
+        6.5 语义：必须补齐
       
     </span>
   </a>
@@ -648,10 +648,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -659,10 +659,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -670,10 +670,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -681,10 +681,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors
+        10)源码锚点
       
     </span>
   </a>
@@ -714,7 +714,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 编排与并发策略
+    工具编排与并发策略
   
 
     
@@ -742,7 +742,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 执行、权限与错误封装
+    工具执行、权限与错误封装
   
 
     
@@ -770,35 +770,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming/StopHooks/输出边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../agentloop-tool/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式处理/停止钩子/输出边界
   
 
     
@@ -915,7 +887,7 @@
   <span class="md-ellipsis">
     
   
-    加载与 Prompt 注入
+    加载与提示词注入
   
 
     
@@ -943,7 +915,7 @@
   <span class="md-ellipsis">
     
   
-    SessionMemory 抽取链路
+    会话记忆抽取链路
   
 
     
@@ -999,35 +971,7 @@
   <span class="md-ellipsis">
     
   
-    Gate、失败模式与可观测性
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-system/memory-system/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    守卫、失败模式与可观测性
   
 
     
@@ -1080,7 +1024,7 @@
   <span class="md-ellipsis">
     
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
     
@@ -1096,7 +1040,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
           </label>
@@ -1144,7 +1088,7 @@
   <span class="md-ellipsis">
     
   
-    System Prompt 组装与优先级
+    系统提示词组装与优先级
   
 
     
@@ -1172,7 +1116,7 @@
   <span class="md-ellipsis">
     
   
-    Token 预算与自动压缩判定
+    令牌预算与自动压缩判定
   
 
     
@@ -1200,7 +1144,7 @@
   <span class="md-ellipsis">
     
   
-    Microcompact 与 SessionMemory Compact
+    微压缩与会话记忆压缩
   
 
     
@@ -1229,34 +1173,6 @@
     
   
     压缩后清理与消息折叠
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
   
 
     
@@ -1309,7 +1225,7 @@
   <span class="md-ellipsis">
     
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
     
@@ -1325,7 +1241,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
           </label>
@@ -1373,7 +1289,7 @@
   <span class="md-ellipsis">
     
   
-    Spawn 入口与模型继承
+    生成入口与模型继承
   
 
     
@@ -1401,7 +1317,7 @@
   <span class="md-ellipsis">
     
   
-    Backend 选择（in-process / tmux / iTerm）
+    后端选择（进程内/tmux/iTerm）
   
 
     
@@ -1429,7 +1345,7 @@
   <span class="md-ellipsis">
     
   
-    权限同步、Mailbox 与团队状态
+    权限同步、邮箱与团队状态
   
 
     
@@ -1457,35 +1373,7 @@
   <span class="md-ellipsis">
     
   
-    Worktree 生命周期与清理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    工作树生命周期与清理
   
 
     
@@ -1538,7 +1426,7 @@
   <span class="md-ellipsis">
     
   
-    MCP 协议
+    协议集成层
   
 
     
@@ -1554,7 +1442,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    MCP 协议
+    协议集成层
   
 
           </label>
@@ -1630,7 +1518,7 @@
   <span class="md-ellipsis">
     
   
-    Tools/Resources/Commands 发现
+    工具/资源/命令发现
   
 
     
@@ -1658,7 +1546,7 @@
   <span class="md-ellipsis">
     
   
-    结果转换与 Elicitation 重试
+    结果转换与引导重试
   
 
     
@@ -1686,35 +1574,7 @@
   <span class="md-ellipsis">
     
   
-    CLI/UI 管理与插件集成
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    命令行与界面管理及插件集成
   
 
     
@@ -1767,7 +1627,7 @@
   <span class="md-ellipsis">
     
   
-    Hook 机制
+    钩子机制
   
 
     
@@ -1783,7 +1643,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hook 机制
+    钩子机制
   
 
           </label>
@@ -1859,7 +1719,7 @@
   <span class="md-ellipsis">
     
   
-    Agent/HTTP/Prompt 三类执行器
+    代理/网络请求/提示词三类执行器
   
 
     
@@ -1887,7 +1747,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 权限决策与安全防护
+    工具权限决策与安全防护
   
 
     
@@ -1915,35 +1775,7 @@
   <span class="md-ellipsis">
     
   
-    Session/File Hook 与进度反馈
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    会话/文件钩子与进度反馈
   
 
     
@@ -2060,7 +1892,7 @@
   <span class="md-ellipsis">
     
   
-    模型流到 CLI 渲染管线
+    模型流到命令行渲染管线
   
 
     
@@ -2088,7 +1920,7 @@
   <span class="md-ellipsis">
     
   
-    Structured I/O 协议与请求关联
+    结构化输入输出协议与请求关联
   
 
     
@@ -2144,35 +1976,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming Tool Executor、背压与错误传播
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式工具执行器、背压与错误传播
   
 
     
@@ -2225,7 +2029,7 @@
   <span class="md-ellipsis">
     
   
-    Skill 技能库
+    技能库
   
 
     
@@ -2241,7 +2045,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Skill 技能库
+    技能库
   
 
           </label>
@@ -2317,7 +2121,7 @@
   <span class="md-ellipsis">
     
   
-    SkillTool 运行时、UI 与权限决策
+    技能工具运行时、界面与权限决策
   
 
     
@@ -2345,7 +2149,7 @@
   <span class="md-ellipsis">
     
   
-    Slash 转译与 Fork 执行
+    斜杠命令转译与分叉执行
   
 
     
@@ -2373,35 +2177,7 @@
   <span class="md-ellipsis">
     
   
-    Bundled Skills 分类与使用场景
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-skill-library/skill-library/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    内置技能分类与使用场景
   
 
     
@@ -2454,7 +2230,7 @@
   <span class="md-ellipsis">
     
   
-    CLI 命令行界面
+    命令行界面
   
 
     
@@ -2470,7 +2246,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CLI 命令行界面
+    命令行界面
   
 
           </label>
@@ -2602,7 +2378,7 @@
   <span class="md-ellipsis">
     
   
-    Structured/Print/Interactive 输出模式
+    结构化/打印/交互输出模式
   
 
     
@@ -2630,35 +2406,7 @@
   <span class="md-ellipsis">
     
   
-    Plugin/Bridge/Install 命令族
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    插件/桥接/安装命令族
   
 
     
@@ -2711,7 +2459,7 @@
   <span class="md-ellipsis">
     
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
     
@@ -2727,7 +2475,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
           </label>
@@ -2775,7 +2523,7 @@
   <span class="md-ellipsis">
     
   
-    KAIROS 持久助手运行链
+    持久助手运行链
   
 
     
@@ -2803,7 +2551,7 @@
   <span class="md-ellipsis">
     
   
-    BUDDY 机制与命令投影
+    伴侣机制与命令投影
   
 
     
@@ -2831,7 +2579,7 @@
   <span class="md-ellipsis">
     
   
-    风险闭环（Auth/Policy/Refusal/Telemetry）
+    风险闭环（认证/策略/拒绝/遥测）
   
 
     
@@ -2879,10 +2627,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -2890,10 +2638,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -2901,22 +2649,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3) Runtime State Ownership">
+    <nav class="md-nav" aria-label="3)运行时状态所有权">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-query" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 query() 负责外壳生命周期
+        3.1 () 负责外壳生命周期
       
     </span>
   </a>
@@ -2924,10 +2672,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-queryloop" class="md-nav__link">
+  <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 queryLoop() 持有唯一主状态
+        3.2 () 持有唯一主状态
       
     </span>
   </a>
@@ -2935,10 +2683,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#33-querytracking" class="md-nav__link">
+  <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.3 追踪状态 queryTracking
+        3.3 追踪状态 ``
       
     </span>
   </a>
@@ -2951,15 +2699,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow（单轮完整切片）
+        4)端到端流程（单轮完整切片）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4) End-to-end Flow（单轮完整切片）">
+    <nav class="md-nav" aria-label="4)端到端流程（单轮完整切片）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2996,10 +2744,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-stop-hooks" class="md-nav__link">
+  <a href="#44" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 stop hooks / 终止阶段
+        4.4/终止阶段
       
     </span>
   </a>
@@ -3012,10 +2760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix
+        5)守卫与决策矩阵
       
     </span>
   </a>
@@ -3023,22 +2771,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+    <nav class="md-nav" aria-label="6)失败、恢复与降级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-streaming-fallback" class="md-nav__link">
+  <a href="#61" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 streaming fallback：先清理旧流，再重建执行器
+        6.1：先清理旧流，再重建执行器
       
     </span>
   </a>
@@ -3046,22 +2794,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-withheld-413-media" class="md-nav__link">
+  <a href="#62-413" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 withheld 错误恢复链（413 / media）
+        6.2 错误恢复链（413/）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6.2 withheld 错误恢复链（413 / media）">
+    <nav class="md-nav" aria-label="6.2 错误恢复链（413/）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#collapse" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        collapse 优先
+        优先
       
     </span>
   </a>
@@ -3069,10 +2817,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#reactive-compact" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reactive compact 次级恢复
+        次级恢复
       
     </span>
   </a>
@@ -3080,10 +2828,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#surface-error-stop-hooks" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        不可恢复时直接 surface error（跳过 stop hooks）
+        不可恢复时直接（跳过）
       
     </span>
   </a>
@@ -3096,10 +2844,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-max_output_tokens" class="md-nav__link">
+  <a href="#63-__" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 max_output_tokens 三段恢复
+        6.3 __ 三段恢复
       
     </span>
   </a>
@@ -3107,10 +2855,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-stop-hook-blocking" class="md-nav__link">
+  <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 stop hook blocking：回灌错误并继续
+        6.4：回灌错误并继续
       
     </span>
   </a>
@@ -3118,10 +2866,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#65-abort-tool_result" class="md-nav__link">
+  <a href="#65" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 abort 语义：必须补齐 tool_result
+        6.5 语义：必须补齐
       
     </span>
   </a>
@@ -3134,10 +2882,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -3145,10 +2893,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -3156,10 +2904,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -3167,10 +2915,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors
+        10)源码锚点
       
     </span>
   </a>
@@ -3194,8 +2942,8 @@
 
 
 
-<h1 id="agentloop-toolquery">AgentLoop 与 Tool：Query 回合状态机（深潜审计版）</h1>
-<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<h1 id="_1">代理循环与工具：回合状态机（深潜审计版）</h1>
+<h2 id="1">1)范围与证据边界</h2>
 <p>本页只解剖 <code>src/query.ts</code> 在回合级的状态机行为，重点是：</p>
 <ul>
 <li><code>State</code> 持有的跨分支状态；</li>
@@ -3210,7 +2958,7 @@
 <li>stop hooks 细粒度内部执行（见 05 页）。</li>
 </ul>
 <hr />
-<h2 id="2-core-thesis">2) Core Thesis</h2>
+<h2 id="2">2)核心论点</h2>
 <p><code>queryLoop</code> 不是“循环调用模型”，而是一个<strong>显式状态重建型自动机</strong>：每个 <code>continue</code> 都构造新的 <code>State</code>，每个 <code>return</code> 都携带终止原因。这个设计把复杂恢复流程（withheld 错误、fallback、hook 阻断、token budget 续轮）从“隐式流程”提升为“可审计转移”。</p>
 <p>核心证据（状态定义）：</p>
 <pre><code class="language-ts">// src/query.ts
@@ -3229,8 +2977,8 @@ type State = {
 </code></pre>
 <p><code>transition</code> 字段的价值是把“为什么继续”显式写进状态，避免靠日志猜测。</p>
 <hr />
-<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
-<h3 id="31-query">3.1 <code>query()</code> 负责外壳生命周期</h3>
+<h2 id="3">3)运行时状态所有权</h2>
+<h3 id="31">3.1 <code>()</code> 负责外壳生命周期</h3>
 <pre><code class="language-ts">// src/query.ts
 export async function* query(params: QueryParams): AsyncGenerator&lt;..., Terminal&gt; {
   const consumedCommandUuids: string[] = []
@@ -3244,7 +2992,7 @@ export async function* query(params: QueryParams): AsyncGenerator&lt;..., Termin
 <p>职责：
 - 承接 <code>queryLoop</code>；
 - 在正常返回路径统一发 <code>completed</code> 生命周期信号。</p>
-<h3 id="32-queryloop">3.2 <code>queryLoop()</code> 持有唯一主状态</h3>
+<h3 id="32">3.2 <code>()</code> 持有唯一主状态</h3>
 <pre><code class="language-ts">// src/query.ts
 let state: State = {
   messages: params.messages,
@@ -3263,7 +3011,7 @@ let state: State = {
 - 每轮顶部解构状态；
 - 每个分支写回完整 <code>next State</code>；
 - 管理 continue 与 return 的一致语义。</p>
-<h3 id="33-querytracking">3.3 追踪状态 <code>queryTracking</code></h3>
+<h3 id="33">3.3 追踪状态 ``</h3>
 <pre><code class="language-ts">// src/query.ts
 const queryTracking = toolUseContext.queryTracking
   ? {
@@ -3284,7 +3032,7 @@ toolUseContext = {
 - 同链路重用 <code>chainId</code>，层级 <code>depth+1</code>；
 - 首轮新建链路 ID。</p>
 <hr />
-<h2 id="4-end-to-end-flow">4) End-to-end Flow（单轮完整切片）</h2>
+<h2 id="4">4)端到端流程（单轮完整切片）</h2>
 <h3 id="41">4.1 预处理阶段（进入模型前）</h3>
 <p>1) compact boundary 后消息窗口：</p>
 <pre><code class="language-ts">let messagesForQuery = [...getMessagesAfterCompactBoundary(messages)]
@@ -3365,13 +3113,13 @@ for await (const update of toolUpdates) {
   }
 }
 </code></pre>
-<h3 id="44-stop-hooks">4.4 stop hooks / 终止阶段</h3>
+<h3 id="44">4.4/终止阶段</h3>
 <ul>
 <li>若无 follow-up 工具，进入 <code>handleStopHooks(...)</code>；</li>
 <li>根据 <code>preventContinuation</code>/<code>blockingErrors</code> 选择终止或续轮。</li>
 </ul>
 <hr />
-<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<h2 id="5">5)守卫与决策矩阵</h2>
 <table>
 <thead>
 <tr>
@@ -3451,8 +3199,8 @@ for await (const update of toolUpdates) {
 </tbody>
 </table>
 <hr />
-<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
-<h3 id="61-streaming-fallback">6.1 streaming fallback：先清理旧流，再重建执行器</h3>
+<h2 id="6">6)失败、恢复与降级</h2>
+<h3 id="61">6.1：先清理旧流，再重建执行器</h3>
 <pre><code class="language-ts">if (streamingFallbackOccured) {
   for (const msg of assistantMessages) {
     yield { type: 'tombstone' as const, message: msg }
@@ -3477,8 +3225,8 @@ for await (const update of toolUpdates) {
 - 旧流 assistant 变墓碑；
 - 旧工具结果全部抛弃；
 - 新 executor 防止旧 tool_use_id 泄漏。</p>
-<h3 id="62-withheld-413-media">6.2 withheld 错误恢复链（413 / media）</h3>
-<h4 id="collapse">collapse 优先</h4>
+<h3 id="62-413">6.2 错误恢复链（413/）</h3>
+<h4 id="_2">优先</h4>
 <pre><code class="language-ts">if (
   feature('CONTEXT_COLLAPSE') &amp;&amp;
   contextCollapse &amp;&amp;
@@ -3495,7 +3243,7 @@ for await (const update of toolUpdates) {
   }
 }
 </code></pre>
-<h4 id="reactive-compact">reactive compact 次级恢复</h4>
+<h4 id="_3">次级恢复</h4>
 <pre><code class="language-ts">const compacted = await reactiveCompact.tryReactiveCompact({...})
 if (compacted) {
   const postCompactMessages = buildPostCompactMessages(compacted)
@@ -3511,12 +3259,12 @@ if (compacted) {
   continue
 }
 </code></pre>
-<h4 id="surface-error-stop-hooks">不可恢复时直接 surface error（跳过 stop hooks）</h4>
+<h4 id="_4">不可恢复时直接（跳过）</h4>
 <pre><code class="language-ts">yield lastMessage
 void executeStopFailureHooks(lastMessage, toolUseContext)
 return { reason: isWithheldMedia ? 'image_error' : 'prompt_too_long' }
 </code></pre>
-<h3 id="63-max_output_tokens">6.3 max_output_tokens 三段恢复</h3>
+<h3 id="63-__">6.3 __ 三段恢复</h3>
 <p>1) 首先尝试 escalation：</p>
 <pre><code class="language-ts">if (
   capEnabled &amp;&amp;
@@ -3553,7 +3301,7 @@ return { reason: isWithheldMedia ? 'image_error' : 'prompt_too_long' }
 }
 </code></pre>
 <p>3) 仍失败才真正暴露错误。</p>
-<h3 id="64-stop-hook-blocking">6.4 stop hook blocking：回灌错误并继续</h3>
+<h3 id="64">6.4：回灌错误并继续</h3>
 <pre><code class="language-ts">if (stopHookResult.blockingErrors.length &gt; 0) {
   const next: State = {
     messages: [
@@ -3576,7 +3324,7 @@ return { reason: isWithheldMedia ? 'image_error' : 'prompt_too_long' }
 }
 </code></pre>
 <p>注意这里保留 <code>hasAttemptedReactiveCompact</code>，避免再次压缩形成环路。</p>
-<h3 id="65-abort-tool_result">6.5 abort 语义：必须补齐 tool_result</h3>
+<h3 id="65">6.5 语义：必须补齐</h3>
 <pre><code class="language-ts">if (toolUseContext.abortController.signal.aborted) {
   if (streamingToolExecutor) {
     for await (const update of streamingToolExecutor.getRemainingResults()) {
@@ -3592,7 +3340,7 @@ return { reason: isWithheldMedia ? 'image_error' : 'prompt_too_long' }
 }
 </code></pre>
 <hr />
-<h2 id="7-invariants">7) Invariants</h2>
+<h2 id="7">7)不变量</h2>
 <ol>
 <li>每次 <code>continue</code> 必须写完整 <code>next State</code>。</li>
 <li><code>turnCount</code> 只在真正进入下一回合 (<code>next_turn</code>) 时增加。</li>
@@ -3604,14 +3352,14 @@ return { reason: isWithheldMedia ? 'image_error' : 'prompt_too_long' }
 <li>工具阶段 abort 必须先 drain 或补齐结果，再退出回合。</li>
 </ol>
 <hr />
-<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<h2 id="8">8)跨模块契约</h2>
 <ul>
 <li>对 <code>toolExecution.ts</code>：只消费统一 <code>MessageUpdate</code> 语义，不依赖工具内部实现。</li>
 <li>对 <code>toolOrchestration.ts</code> / <code>StreamingToolExecutor.ts</code>：允许执行策略替换，但必须维持 <code>tool_use/tool_result</code> 拓扑。</li>
 <li>对 <code>stopHooks.ts</code>：接受 <code>preventContinuation</code> 和 <code>blockingErrors</code> 结构化返回；终止决策在 query 层。</li>
 </ul>
 <hr />
-<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<h2 id="9">9)工程约束与演进指引</h2>
 <p>新增恢复分支时必须同步定义：</p>
 <p>1) <code>transition.reason</code>；
 2) 是否推进 <code>turnCount</code>；
@@ -3635,7 +3383,7 @@ state = next
 continue
 </code></pre>
 <hr />
-<h2 id="10-source-anchors">10) Source Anchors</h2>
+<h2 id="10">10)源码锚点</h2>
 <ul>
 <li><code>src/query.ts:query</code></li>
 <li><code>src/query.ts:queryLoop</code></li>

@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../01-agentloop-tool/agentloop-tool/">
+        <link rel="prev" href="../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/">
       
       
         <link rel="next" href="01-memory-loading-and-prompt-injection/">
@@ -23,7 +23,7 @@
     
     
       
-        <title>总览 - Claude Code Analysis</title>
+        <title>总览 - 克劳德代码源码分析</title>
       
     
     
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href=".." title="克劳德代码源码分析" class="md-header__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,7 +94,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Claude Code Analysis
+            克劳德代码源码分析
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -178,13 +178,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href=".." title="克劳德代码源码分析" class="md-nav__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Claude Code Analysis
+    克劳德代码源码分析
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -248,7 +248,7 @@
   <span class="md-ellipsis">
     
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
     
@@ -264,7 +264,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
           </label>
@@ -340,7 +340,7 @@
   <span class="md-ellipsis">
     
   
-    Query 回合状态机
+    查询回合状态机
   
 
     
@@ -368,7 +368,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 编排与并发策略
+    工具编排与并发策略
   
 
     
@@ -396,7 +396,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 执行、权限与错误封装
+    工具执行、权限与错误封装
   
 
     
@@ -424,35 +424,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming/StopHooks/输出边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-agentloop-tool/agentloop-tool/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式处理/停止钩子/输出边界
   
 
     
@@ -594,10 +566,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -605,10 +577,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -616,10 +588,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
@@ -627,10 +599,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow（高层）
+        4)端到端流程（高层）
       
     </span>
   </a>
@@ -638,10 +610,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix（入口级）
+        5)守卫与决策矩阵（入口级）
       
     </span>
   </a>
@@ -649,10 +621,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
@@ -660,10 +632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -671,10 +643,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -682,10 +654,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -693,15 +665,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors + 子页导航
+        10)源码锚点与子页导航
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10) Source Anchors + 子页导航">
+    <nav class="md-nav" aria-label="10)源码锚点与子页导航">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -716,10 +688,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        See also（跨模块专题）
+        另见（跨模块专题）
       
     </span>
   </a>
@@ -728,6 +700,227 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        深度审计正文
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1)范围与证据边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2)核心论点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3)运行时状态所有权（跨文件总表）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4)端到端流程（跨层时序）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4)端到端流程（跨层时序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 读侧：注入链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 写侧：增量抽取链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 回合末：长期 背景整理链
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5)守卫与决策矩阵（全链）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6)失败、恢复与降级（全链）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6)失败、恢复与降级（全链）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 注入失败链：目录不可达/关闭场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 抽取等待链：+ 双保险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 抽取失败链：/生命周期收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 长期抽取失败链：-，不上抛主链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 写权限失败链：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7)不变量（跨文件强约束）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8)跨模块契约
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9)工程约束与演进指引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10)源码锚点索引
+      
+    </span>
+  </a>
   
 </li>
       
@@ -754,7 +947,7 @@
   <span class="md-ellipsis">
     
   
-    加载与 Prompt 注入
+    加载与提示词注入
   
 
     
@@ -782,7 +975,7 @@
   <span class="md-ellipsis">
     
   
-    SessionMemory 抽取链路
+    会话记忆抽取链路
   
 
     
@@ -838,35 +1031,7 @@
   <span class="md-ellipsis">
     
   
-    Gate、失败模式与可观测性
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="memory-system/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    守卫、失败模式与可观测性
   
 
     
@@ -919,7 +1084,7 @@
   <span class="md-ellipsis">
     
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
     
@@ -935,7 +1100,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
           </label>
@@ -983,7 +1148,7 @@
   <span class="md-ellipsis">
     
   
-    System Prompt 组装与优先级
+    系统提示词组装与优先级
   
 
     
@@ -1011,7 +1176,7 @@
   <span class="md-ellipsis">
     
   
-    Token 预算与自动压缩判定
+    令牌预算与自动压缩判定
   
 
     
@@ -1039,7 +1204,7 @@
   <span class="md-ellipsis">
     
   
-    Microcompact 与 SessionMemory Compact
+    微压缩与会话记忆压缩
   
 
     
@@ -1068,34 +1233,6 @@
     
   
     压缩后清理与消息折叠
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
   
 
     
@@ -1148,7 +1285,7 @@
   <span class="md-ellipsis">
     
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
     
@@ -1164,7 +1301,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
           </label>
@@ -1212,7 +1349,7 @@
   <span class="md-ellipsis">
     
   
-    Spawn 入口与模型继承
+    生成入口与模型继承
   
 
     
@@ -1240,7 +1377,7 @@
   <span class="md-ellipsis">
     
   
-    Backend 选择（in-process / tmux / iTerm）
+    后端选择（进程内/tmux/iTerm）
   
 
     
@@ -1268,7 +1405,7 @@
   <span class="md-ellipsis">
     
   
-    权限同步、Mailbox 与团队状态
+    权限同步、邮箱与团队状态
   
 
     
@@ -1296,35 +1433,7 @@
   <span class="md-ellipsis">
     
   
-    Worktree 生命周期与清理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    工作树生命周期与清理
   
 
     
@@ -1377,7 +1486,7 @@
   <span class="md-ellipsis">
     
   
-    MCP 协议
+    协议集成层
   
 
     
@@ -1393,7 +1502,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    MCP 协议
+    协议集成层
   
 
           </label>
@@ -1469,7 +1578,7 @@
   <span class="md-ellipsis">
     
   
-    Tools/Resources/Commands 发现
+    工具/资源/命令发现
   
 
     
@@ -1497,7 +1606,7 @@
   <span class="md-ellipsis">
     
   
-    结果转换与 Elicitation 重试
+    结果转换与引导重试
   
 
     
@@ -1525,35 +1634,7 @@
   <span class="md-ellipsis">
     
   
-    CLI/UI 管理与插件集成
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    命令行与界面管理及插件集成
   
 
     
@@ -1606,7 +1687,7 @@
   <span class="md-ellipsis">
     
   
-    Hook 机制
+    钩子机制
   
 
     
@@ -1622,7 +1703,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hook 机制
+    钩子机制
   
 
           </label>
@@ -1698,7 +1779,7 @@
   <span class="md-ellipsis">
     
   
-    Agent/HTTP/Prompt 三类执行器
+    代理/网络请求/提示词三类执行器
   
 
     
@@ -1726,7 +1807,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 权限决策与安全防护
+    工具权限决策与安全防护
   
 
     
@@ -1754,35 +1835,7 @@
   <span class="md-ellipsis">
     
   
-    Session/File Hook 与进度反馈
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    会话/文件钩子与进度反馈
   
 
     
@@ -1899,7 +1952,7 @@
   <span class="md-ellipsis">
     
   
-    模型流到 CLI 渲染管线
+    模型流到命令行渲染管线
   
 
     
@@ -1927,7 +1980,7 @@
   <span class="md-ellipsis">
     
   
-    Structured I/O 协议与请求关联
+    结构化输入输出协议与请求关联
   
 
     
@@ -1983,35 +2036,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming Tool Executor、背压与错误传播
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-streaming-processing/streaming-processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式工具执行器、背压与错误传播
   
 
     
@@ -2064,7 +2089,7 @@
   <span class="md-ellipsis">
     
   
-    Skill 技能库
+    技能库
   
 
     
@@ -2080,7 +2105,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Skill 技能库
+    技能库
   
 
           </label>
@@ -2156,7 +2181,7 @@
   <span class="md-ellipsis">
     
   
-    SkillTool 运行时、UI 与权限决策
+    技能工具运行时、界面与权限决策
   
 
     
@@ -2184,7 +2209,7 @@
   <span class="md-ellipsis">
     
   
-    Slash 转译与 Fork 执行
+    斜杠命令转译与分叉执行
   
 
     
@@ -2212,35 +2237,7 @@
   <span class="md-ellipsis">
     
   
-    Bundled Skills 分类与使用场景
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08-skill-library/skill-library/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    内置技能分类与使用场景
   
 
     
@@ -2293,7 +2290,7 @@
   <span class="md-ellipsis">
     
   
-    CLI 命令行界面
+    命令行界面
   
 
     
@@ -2309,7 +2306,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CLI 命令行界面
+    命令行界面
   
 
           </label>
@@ -2441,7 +2438,7 @@
   <span class="md-ellipsis">
     
   
-    Structured/Print/Interactive 输出模式
+    结构化/打印/交互输出模式
   
 
     
@@ -2469,35 +2466,7 @@
   <span class="md-ellipsis">
     
   
-    Plugin/Bridge/Install 命令族
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    插件/桥接/安装命令族
   
 
     
@@ -2550,7 +2519,7 @@
   <span class="md-ellipsis">
     
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
     
@@ -2566,7 +2535,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
           </label>
@@ -2614,7 +2583,7 @@
   <span class="md-ellipsis">
     
   
-    KAIROS 持久助手运行链
+    持久助手运行链
   
 
     
@@ -2642,7 +2611,7 @@
   <span class="md-ellipsis">
     
   
-    BUDDY 机制与命令投影
+    伴侣机制与命令投影
   
 
     
@@ -2670,7 +2639,7 @@
   <span class="md-ellipsis">
     
   
-    风险闭环（Auth/Policy/Refusal/Telemetry）
+    风险闭环（认证/策略/拒绝/遥测）
   
 
     
@@ -2718,10 +2687,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -2729,10 +2698,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -2740,10 +2709,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
@@ -2751,10 +2720,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow（高层）
+        4)端到端流程（高层）
       
     </span>
   </a>
@@ -2762,10 +2731,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix（入口级）
+        5)守卫与决策矩阵（入口级）
       
     </span>
   </a>
@@ -2773,10 +2742,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
@@ -2784,10 +2753,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -2795,10 +2764,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -2806,10 +2775,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -2817,15 +2786,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors + 子页导航
+        10)源码锚点与子页导航
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="10) Source Anchors + 子页导航">
+    <nav class="md-nav" aria-label="10)源码锚点与子页导航">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2840,10 +2809,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        See also（跨模块专题）
+        另见（跨模块专题）
       
     </span>
   </a>
@@ -2852,6 +2821,227 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        深度审计正文
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1)范围与证据边界
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2)核心论点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3)运行时状态所有权（跨文件总表）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4)端到端流程（跨层时序）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4)端到端流程（跨层时序）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 读侧：注入链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 写侧：增量抽取链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 回合末：长期 背景整理链
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5)守卫与决策矩阵（全链）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6)失败、恢复与降级（全链）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6)失败、恢复与降级（全链）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 注入失败链：目录不可达/关闭场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 抽取等待链：+ 双保险
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 抽取失败链：/生命周期收敛
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 长期抽取失败链：-，不上抛主链
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 写权限失败链：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7)不变量（跨文件强约束）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8)跨模块契约
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9)工程约束与演进指引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10)源码锚点索引
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2873,7 +3063,7 @@
 
 
 <h1 id="_1">记忆系统（入口审计页）</h1>
-<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<h2 id="1">1)范围与证据边界</h2>
 <p>本页是 <code>docs/02-memory-system</code> 的入口页，给出 02 模块统一语义框架与阅读顺序。证据边界覆盖：</p>
 <ul>
 <li><code>src/memdir/memdir.ts</code></li>
@@ -2889,7 +3079,7 @@
 <li>多 agent 编排细节（04）。</li>
 </ul>
 <hr />
-<h2 id="2-core-thesis">2) Core Thesis</h2>
+<h2 id="2">2)核心论点</h2>
 <p>记忆系统不是“让模型知道更多”的泛化功能，而是“<strong>让长期事实在可控权限与可审计失败语义下进入提示系统</strong>”的治理层。</p>
 <p>其核心约束：</p>
 <ul>
@@ -2899,7 +3089,7 @@
 <li>陈旧性可见：历史事实必须与当前仓库真值分离。</li>
 </ul>
 <hr />
-<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<h2 id="3">3)运行时状态所有权</h2>
 <table>
 <thead>
 <tr>
@@ -2937,7 +3127,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="4-end-to-end-flow">4) End-to-end Flow（高层）</h2>
+<h2 id="4">4)端到端流程（高层）</h2>
 <ol>
 <li><strong>Prompt 构建阶段</strong>：<code>loadMemoryPrompt()</code> 按 gate 决定是否注入 memory 指令。  </li>
 <li><strong>回合后抽取阶段</strong>：<code>extractSessionMemory</code> 按阈值触发 forked agent，受最小权限约束写入 session memory。  </li>
@@ -2945,7 +3135,7 @@
 <li><strong>压缩联动阶段</strong>：<code>autoCompactIfNeeded</code> 先尝试 session-memory compaction，失败再回落 legacy compaction。</li>
 </ol>
 <hr />
-<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix（入口级）</h2>
+<h2 id="5">5)守卫与决策矩阵（入口级）</h2>
 <table>
 <thead>
 <tr>
@@ -2995,7 +3185,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h2 id="6">6)失败、恢复与降级</h2>
 <ul>
 <li><strong>目录/注入失败</strong>：退化为无 memory 提示，不影响主对话。  </li>
 <li><strong>抽取悬挂风险</strong>：<code>waitForSessionMemoryExtraction</code> 用 stale + timeout 防无限等待。  </li>
@@ -3004,7 +3194,7 @@
 <li><strong>权限违规尝试</strong>：写入路径 fail-closed，阻断越权修改。</li>
 </ul>
 <hr />
-<h2 id="7-invariants">7) Invariants</h2>
+<h2 id="7">7)不变量</h2>
 <ol>
 <li>memory 注入失败不能阻断 query 主链。  </li>
 <li>session extraction 只允许主线程执行。  </li>
@@ -3016,7 +3206,7 @@
 <li>记忆事实默认可能过期，执行动作前需以当前代码/系统复核。</li>
 </ol>
 <hr />
-<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<h2 id="8">8)跨模块契约</h2>
 <ul>
 <li>与 01（AgentLoop/Tool）：memory 抽取依赖统一工具事务，但不得改变主 loop 终止语义。  </li>
 <li>与 03（压缩）：memory 与 compact 协同而非替代；任一路径失败必须可回退。  </li>
@@ -3024,7 +3214,7 @@
 <li>与 CLI/Prompt 组装：memory 文本是系统提示拼装片段，不能私自抬升为“绝对真值源”。</li>
 </ul>
 <hr />
-<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<h2 id="9">9)工程约束与演进指引</h2>
 <p>扩展 02 模块时应遵守：</p>
 <ul>
 <li>新 gate 必须定义默认值与关闭语义（fail-open 还是 fail-closed）；</li>
@@ -3034,7 +3224,7 @@
 </ul>
 <p>建议先读总览再进子页，避免局部最优破坏全链不变量。</p>
 <hr />
-<h2 id="10-source-anchors">10) Source Anchors + 子页导航</h2>
+<h2 id="10">10)源码锚点与子页导航</h2>
 <h3 id="_2">关键锚点</h3>
 <ul>
 <li><code>src/memdir/memdir.ts:buildMemoryLines</code></li>
@@ -3050,16 +3240,324 @@
 <p><code>src/services/compact/autoCompact.ts:autoCompactIfNeeded</code></p>
 </li>
 <li>
-<p><a href="memory-system/">总览主文：memory-system.md</a></p>
+<p><a href="01-memory-loading-and-prompt-injection/">01 加载与 Prompt 注入</a></p>
 </li>
-<li><a href="01-memory-loading-and-prompt-injection/">01 加载与 Prompt 注入</a></li>
 <li><a href="02-session-memory-extraction-pipeline/">02 SessionMemory 抽取链路</a></li>
 <li><a href="03-memory-files-forked-write-and-aging/">03 文件写入、fork 与时效</a></li>
 <li><a href="04-gates-failure-modes-and-observability/">04 Gate、失败模式与可观测性</a></li>
 </ul>
-<h3 id="see-also">See also（跨模块专题）</h3>
+<h3 id="_3">另见（跨模块专题）</h3>
 <ul>
 <li><a href="../10-cross-cutting/01-kairos-persistent-assistant/">10-cross-cutting / KAIROS 持久助手运行链</a></li>
+</ul>
+<hr />
+<h2 id="_4">深度审计正文</h2>
+<h2 id="1_1">1)范围与证据边界</h2>
+<p>本页是 02 模块总览收敛页，聚焦以下执行平面：</p>
+<ul>
+<li><code>src/memdir/memdir.ts</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts</code></li>
+<li><code>src/services/compact/autoCompact.ts</code></li>
+</ul>
+<p>本页目标不是复述 01~04 子页细节，而是建立统一语义地图：</p>
+<ul>
+<li>读侧提示注入在何处 gate；</li>
+<li>写侧抽取在何处串行与限权；</li>
+<li>失败路径如何 fail-open/fail-closed；</li>
+<li>哪些不变量跨文件成立。</li>
+</ul>
+<hr />
+<h2 id="2_1">2)核心论点</h2>
+<p>Memory 子系统本质是“<strong>受门控的事实提炼与注入层</strong>”，不是“上下文越多越好”的缓存层。它由三段组成：</p>
+<ol>
+<li><strong>Prompt 注入层（memdir）</strong>：决定“是否把 memory 机制暴露给模型”；</li>
+<li><strong>Session 增量层（SessionMemory）</strong>：按阈值与时机抽取短周期会话事实；</li>
+<li><strong>长期整理层（extractMemories）</strong>：在 stop 后台合并事实并写入主题文件。</li>
+</ol>
+<p>核心工程价值：</p>
+<ul>
+<li>把“记忆失败”从主对话执行面剥离；</li>
+<li>把“记忆写入权限”收敛为最小文件级授权；</li>
+<li>把“过期风险”显式化为 freshness 提示，而非隐式假设。</li>
+</ul>
+<hr />
+<h2 id="3_1">3)运行时状态所有权（跨文件总表）</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键字段/机制</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注入开关状态</td>
+<td><code>memdir.ts</code></td>
+<td><code>isAutoMemoryEnabled()</code> / TEAMMEM / KAIROS 分支</td>
+<td>决定是否返回 memory prompt</td>
+</tr>
+<tr>
+<td>Session 抽取游标</td>
+<td><code>sessionMemory.ts</code> + <code>sessionMemoryUtils.ts</code></td>
+<td><code>lastMemoryMessageUuid</code>、<code>lastSummarizedMessageId</code>、<code>tokensAtLastExtraction</code></td>
+<td>决定“从哪开始抽”与“何时再抽”</td>
+</tr>
+<tr>
+<td>Session 抽取生命周期</td>
+<td><code>sessionMemoryUtils.ts</code></td>
+<td><code>extractionStartedAt</code> + wait timeout/stale 阈值</td>
+<td>防止主链无限等待后台抽取</td>
+</tr>
+<tr>
+<td>长期抽取并发态</td>
+<td><code>extractMemories.ts</code></td>
+<td><code>inProgress</code>、<code>pendingContext</code>、<code>inFlightExtractions</code></td>
+<td>决定 coalesce/trailing run 行为</td>
+</tr>
+<tr>
+<td>自动压缩联动态</td>
+<td><code>autoCompact.ts</code></td>
+<td><code>trySessionMemoryCompaction</code> 分支 + reset summarized id</td>
+<td>先尝试 session-memory compact，再 fallback legacy compact</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4_1">4)端到端流程（跨层时序）</h2>
+<h3 id="41">4.1 读侧：注入链</h3>
+<pre><code class="language-ts">// src/memdir/memdir.ts
+export async function loadMemoryPrompt(): Promise&lt;string | null&gt; {
+  const autoEnabled = isAutoMemoryEnabled()
+
+  if (feature('KAIROS') &amp;&amp; autoEnabled &amp;&amp; getKairosActive()) {
+    return buildAssistantDailyLogPrompt(skipIndex)
+  }
+
+  if (feature('TEAMMEM')) {
+    if (teamMemPaths!.isTeamMemoryEnabled()) {
+      await ensureMemoryDirExists(teamDir)
+      return teamMemPrompts!.buildCombinedMemoryPrompt(...)
+    }
+  }
+
+  if (autoEnabled) {
+    await ensureMemoryDirExists(autoDir)
+    return buildMemoryLines('auto memory', autoDir, ...).join('\n')
+  }
+
+  logEvent('tengu_memdir_disabled', ...)
+  return null
+}
+</code></pre>
+<p>语义：注入逻辑是“多门控分流 + 目录保障 + 可降级 return null”。</p>
+<h3 id="42">4.2 写侧：增量抽取链</h3>
+<pre><code class="language-ts">// src/services/SessionMemory/sessionMemory.ts
+const extractSessionMemory = sequential(async function (context) {
+  if (querySource !== 'repl_main_thread') return
+  if (!isSessionMemoryGateEnabled()) return
+  if (!shouldExtractMemory(messages)) return
+
+  markExtractionStarted()
+  const setupContext = createSubagentContext(toolUseContext)
+  const { memoryPath, currentMemory } = await setupSessionMemoryFile(setupContext)
+  const userPrompt = await buildSessionMemoryUpdatePrompt(currentMemory, memoryPath)
+
+  await runForkedAgent({
+    promptMessages: [createUserMessage({ content: userPrompt })],
+    canUseTool: createMemoryFileCanUseTool(memoryPath),
+    querySource: 'session_memory',
+    forkLabel: 'session_memory',
+    overrides: { readFileState: setupContext.readFileState },
+  })
+
+  recordExtractionTokenCount(tokenCountWithEstimation(messages))
+  updateLastSummarizedMessageIdIfSafe(messages)
+  markExtractionCompleted()
+})
+</code></pre>
+<p>语义：主线程守卫、阈值守卫、受限写权限、成功后推进游标。</p>
+<h3 id="43">4.3 回合末：长期 背景整理链</h3>
+<pre><code class="language-ts">// src/services/extractMemories/extractMemories.ts
+if (inProgress) {
+  pendingContext = { context, appendSystemMessage }
+  return
+}
+
+await runExtraction({ context, appendSystemMessage })
+
+// finally
+const trailing = pendingContext
+pendingContext = undefined
+if (trailing) {
+  await runExtraction({ context: trailing.context, isTrailingRun: true })
+}
+</code></pre>
+<p>语义：重入时仅保留最新上下文；当前轮结束后补跑 trailing，避免并发风暴。</p>
+<hr />
+<h2 id="5_1">5)守卫与决策矩阵（全链）</h2>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>Guard</th>
+<th>动作</th>
+<th>终态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注入层</td>
+<td><code>auto memory disabled</code></td>
+<td><code>loadMemoryPrompt -&gt; null</code></td>
+<td>无 memory 注入但主链继续</td>
+</tr>
+<tr>
+<td>注入层</td>
+<td>TEAMMEM enabled + cohort hit</td>
+<td>ensure dir + combined prompt</td>
+<td>auto+team 策略注入</td>
+</tr>
+<tr>
+<td>Session 抽取</td>
+<td><code>querySource !== repl_main_thread</code></td>
+<td>直接 return</td>
+<td>子线程不抽取</td>
+</tr>
+<tr>
+<td>Session 抽取</td>
+<td>gate disabled</td>
+<td>直接 return（可打点）</td>
+<td>静默降级</td>
+</tr>
+<tr>
+<td>Session 抽取</td>
+<td><code>shouldExtractMemory=false</code></td>
+<td>不触发 fork</td>
+<td>等待下一阈值点</td>
+</tr>
+<tr>
+<td>Session 权限</td>
+<td>非 <code>Edit(memoryPath)</code></td>
+<td>deny</td>
+<td>fail-closed</td>
+</tr>
+<tr>
+<td>长期抽取</td>
+<td><code>inProgress=true</code></td>
+<td>stash 为 <code>pendingContext</code></td>
+<td>coalesced</td>
+</tr>
+<tr>
+<td>长期抽取</td>
+<td>direct write detected</td>
+<td>skip fork + 推进 cursor</td>
+<td>避免重复抽取</td>
+</tr>
+<tr>
+<td>compact 联动</td>
+<td>session memory compaction 成功</td>
+<td>reset summarized id + cleanup</td>
+<td>跳过 legacy compact</td>
+</tr>
+<tr>
+<td>compact 联动</td>
+<td>session memory compaction 失败</td>
+<td>fallback <code>compactConversation</code></td>
+<td>旧路径继续</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6_1">6)失败、恢复与降级（全链）</h2>
+<h3 id="61">6.1 注入失败链：目录不可达/关闭场景</h3>
+<p><code>loadMemoryPrompt</code> 在禁用时直接 <code>null</code>，并记录 <code>tengu_memdir_disabled</code>；不会阻断 query 主链。</p>
+<h3 id="62">6.2 抽取等待链：+ 双保险</h3>
+<p><code>waitForSessionMemoryExtraction()</code> 不是无限阻塞：</p>
+<ul>
+<li>抽取年龄 &gt; stale 阈值（60s）则不再等待；</li>
+<li>总等待 &gt; timeout（15s）则继续主流程。</li>
+</ul>
+<p>这保证“后台抽取异常不挟持前台交互”。</p>
+<h3 id="63">6.3 抽取失败链：/生命周期收敛</h3>
+<p><code>manuallyExtractSessionMemory</code> 在 <code>finally</code> 中 <code>markExtractionCompleted()</code>；自动路径成功末尾也会 completed，避免“永远 in-progress 幻象”。</p>
+<h3 id="64-">6.4 长期抽取失败链：-，不上抛主链</h3>
+<p><code>runExtraction</code> <code>catch</code> 仅日志与埋点（<code>tengu_extract_memories_error</code>），不中断 stop 后续逻辑。</p>
+<h3 id="65">6.5 写权限失败链：</h3>
+<p><code>createMemoryFileCanUseTool</code> 明确只允许 <code>Edit</code> 目标 memory 文件；其它工具或其它路径一律 deny，防止子 agent 越界。</p>
+<hr />
+<h2 id="7_1">7)不变量（跨文件强约束）</h2>
+<ol>
+<li>memory 功能禁用时必须退化为“无注入”，不得报错阻断 query。  </li>
+<li>Session 抽取仅允许主 REPL 线程触发，子 agent 不得并入该路径。  </li>
+<li>抽取触发必须同时尊重 token/tool-call/turn-break 语义阈值。  </li>
+<li>memory 写入权限必须收敛到目标文件级（<code>Edit(memoryPath)</code>）。  </li>
+<li><code>lastMemoryMessageUuid</code> 只能在成功或显式 skip（direct write）后推进。  </li>
+<li>in-progress 抽取重入必须 coalesce，不能并发重复 fork。  </li>
+<li>trailing run 只能消费“新追加区间”，不能重扫全量历史。  </li>
+<li>session memory/compact 联动后需重置 summarized cursor，防止悬挂 UUID。  </li>
+<li>记忆内容是“历史上下文提示”，不是当前代码真值；用户行动前需回读源码确认。  </li>
+</ol>
+<hr />
+<h2 id="8_1">8)跨模块契约</h2>
+<ul>
+<li>对 <code>query.ts</code>：memory 是附属能力，失败不击穿主回合状态机。  </li>
+<li>对 compact（03）：<code>autoCompactIfNeeded</code> 可先走 session-memory compact，但必须保持可回退至 legacy compact。  </li>
+<li>对 hooks（06/01）：extractMemories 常在 stop 阶段触发，但返回语义必须是“可丢失增强”，不是“硬阻断治理”。  </li>
+<li>对 Tool 执行层（01-04）：memory fork 子 agent 依赖统一权限与工具事务语义，不自建旁路执行协议。  </li>
+</ul>
+<hr />
+<h2 id="9_1">9)工程约束与演进指引</h2>
+<p>修改 02 模块时优先自检三问：</p>
+<ol>
+<li>这个改动会不会让“记忆失败”影响主对话可用性？</li>
+<li>这个改动会不会放宽 memory 子 agent 文件权限边界？</li>
+<li>这个改动会不会导致 cursor 推进与真实写入不一致？</li>
+</ol>
+<p>若任一答案是“可能”，至少补：</p>
+<ul>
+<li>明确 gate 与 fallback 分支顺序；</li>
+<li>明确成功/失败时 cursor 与 in-progress 的生命周期；</li>
+<li>明确 telemetry 事件以支持线上失稳定位。</li>
+</ul>
+<p>建议回归场景：</p>
+<ul>
+<li>auto memory disabled + 正常对话；</li>
+<li>session extraction 命中阈值与未命中阈值；</li>
+<li>抽取中重入触发 coalesced + trailing；</li>
+<li>目录可读不可写/写权限拒绝；</li>
+<li>session memory compaction 成功与 fallback legacy compact。</li>
+</ul>
+<hr />
+<h2 id="10_1">10)源码锚点索引</h2>
+<ul>
+<li><code>src/memdir/memdir.ts:buildMemoryLines</code></li>
+<li><code>src/memdir/memdir.ts:buildMemoryPrompt</code></li>
+<li><code>src/memdir/memdir.ts:loadMemoryPrompt</code></li>
+<li><code>src/memdir/memdir.ts:ensureMemoryDirExists</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:shouldExtractMemory</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:extractSessionMemory</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:manuallyExtractSessionMemory</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:createMemoryFileCanUseTool</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts:waitForSessionMemoryExtraction</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts:markExtractionStarted</code></li>
+<li><code>src/services/SessionMemory/sessionMemoryUtils.ts:markExtractionCompleted</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:initExtractMemories</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:runExtraction</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:executeExtractMemories</code></li>
+<li>
+<p><code>src/services/compact/autoCompact.ts:autoCompactIfNeeded</code></p>
+</li>
+<li>
+<p>子页深潜：</p>
+</li>
+<li><code>./01-memory-loading-and-prompt-injection.md</code></li>
+<li><code>./02-session-memory-extraction-pipeline.md</code></li>
+<li><code>./03-memory-files-forked-write-and-aging.md</code></li>
+<li><code>./04-gates-failure-modes-and-observability.md</code></li>
 </ul>
 
 

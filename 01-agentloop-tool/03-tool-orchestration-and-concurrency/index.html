@@ -23,7 +23,7 @@
     
     
       
-        <title>Tool 编排与并发策略 - Claude Code Analysis</title>
+        <title>工具编排与并发策略 - 克劳德代码源码分析</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#agentloop-tool" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="克劳德代码源码分析" class="md-header__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,13 +94,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Claude Code Analysis
+            克劳德代码源码分析
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Tool 编排与并发策略
+              工具编排与并发策略
             
           </span>
         </div>
@@ -178,13 +178,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="克劳德代码源码分析" class="md-nav__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Claude Code Analysis
+    克劳德代码源码分析
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -248,7 +248,7 @@
   <span class="md-ellipsis">
     
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
     
@@ -264,7 +264,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
           </label>
@@ -340,7 +340,7 @@
   <span class="md-ellipsis">
     
   
-    Query 回合状态机
+    查询回合状态机
   
 
     
@@ -377,7 +377,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 编排与并发策略
+    工具编排与并发策略
   
 
     
@@ -395,7 +395,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 编排与并发策略
+    工具编排与并发策略
   
 
     
@@ -421,10 +421,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -432,10 +432,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -443,22 +443,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3) Runtime State Ownership">
+    <nav class="md-nav" aria-label="3)运行时状态所有权">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-runtools-currentcontext" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 runTools 持有 currentContext
+        3.1 持有
       
     </span>
   </a>
@@ -466,10 +466,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-partitiontoolcalls" class="md-nav__link">
+  <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 partitionToolCalls 持有批次拓扑语义
+        3.2 `` 持有批次拓扑语义
       
     </span>
   </a>
@@ -493,15 +493,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow
+        4)端到端流程
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4) End-to-end Flow">
+    <nav class="md-nav" aria-label="4)端到端流程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -516,10 +516,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-modifier" class="md-nav__link">
+  <a href="#42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 并发批执行（先收集 modifier，再回放）
+        4.2 并发批执行（先收集 ，再回放）
       
     </span>
   </a>
@@ -543,10 +543,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix
+        5)守卫与决策矩阵
       
     </span>
   </a>
@@ -554,15 +554,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+    <nav class="md-nav" aria-label="6)失败、恢复与降级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -588,10 +588,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-in-progress" class="md-nav__link">
+  <a href="#63-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 in-progress 生命周期显式收尾
+        6.3-生命周期显式收尾
       
     </span>
   </a>
@@ -604,10 +604,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -615,10 +615,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -626,10 +626,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -637,10 +637,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors
+        10)源码锚点
       
     </span>
   </a>
@@ -670,7 +670,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 执行、权限与错误封装
+    工具执行、权限与错误封装
   
 
     
@@ -698,35 +698,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming/StopHooks/输出边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../agentloop-tool/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式处理/停止钩子/输出边界
   
 
     
@@ -843,7 +815,7 @@
   <span class="md-ellipsis">
     
   
-    加载与 Prompt 注入
+    加载与提示词注入
   
 
     
@@ -871,7 +843,7 @@
   <span class="md-ellipsis">
     
   
-    SessionMemory 抽取链路
+    会话记忆抽取链路
   
 
     
@@ -927,35 +899,7 @@
   <span class="md-ellipsis">
     
   
-    Gate、失败模式与可观测性
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../02-memory-system/memory-system/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    守卫、失败模式与可观测性
   
 
     
@@ -1008,7 +952,7 @@
   <span class="md-ellipsis">
     
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
     
@@ -1024,7 +968,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
           </label>
@@ -1072,7 +1016,7 @@
   <span class="md-ellipsis">
     
   
-    System Prompt 组装与优先级
+    系统提示词组装与优先级
   
 
     
@@ -1100,7 +1044,7 @@
   <span class="md-ellipsis">
     
   
-    Token 预算与自动压缩判定
+    令牌预算与自动压缩判定
   
 
     
@@ -1128,7 +1072,7 @@
   <span class="md-ellipsis">
     
   
-    Microcompact 与 SessionMemory Compact
+    微压缩与会话记忆压缩
   
 
     
@@ -1157,34 +1101,6 @@
     
   
     压缩后清理与消息折叠
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
   
 
     
@@ -1237,7 +1153,7 @@
   <span class="md-ellipsis">
     
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
     
@@ -1253,7 +1169,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
           </label>
@@ -1301,7 +1217,7 @@
   <span class="md-ellipsis">
     
   
-    Spawn 入口与模型继承
+    生成入口与模型继承
   
 
     
@@ -1329,7 +1245,7 @@
   <span class="md-ellipsis">
     
   
-    Backend 选择（in-process / tmux / iTerm）
+    后端选择（进程内/tmux/iTerm）
   
 
     
@@ -1357,7 +1273,7 @@
   <span class="md-ellipsis">
     
   
-    权限同步、Mailbox 与团队状态
+    权限同步、邮箱与团队状态
   
 
     
@@ -1385,35 +1301,7 @@
   <span class="md-ellipsis">
     
   
-    Worktree 生命周期与清理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    工作树生命周期与清理
   
 
     
@@ -1466,7 +1354,7 @@
   <span class="md-ellipsis">
     
   
-    MCP 协议
+    协议集成层
   
 
     
@@ -1482,7 +1370,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    MCP 协议
+    协议集成层
   
 
           </label>
@@ -1558,7 +1446,7 @@
   <span class="md-ellipsis">
     
   
-    Tools/Resources/Commands 发现
+    工具/资源/命令发现
   
 
     
@@ -1586,7 +1474,7 @@
   <span class="md-ellipsis">
     
   
-    结果转换与 Elicitation 重试
+    结果转换与引导重试
   
 
     
@@ -1614,35 +1502,7 @@
   <span class="md-ellipsis">
     
   
-    CLI/UI 管理与插件集成
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    命令行与界面管理及插件集成
   
 
     
@@ -1695,7 +1555,7 @@
   <span class="md-ellipsis">
     
   
-    Hook 机制
+    钩子机制
   
 
     
@@ -1711,7 +1571,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hook 机制
+    钩子机制
   
 
           </label>
@@ -1787,7 +1647,7 @@
   <span class="md-ellipsis">
     
   
-    Agent/HTTP/Prompt 三类执行器
+    代理/网络请求/提示词三类执行器
   
 
     
@@ -1815,7 +1675,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 权限决策与安全防护
+    工具权限决策与安全防护
   
 
     
@@ -1843,35 +1703,7 @@
   <span class="md-ellipsis">
     
   
-    Session/File Hook 与进度反馈
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    会话/文件钩子与进度反馈
   
 
     
@@ -1988,7 +1820,7 @@
   <span class="md-ellipsis">
     
   
-    模型流到 CLI 渲染管线
+    模型流到命令行渲染管线
   
 
     
@@ -2016,7 +1848,7 @@
   <span class="md-ellipsis">
     
   
-    Structured I/O 协议与请求关联
+    结构化输入输出协议与请求关联
   
 
     
@@ -2072,35 +1904,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming Tool Executor、背压与错误传播
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式工具执行器、背压与错误传播
   
 
     
@@ -2153,7 +1957,7 @@
   <span class="md-ellipsis">
     
   
-    Skill 技能库
+    技能库
   
 
     
@@ -2169,7 +1973,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Skill 技能库
+    技能库
   
 
           </label>
@@ -2245,7 +2049,7 @@
   <span class="md-ellipsis">
     
   
-    SkillTool 运行时、UI 与权限决策
+    技能工具运行时、界面与权限决策
   
 
     
@@ -2273,7 +2077,7 @@
   <span class="md-ellipsis">
     
   
-    Slash 转译与 Fork 执行
+    斜杠命令转译与分叉执行
   
 
     
@@ -2301,35 +2105,7 @@
   <span class="md-ellipsis">
     
   
-    Bundled Skills 分类与使用场景
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-skill-library/skill-library/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    内置技能分类与使用场景
   
 
     
@@ -2382,7 +2158,7 @@
   <span class="md-ellipsis">
     
   
-    CLI 命令行界面
+    命令行界面
   
 
     
@@ -2398,7 +2174,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CLI 命令行界面
+    命令行界面
   
 
           </label>
@@ -2530,7 +2306,7 @@
   <span class="md-ellipsis">
     
   
-    Structured/Print/Interactive 输出模式
+    结构化/打印/交互输出模式
   
 
     
@@ -2558,35 +2334,7 @@
   <span class="md-ellipsis">
     
   
-    Plugin/Bridge/Install 命令族
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    插件/桥接/安装命令族
   
 
     
@@ -2639,7 +2387,7 @@
   <span class="md-ellipsis">
     
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
     
@@ -2655,7 +2403,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
           </label>
@@ -2703,7 +2451,7 @@
   <span class="md-ellipsis">
     
   
-    KAIROS 持久助手运行链
+    持久助手运行链
   
 
     
@@ -2731,7 +2479,7 @@
   <span class="md-ellipsis">
     
   
-    BUDDY 机制与命令投影
+    伴侣机制与命令投影
   
 
     
@@ -2759,7 +2507,7 @@
   <span class="md-ellipsis">
     
   
-    风险闭环（Auth/Policy/Refusal/Telemetry）
+    风险闭环（认证/策略/拒绝/遥测）
   
 
     
@@ -2807,10 +2555,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -2818,10 +2566,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -2829,22 +2577,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3) Runtime State Ownership">
+    <nav class="md-nav" aria-label="3)运行时状态所有权">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-runtools-currentcontext" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.1 runTools 持有 currentContext
+        3.1 持有
       
     </span>
   </a>
@@ -2852,10 +2600,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-partitiontoolcalls" class="md-nav__link">
+  <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 partitionToolCalls 持有批次拓扑语义
+        3.2 `` 持有批次拓扑语义
       
     </span>
   </a>
@@ -2879,15 +2627,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow
+        4)端到端流程
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4) End-to-end Flow">
+    <nav class="md-nav" aria-label="4)端到端流程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2902,10 +2650,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-modifier" class="md-nav__link">
+  <a href="#42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 并发批执行（先收集 modifier，再回放）
+        4.2 并发批执行（先收集 ，再回放）
       
     </span>
   </a>
@@ -2929,10 +2677,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix
+        5)守卫与决策矩阵
       
     </span>
   </a>
@@ -2940,15 +2688,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+    <nav class="md-nav" aria-label="6)失败、恢复与降级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2974,10 +2722,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-in-progress" class="md-nav__link">
+  <a href="#63-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 in-progress 生命周期显式收尾
+        6.3-生命周期显式收尾
       
     </span>
   </a>
@@ -2990,10 +2738,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -3001,10 +2749,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -3012,10 +2760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -3023,10 +2771,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors
+        10)源码锚点
       
     </span>
   </a>
@@ -3050,8 +2798,8 @@
 
 
 
-<h1 id="agentloop-tool">AgentLoop 与 Tool：批处理编排与并发策略（深潜审计版）</h1>
-<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<h1 id="_1">代理循环与工具：批处理编排与并发策略（深潜审计版）</h1>
+<h2 id="1">1)范围与证据边界</h2>
 <p>本页只覆盖 <code>src/services/tools/toolOrchestration.ts</code>，并以 <code>src/services/tools/toolExecution.ts</code> 的接口行为作为必要上下文。</p>
 <p>关注点：
 - 工具批次如何切分；
@@ -3063,7 +2811,7 @@
 - Query 主循环恢复链（见 02）；
 - Streaming executor 内部调度（见 05）。</p>
 <hr />
-<h2 id="2-core-thesis">2) Core Thesis</h2>
+<h2 id="2">2)核心论点</h2>
 <p><code>toolOrchestration.ts</code> 的核心不是“并发执行工具”，而是“在保持消息语义稳定的前提下最大化吞吐”：</p>
 <ul>
 <li>并发只影响执行时机；</li>
@@ -3099,8 +2847,8 @@
 </code></pre>
 <p>这里把“安全判定失败 -&gt; 串行”写死为保守策略。</p>
 <hr />
-<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
-<h3 id="31-runtools-currentcontext">3.1 <code>runTools</code> 持有 <code>currentContext</code></h3>
+<h2 id="3">3)运行时状态所有权</h2>
+<h3 id="31">3.1 <code>持有</code></h3>
 <pre><code class="language-ts">export async function* runTools(...): AsyncGenerator&lt;MessageUpdate, void&gt; {
   let currentContext = toolUseContext
   for (const { isConcurrencySafe, blocks } of partitionToolCalls(...)) {
@@ -3113,7 +2861,7 @@
 <li>串行分支中实时应用 modifier；</li>
 <li>并发分支中延迟应用 modifier。</li>
 </ul>
-<h3 id="32-partitiontoolcalls">3.2 <code>partitionToolCalls</code> 持有批次拓扑语义</h3>
+<h3 id="32">3.2 `` 持有批次拓扑语义</h3>
 <p>职责：
 - 输入层面判断 <code>isConcurrencySafe</code>；
 - 将连续安全工具合并为一个并发批；
@@ -3125,7 +2873,7 @@
 <li><code>markToolUseAsComplete</code>：统一清理 in-progress 集合。</li>
 </ul>
 <hr />
-<h2 id="4-end-to-end-flow">4) End-to-end Flow</h2>
+<h2 id="4">4)端到端流程</h2>
 <h3 id="41">4.1 批次切分</h3>
 <pre><code class="language-ts">for (const { isConcurrencySafe, blocks } of partitionToolCalls(...)) {
   if (isConcurrencySafe) {
@@ -3135,7 +2883,7 @@
   }
 }
 </code></pre>
-<h3 id="42-modifier">4.2 并发批执行（先收集 modifier，再回放）</h3>
+<h3 id="42">4.2 并发批执行（先收集 ，再回放）</h3>
 <pre><code class="language-ts">const queuedContextModifiers: Record&lt;string, ((context: ToolUseContext) =&gt; ToolUseContext)[]&gt; = {}
 for await (const update of runToolsConcurrently(...)) {
   if (update.contextModifier) {
@@ -3173,7 +2921,7 @@ yield { newContext: currentContext }
 </code></pre>
 <p>语义：串行路径中上下文变化与消息产出同步推进。</p>
 <hr />
-<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<h2 id="5">5)守卫与决策矩阵</h2>
 <table>
 <thead>
 <tr>
@@ -3223,7 +2971,7 @@ yield { newContext: currentContext }
 </tbody>
 </table>
 <hr />
-<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h2 id="6">6)失败、恢复与降级</h2>
 <h3 id="61">6.1 安全判定失败时保守降级</h3>
 <p><code>partitionToolCalls</code> 在两类失败都降级串行：
 - schema parse 失败；
@@ -3231,7 +2979,7 @@ yield { newContext: currentContext }
 <p>这条策略避免“误判为并发安全”导致状态污染。</p>
 <h3 id="62">6.2 单工具错误不击穿调度层</h3>
 <p><code>runToolsSerially/runToolsConcurrently</code> 都依赖 <code>runToolUse</code> 的消息化错误输出；调度层只消费消息，不传播异常为“批次级 crash”。</p>
-<h3 id="63-in-progress">6.3 in-progress 生命周期显式收尾</h3>
+<h3 id="63-">6.3-生命周期显式收尾</h3>
 <pre><code class="language-ts">toolUseContext.setInProgressToolUseIDs(prev =&gt;
   new Set(prev).add(toolUse.id),
 )
@@ -3240,7 +2988,7 @@ markToolUseAsComplete(toolUseContext, toolUse.id)
 </code></pre>
 <p>失败与成功都要执行清理，避免 UI 永久“运行中”。</p>
 <hr />
-<h2 id="7-invariants">7) Invariants</h2>
+<h2 id="7">7)不变量</h2>
 <ol>
 <li><code>partitionToolCalls</code> 输出的批次顺序必须与输入顺序一致。</li>
 <li>不安全工具必须形成顺序屏障，不得被后续并发工具穿越。</li>
@@ -3250,14 +2998,14 @@ markToolUseAsComplete(toolUseContext, toolUse.id)
 <li>并发上限必须可控且有默认值。</li>
 </ol>
 <hr />
-<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<h2 id="8">8)跨模块契约</h2>
 <ul>
 <li>对上游 <code>query.ts</code>：提供统一 <code>AsyncGenerator&lt;MessageUpdate&gt;</code>；query 负责回合推进，不感知批次内部细节。</li>
 <li>对下游 <code>toolExecution.ts</code>：只要求 <code>runToolUse</code> 返回消息流与可选 contextModifier。</li>
 <li>对工具定义 <code>Tool.ts</code>：并发安全由工具声明，调度器只消费判定，不猜测工具副作用。</li>
 </ul>
 <hr />
-<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<h2 id="9">9)工程约束与演进指引</h2>
 <p>新增工具并发能力时必须验证：</p>
 <ol>
 <li><code>isConcurrencySafe</code> 以<strong>解析后的输入</strong>判断，而非原始对象；</li>
@@ -3272,7 +3020,7 @@ markToolUseAsComplete(toolUseContext, toolUse.id)
 <li><code>inProgressToolUseIDs</code> 在异常路径是否清零。</li>
 </ul>
 <hr />
-<h2 id="10-source-anchors">10) Source Anchors</h2>
+<h2 id="10">10)源码锚点</h2>
 <ul>
 <li><code>src/services/tools/toolOrchestration.ts:getMaxToolUseConcurrency</code></li>
 <li><code>src/services/tools/toolOrchestration.ts:runTools</code></li>

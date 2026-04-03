@@ -12,7 +12,7 @@
         <link rel="prev" href="../03-memory-files-forked-write-and-aging/">
       
       
-        <link rel="next" href="../memory-system/">
+        <link rel="next" href="../../03-prompt-context-compression/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Gate、失败模式与可观测性 - Claude Code Analysis</title>
+        <title>守卫、失败模式与可观测性 - 克劳德代码源码分析</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gates" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Claude Code Analysis" class="md-header__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="克劳德代码源码分析" class="md-header__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,13 +94,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Claude Code Analysis
+            克劳德代码源码分析
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gate、失败模式与可观测性
+              守卫、失败模式与可观测性
             
           </span>
         </div>
@@ -178,13 +178,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Claude Code Analysis" class="md-nav__button md-logo" aria-label="Claude Code Analysis" data-md-component="logo">
+    <a href="../.." title="克劳德代码源码分析" class="md-nav__button md-logo" aria-label="克劳德代码源码分析" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Claude Code Analysis
+    克劳德代码源码分析
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -248,7 +248,7 @@
   <span class="md-ellipsis">
     
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
     
@@ -264,7 +264,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    AgentLoop 与 Tool
+    代理循环与工具
   
 
           </label>
@@ -340,7 +340,7 @@
   <span class="md-ellipsis">
     
   
-    Query 回合状态机
+    查询回合状态机
   
 
     
@@ -368,7 +368,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 编排与并发策略
+    工具编排与并发策略
   
 
     
@@ -396,7 +396,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 执行、权限与错误封装
+    工具执行、权限与错误封装
   
 
     
@@ -424,35 +424,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming/StopHooks/输出边界
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../01-agentloop-tool/agentloop-tool/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式处理/停止钩子/输出边界
   
 
     
@@ -569,7 +541,7 @@
   <span class="md-ellipsis">
     
   
-    加载与 Prompt 注入
+    加载与提示词注入
   
 
     
@@ -597,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    SessionMemory 抽取链路
+    会话记忆抽取链路
   
 
     
@@ -662,7 +634,7 @@
   <span class="md-ellipsis">
     
   
-    Gate、失败模式与可观测性
+    守卫、失败模式与可观测性
   
 
     
@@ -680,7 +652,7 @@
   <span class="md-ellipsis">
     
   
-    Gate、失败模式与可观测性
+    守卫、失败模式与可观测性
   
 
     
@@ -706,10 +678,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -717,10 +689,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -728,10 +700,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
@@ -739,22 +711,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow
+        4)端到端流程
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4) End-to-end Flow">
+    <nav class="md-nav" aria-label="4)端到端流程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-stop-hooks" class="md-nav__link">
+  <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 stop hooks 触发后台抽取
+        4.1 触发后台抽取
       
     </span>
   </a>
@@ -762,10 +734,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-extractmemories" class="md-nav__link">
+  <a href="#42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 extractMemories 多重门控
+        4.2 多重门控
       
     </span>
   </a>
@@ -773,10 +745,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-drain" class="md-nav__link">
+  <a href="#43" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 响应后 drain 收敛
+        4.3 响应后 收敛
       
     </span>
   </a>
@@ -789,10 +761,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix
+        5)守卫与决策矩阵
       
     </span>
   </a>
@@ -800,22 +772,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+    <nav class="md-nav" aria-label="6)失败、恢复与降级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-gate-disabled" class="md-nav__link">
+  <a href="#61-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 Gate-disabled 失败链（可解释跳过）
+        6.1-失败链（可解释跳过）
       
     </span>
   </a>
@@ -823,10 +795,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-best-effort" class="md-nav__link">
+  <a href="#62-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 执行失败链（best-effort）
+        6.2 执行失败链（-）
       
     </span>
   </a>
@@ -834,10 +806,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-stop-hook" class="md-nav__link">
+  <a href="#63" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 stop hook 异常链（治理降级）
+        6.3 异常链（治理降级）
       
     </span>
   </a>
@@ -845,10 +817,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-drain" class="md-nav__link">
+  <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 收尾恢复链（drain）
+        6.4 收尾恢复链（）
       
     </span>
   </a>
@@ -856,10 +828,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#65-coalesced-trailing" class="md-nav__link">
+  <a href="#65" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 重入恢复链（coalesced trailing）
+        6.5 重入恢复链（）
       
     </span>
   </a>
@@ -872,10 +844,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -883,10 +855,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -894,10 +866,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -905,10 +877,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors
+        10)源码锚点
       
     </span>
   </a>
@@ -919,34 +891,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../memory-system/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -991,7 +935,7 @@
   <span class="md-ellipsis">
     
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
     
@@ -1007,7 +951,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Prompt 与上下文压缩
+    提示词与上下文压缩
   
 
           </label>
@@ -1055,7 +999,7 @@
   <span class="md-ellipsis">
     
   
-    System Prompt 组装与优先级
+    系统提示词组装与优先级
   
 
     
@@ -1083,7 +1027,7 @@
   <span class="md-ellipsis">
     
   
-    Token 预算与自动压缩判定
+    令牌预算与自动压缩判定
   
 
     
@@ -1111,7 +1055,7 @@
   <span class="md-ellipsis">
     
   
-    Microcompact 与 SessionMemory Compact
+    微压缩与会话记忆压缩
   
 
     
@@ -1140,34 +1084,6 @@
     
   
     压缩后清理与消息折叠
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../03-prompt-context-compression/prompt-context-compression/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
   
 
     
@@ -1220,7 +1136,7 @@
   <span class="md-ellipsis">
     
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
     
@@ -1236,7 +1152,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    多 Agent 协同策略
+    多代理协同策略
   
 
           </label>
@@ -1284,7 +1200,7 @@
   <span class="md-ellipsis">
     
   
-    Spawn 入口与模型继承
+    生成入口与模型继承
   
 
     
@@ -1312,7 +1228,7 @@
   <span class="md-ellipsis">
     
   
-    Backend 选择（in-process / tmux / iTerm）
+    后端选择（进程内/tmux/iTerm）
   
 
     
@@ -1340,7 +1256,7 @@
   <span class="md-ellipsis">
     
   
-    权限同步、Mailbox 与团队状态
+    权限同步、邮箱与团队状态
   
 
     
@@ -1368,35 +1284,7 @@
   <span class="md-ellipsis">
     
   
-    Worktree 生命周期与清理
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    工作树生命周期与清理
   
 
     
@@ -1449,7 +1337,7 @@
   <span class="md-ellipsis">
     
   
-    MCP 协议
+    协议集成层
   
 
     
@@ -1465,7 +1353,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    MCP 协议
+    协议集成层
   
 
           </label>
@@ -1541,7 +1429,7 @@
   <span class="md-ellipsis">
     
   
-    Tools/Resources/Commands 发现
+    工具/资源/命令发现
   
 
     
@@ -1569,7 +1457,7 @@
   <span class="md-ellipsis">
     
   
-    结果转换与 Elicitation 重试
+    结果转换与引导重试
   
 
     
@@ -1597,35 +1485,7 @@
   <span class="md-ellipsis">
     
   
-    CLI/UI 管理与插件集成
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../05-mcp-protocol/mcp-protocol/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    命令行与界面管理及插件集成
   
 
     
@@ -1678,7 +1538,7 @@
   <span class="md-ellipsis">
     
   
-    Hook 机制
+    钩子机制
   
 
     
@@ -1694,7 +1554,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hook 机制
+    钩子机制
   
 
           </label>
@@ -1770,7 +1630,7 @@
   <span class="md-ellipsis">
     
   
-    Agent/HTTP/Prompt 三类执行器
+    代理/网络请求/提示词三类执行器
   
 
     
@@ -1798,7 +1658,7 @@
   <span class="md-ellipsis">
     
   
-    Tool 权限决策与安全防护
+    工具权限决策与安全防护
   
 
     
@@ -1826,35 +1686,7 @@
   <span class="md-ellipsis">
     
   
-    Session/File Hook 与进度反馈
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../06-hook-mechanism/hook-mechanism/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    会话/文件钩子与进度反馈
   
 
     
@@ -1971,7 +1803,7 @@
   <span class="md-ellipsis">
     
   
-    模型流到 CLI 渲染管线
+    模型流到命令行渲染管线
   
 
     
@@ -1999,7 +1831,7 @@
   <span class="md-ellipsis">
     
   
-    Structured I/O 协议与请求关联
+    结构化输入输出协议与请求关联
   
 
     
@@ -2055,35 +1887,7 @@
   <span class="md-ellipsis">
     
   
-    Streaming Tool Executor、背压与错误传播
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../07-streaming-processing/streaming-processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    流式工具执行器、背压与错误传播
   
 
     
@@ -2136,7 +1940,7 @@
   <span class="md-ellipsis">
     
   
-    Skill 技能库
+    技能库
   
 
     
@@ -2152,7 +1956,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Skill 技能库
+    技能库
   
 
           </label>
@@ -2228,7 +2032,7 @@
   <span class="md-ellipsis">
     
   
-    SkillTool 运行时、UI 与权限决策
+    技能工具运行时、界面与权限决策
   
 
     
@@ -2256,7 +2060,7 @@
   <span class="md-ellipsis">
     
   
-    Slash 转译与 Fork 执行
+    斜杠命令转译与分叉执行
   
 
     
@@ -2284,35 +2088,7 @@
   <span class="md-ellipsis">
     
   
-    Bundled Skills 分类与使用场景
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../08-skill-library/skill-library/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    内置技能分类与使用场景
   
 
     
@@ -2365,7 +2141,7 @@
   <span class="md-ellipsis">
     
   
-    CLI 命令行界面
+    命令行界面
   
 
     
@@ -2381,7 +2157,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    CLI 命令行界面
+    命令行界面
   
 
           </label>
@@ -2513,7 +2289,7 @@
   <span class="md-ellipsis">
     
   
-    Structured/Print/Interactive 输出模式
+    结构化/打印/交互输出模式
   
 
     
@@ -2541,35 +2317,7 @@
   <span class="md-ellipsis">
     
   
-    Plugin/Bridge/Install 命令族
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../09-cli-command-interface/cli-command-interface/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    历史单篇深度文
+    插件/桥接/安装命令族
   
 
     
@@ -2622,7 +2370,7 @@
   <span class="md-ellipsis">
     
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
     
@@ -2638,7 +2386,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Cross-cutting 运行专题
+    跨域运行专题
   
 
           </label>
@@ -2686,7 +2434,7 @@
   <span class="md-ellipsis">
     
   
-    KAIROS 持久助手运行链
+    持久助手运行链
   
 
     
@@ -2714,7 +2462,7 @@
   <span class="md-ellipsis">
     
   
-    BUDDY 机制与命令投影
+    伴侣机制与命令投影
   
 
     
@@ -2742,7 +2490,7 @@
   <span class="md-ellipsis">
     
   
-    风险闭环（Auth/Policy/Refusal/Telemetry）
+    风险闭环（认证/策略/拒绝/遥测）
   
 
     
@@ -2790,10 +2538,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-scope-evidence-boundary" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Scope 与 Evidence Boundary
+        1)范围与证据边界
       
     </span>
   </a>
@@ -2801,10 +2549,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-core-thesis" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Core Thesis
+        2)核心论点
       
     </span>
   </a>
@@ -2812,10 +2560,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-runtime-state-ownership" class="md-nav__link">
+  <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3) Runtime State Ownership
+        3)运行时状态所有权
       
     </span>
   </a>
@@ -2823,22 +2571,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-end-to-end-flow" class="md-nav__link">
+  <a href="#4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4) End-to-end Flow
+        4)端到端流程
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4) End-to-end Flow">
+    <nav class="md-nav" aria-label="4)端到端流程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-stop-hooks" class="md-nav__link">
+  <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 stop hooks 触发后台抽取
+        4.1 触发后台抽取
       
     </span>
   </a>
@@ -2846,10 +2594,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-extractmemories" class="md-nav__link">
+  <a href="#42" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 extractMemories 多重门控
+        4.2 多重门控
       
     </span>
   </a>
@@ -2857,10 +2605,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-drain" class="md-nav__link">
+  <a href="#43" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 响应后 drain 收敛
+        4.3 响应后 收敛
       
     </span>
   </a>
@@ -2873,10 +2621,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-guard-decision-matrix" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5) Guard / Decision Matrix
+        5)守卫与决策矩阵
       
     </span>
   </a>
@@ -2884,22 +2632,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-failure-recovery-degradation" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6) Failure / Recovery / Degradation
+        6)失败、恢复与降级
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6) Failure / Recovery / Degradation">
+    <nav class="md-nav" aria-label="6)失败、恢复与降级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-gate-disabled" class="md-nav__link">
+  <a href="#61-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 Gate-disabled 失败链（可解释跳过）
+        6.1-失败链（可解释跳过）
       
     </span>
   </a>
@@ -2907,10 +2655,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-best-effort" class="md-nav__link">
+  <a href="#62-" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 执行失败链（best-effort）
+        6.2 执行失败链（-）
       
     </span>
   </a>
@@ -2918,10 +2666,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-stop-hook" class="md-nav__link">
+  <a href="#63" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 stop hook 异常链（治理降级）
+        6.3 异常链（治理降级）
       
     </span>
   </a>
@@ -2929,10 +2677,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-drain" class="md-nav__link">
+  <a href="#64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.4 收尾恢复链（drain）
+        6.4 收尾恢复链（）
       
     </span>
   </a>
@@ -2940,10 +2688,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#65-coalesced-trailing" class="md-nav__link">
+  <a href="#65" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.5 重入恢复链（coalesced trailing）
+        6.5 重入恢复链（）
       
     </span>
   </a>
@@ -2956,10 +2704,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-invariants" class="md-nav__link">
+  <a href="#7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7) Invariants
+        7)不变量
       
     </span>
   </a>
@@ -2967,10 +2715,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-cross-module-contracts" class="md-nav__link">
+  <a href="#8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8) Cross-module Contracts
+        8)跨模块契约
       
     </span>
   </a>
@@ -2978,10 +2726,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-constraints-evolution-guidance" class="md-nav__link">
+  <a href="#9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9) Engineering Constraints / Evolution Guidance
+        9)工程约束与演进指引
       
     </span>
   </a>
@@ -2989,10 +2737,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-anchors" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10) Source Anchors
+        10)源码锚点
       
     </span>
   </a>
@@ -3016,8 +2764,8 @@
 
 
 
-<h1 id="gates">记忆系统：Gates、失败模式与可观测性（深潜审计版）</h1>
-<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<h1 id="_1">记忆系统：、失败模式与可观测性（深潜审计版）</h1>
+<h2 id="1">1)范围与证据边界</h2>
 <p>本页聚焦 02 模块全链门控与观测，不展开算法细节。证据范围：</p>
 <ul>
 <li><code>src/memdir/memdir.ts</code></li>
@@ -3034,7 +2782,7 @@
 <li>写权限与 freshness 细节（03）。</li>
 </ul>
 <hr />
-<h2 id="2-core-thesis">2) Core Thesis</h2>
+<h2 id="2">2)核心论点</h2>
 <p>02 模块稳定性的关键不是“错误少”，而是：</p>
 <ol>
 <li><strong>门控顺序可解释</strong>（为什么没触发）；</li>
@@ -3043,7 +2791,7 @@
 <li><strong>事件可观测</strong>（能区分 disabled / skipped / failed / succeeded）。</li>
 </ol>
 <hr />
-<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<h2 id="3">3)运行时状态所有权</h2>
 <table>
 <thead>
 <tr>
@@ -3093,8 +2841,8 @@
 </tbody>
 </table>
 <hr />
-<h2 id="4-end-to-end-flow">4) End-to-end Flow</h2>
-<h3 id="41-stop-hooks">4.1 stop hooks 触发后台抽取</h3>
+<h2 id="4">4)端到端流程</h2>
+<h3 id="41">4.1 触发后台抽取</h3>
 <pre><code class="language-ts">// src/query/stopHooks.ts
 if (
   feature('EXTRACT_MEMORIES') &amp;&amp;
@@ -3108,7 +2856,7 @@ if (
 }
 </code></pre>
 <p>语义：只在主线程、extract mode 打开时 fire-and-forget 触发。</p>
-<h3 id="42-extractmemories">4.2 extractMemories 多重门控</h3>
+<h3 id="42">4.2 多重门控</h3>
 <pre><code class="language-ts">// src/services/extractMemories/extractMemories.ts
 if (context.toolUseContext.agentId) return
 if (!getFeatureValue_CACHED_MAY_BE_STALE('tengu_passport_quail', false)) return
@@ -3123,10 +2871,10 @@ if (inProgress) {
 await runExtraction({ context, appendSystemMessage })
 </code></pre>
 <p>语义：门控顺序清晰，重入时 coalesce。</p>
-<h3 id="43-drain">4.3 响应后 drain 收敛</h3>
+<h3 id="43">4.3 响应后 收敛</h3>
 <p><code>print.ts</code> 在响应 flush 后调用 <code>drainPendingExtraction()</code>，给 in-flight 抽取一个 soft timeout 收尾窗口。</p>
 <hr />
-<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<h2 id="5">5)守卫与决策矩阵</h2>
 <table>
 <thead>
 <tr>
@@ -3182,19 +2930,19 @@ await runExtraction({ context, appendSystemMessage })
 </tbody>
 </table>
 <hr />
-<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
-<h3 id="61-gate-disabled">6.1 Gate-disabled 失败链（可解释跳过）</h3>
+<h2 id="6">6)失败、恢复与降级</h2>
+<h3 id="61-">6.1-失败链（可解释跳过）</h3>
 <p>Session 与 extract 都有 gate-disabled 事件（并带 once-log 防刷屏），可区分“没触发”与“触发失败”。</p>
-<h3 id="62-best-effort">6.2 执行失败链（best-effort）</h3>
+<h3 id="62-">6.2 执行失败链（-）</h3>
 <p>extract 失败只记录 <code>tengu_extract_memories_error</code>，不影响 query stop 决策。</p>
-<h3 id="63-stop-hook">6.3 stop hook 异常链（治理降级）</h3>
+<h3 id="63">6.3 异常链（治理降级）</h3>
 <p><code>handleStopHooks</code> catch 后发 warning 并返回 <code>{ preventContinuation: false }</code>，避免治理路径击穿主链。</p>
-<h3 id="64-drain">6.4 收尾恢复链（drain）</h3>
+<h3 id="64">6.4 收尾恢复链（）</h3>
 <p><code>drainPendingExtraction(timeout)</code> 在输出后收敛后台任务，减少“响应完成后进程快速退出导致抽取中断”概率。</p>
-<h3 id="65-coalesced-trailing">6.5 重入恢复链（coalesced trailing）</h3>
+<h3 id="65">6.5 重入恢复链（）</h3>
 <p>在 in-progress 期间只保留最新上下文，当前 run 完成后 trailing 补跑，防止重复提取风暴。</p>
 <hr />
-<h2 id="7-invariants">7) Invariants</h2>
+<h2 id="7">7)不变量</h2>
 <ol>
 <li>memory 系统失效不能导致 query 主链失效。  </li>
 <li>gate 判定必须先于 forked 抽取调用。  </li>
@@ -3206,7 +2954,7 @@ await runExtraction({ context, appendSystemMessage })
 <li>子 agent 不得触发主会话 memory 提炼流程。  </li>
 </ol>
 <hr />
-<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<h2 id="8">8)跨模块契约</h2>
 <ul>
 <li>对 01（query/stopHooks）：memory 提炼必须服从 stopHooks 的“不可劫持主链”契约。  </li>
 <li>对 03（compact）：compact 可利用 session memory，但不依赖 extractMemories 完成才可推进。  </li>
@@ -3214,7 +2962,7 @@ await runExtraction({ context, appendSystemMessage })
 <li>对 observability：事件命名与字段需可追踪门控序列与失败阶段。</li>
 </ul>
 <hr />
-<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<h2 id="9">9)工程约束与演进指引</h2>
 <p>新增 gate 或埋点时，至少保证：</p>
 <ol>
 <li>事件语义一一对应（disabled/coalesced/error/success）；</li>
@@ -3232,7 +2980,7 @@ await runExtraction({ context, appendSystemMessage })
 <li>print 收尾 drain 超时。</li>
 </ul>
 <hr />
-<h2 id="10-source-anchors">10) Source Anchors</h2>
+<h2 id="10">10)源码锚点</h2>
 <ul>
 <li><code>src/query/stopHooks.ts:handleStopHooks</code></li>
 <li><code>src/query/stopHooks.ts</code>（<code>executeExtractMemories</code> 调用分支）</li>
