@@ -1,0 +1,33 @@
+/* 全站列表层级增强：让父子级关系更清晰 */
+.md-typeset ul,
+.md-typeset ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.9em;
+}
+
+.md-typeset li {
+  margin: 0.3em 0;
+}
+
+/* 子列表缩进与竖线指示 */
+.md-typeset li > ul,
+.md-typeset li > ol {
+  margin-top: 0.35em;
+  margin-left: 1.1em;
+  padding-left: 1em;
+  border-left: 2px solid rgba(127, 127, 127, 0.25);
+}
+
+/* 父级链接加粗，减少“流水文本”观感 */
+.md-typeset > ul > li > p > a,
+.md-typeset > ol > li > p > a,
+.md-typeset > ul > li > a,
+.md-typeset > ol > li > a {
+  font-weight: 700;
+}
+
+/* 子项略微减弱，突出层级 */
+.md-typeset li > ul > li > a,
+.md-typeset li > ol > li > a {
+  font-weight: 500;
+}
