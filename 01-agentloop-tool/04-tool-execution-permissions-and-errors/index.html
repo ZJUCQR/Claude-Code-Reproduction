@@ -681,17 +681,6 @@
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2809,17 +2798,6 @@
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -3154,27 +3132,7 @@ const toolResultBlock = preMappedBlock
 <li>权限系统通过 <code>resolveHookPermissionDecision</code> 汇总 hook 与 canUseTool 决策，工具层不自建分裂权限路径。</li>
 </ul>
 <hr />
-<h2 id="_21">工程约束与演进指引</h2>
-<p>新增工具或新权限策略时必须验证：</p>
-<ol>
-<li>schema 与 validateInput 覆盖边界输入；</li>
-<li>deny 路径可完整生成 <code>tool_result</code>；</li>
-<li>failure hooks 不会吞掉主错误；</li>
-<li><code>contentBlocks/imagePasteIds</code> 在 allow/deny 都可稳定序列化；</li>
-<li>telemetry 不泄漏敏感输入（详情日志需显式开关）。</li>
-</ol>
-<p>推荐新增工具自测最小清单：</p>
-<ul>
-<li>unknown tool 名称</li>
-<li>schema 错误输入</li>
-<li>validateInput 拒绝</li>
-<li>permission deny</li>
-<li>call throw</li>
-<li>call success + post hook</li>
-<li>user interrupt during execution</li>
-</ul>
-<hr />
-<h2 id="_22">源码锚点</h2>
+<h2 id="_21">源码锚点</h2>
 <ul>
 <li><code>src/services/tools/toolExecution.ts:runToolUse</code></li>
 <li><code>src/services/tools/toolExecution.ts:streamedCheckPermissionsAndCallTool</code></li>

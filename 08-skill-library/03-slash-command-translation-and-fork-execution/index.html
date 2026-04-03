@@ -2127,17 +2127,6 @@
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2145,6 +2134,17 @@
   
     <nav class="md-nav" aria-label="源码锚点">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        章节
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
@@ -2159,17 +2159,6 @@
         
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        章节
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2926,17 +2915,6 @@
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2944,6 +2922,17 @@
   
     <nav class="md-nav" aria-label="源码锚点">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        章节
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
@@ -2958,17 +2947,6 @@
         
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        章节
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -3365,17 +3343,8 @@ addSessionHook(setAppState, sessionId, eventName, matcher.matcher || '', hook, o
 <li>对 06：03 可以注册 hooks，但 hook 执行框架与生命周期不由本模块拥有。</li>
 </ul>
 <hr />
-<h2 id="_24">工程约束与演进指引</h2>
-<ol>
-<li>新增 slash 类型分支时，优先复用现有 <code>getMessagesForPromptSlashCommand</code> / <code>prepareForkedCommandContext</code>；</li>
-<li>不要移除 unknown command 的 args 保留路径；</li>
-<li>背景 fork 若扩展为更多触发源，必须保持结果回注语义不变；</li>
-<li>MCP settle 等待逻辑如调整，需验证 startup 并发任务下的工具完整性；</li>
-<li>hooks gate 与 skill 执行应继续解耦（hooks 失败不拖垮 skill 主体）。</li>
-</ol>
-<hr />
-<h2 id="_25">源码锚点</h2>
-<h3 id="_26">章节</h3>
+<h2 id="_24">源码锚点</h2>
+<h3 id="_25">章节</h3>
 <ul>
 <li><code>src/utils/processUserInput/processSlashCommand.tsx:looksLikeCommand</code></li>
 <li><code>src/utils/processUserInput/processSlashCommand.tsx:processSlashCommand</code></li>
@@ -3384,7 +3353,7 @@ addSessionHook(setAppState, sessionId, eventName, matcher.matcher || '', hook, o
 <li><code>src/utils/processUserInput/processSlashCommand.tsx:getMessagesForPromptSlashCommand</code></li>
 <li><code>src/utils/processUserInput/processSlashCommand.tsx:executeForkedSlashCommand</code></li>
 </ul>
-<h3 id="_27">章节</h3>
+<h3 id="_26">章节</h3>
 <ul>
 <li><code>src/utils/forkedAgent.ts:prepareForkedCommandContext</code></li>
 <li><code>src/utils/forkedAgent.ts:extractResultText</code></li>
@@ -3392,7 +3361,7 @@ addSessionHook(setAppState, sessionId, eventName, matcher.matcher || '', hook, o
 <li><code>src/utils/argumentSubstitution.ts:substituteArguments</code></li>
 <li><code>src/utils/hooks/registerSkillHooks.ts:registerSkillHooks</code></li>
 </ul>
-<h3 id="_28">章节</h3>
+<h3 id="_27">章节</h3>
 <ul>
 <li><code>src/commands.ts:getCommands</code></li>
 <li><code>src/commands.ts:findCommand</code></li>

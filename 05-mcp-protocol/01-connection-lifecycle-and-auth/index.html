@@ -1329,17 +1329,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2829,23 +2807,7 @@ export const connectToServer = memoize(async (name, serverRef, serverStats?) =&g
 <li>对主链：01 输出可判别连接态，不输出 transport 细节噪声。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 transport/auth 路径时必须验证：</p>
-<ol>
-<li>是否接入统一缓存失效逻辑；</li>
-<li>是否对 session-expired 有恢复出口；</li>
-<li>是否与 SDK 分支语义冲突；</li>
-<li>是否在审批 gate 前误开启 project server。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>各 transport 类型建连；</li>
-<li>unauthorized/session-expired 双分支；</li>
-<li>onclose 后缓存清理有效性；</li>
-<li>SDK client 集合动态刷新。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/services/mcp/client.ts:connectToServer</code></li>
 <li><code>src/services/mcp/client.ts:ensureConnectedClient</code></li>

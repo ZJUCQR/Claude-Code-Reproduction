@@ -1413,17 +1413,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2802,23 +2780,7 @@ export async function handleMcpjsonServerApprovals(root: Root): Promise&lt;void&
 <li>对主链：管理面应提供可解释状态，不输出协议细节噪声。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增管理命令或审批流程时必须验证：</p>
-<ol>
-<li>是否接入 reconcile 与 runtime 刷新闭环；</li>
-<li>是否保持 pending 审批门禁；</li>
-<li>是否在多 scope 命名下避免误删/误改；</li>
-<li>是否在失败场景保持已启用能力稳定。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>list/get/add/remove/reset 全命令链；</li>
-<li>pending 单个与多个审批；</li>
-<li>SDK refresh（new/removed/failed/pending）；</li>
-<li>set-servers 后 runtime 变化可见性。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/cli/handlers/mcp.tsx:mcpServeHandler</code></li>
 <li><code>src/cli/handlers/mcp.tsx:mcpListHandler</code></li>

@@ -2362,17 +2362,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2798,24 +2776,7 @@
 <li>对 09：assistant/CLI 只是入口，持久运行由本模块状态机负责。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>扩展 KAIROS 时优先检查：</p>
-<ol>
-<li>新触发器是否有明确门槛与可观测字段；</li>
-<li>是否会打破锁语义与任务终态收敛；</li>
-<li>是否会在 headless/interactive 下产生不同安全行为；</li>
-<li>是否需要追加 jitter、防抖、节流策略。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>KAIROS on/off gate；</li>
-<li>Dream 时间门槛 + 会话门槛 + 锁门槛；</li>
-<li>kill/retry/failed task 路径；</li>
-<li>cron durable 与 permanent 任务；</li>
-<li>proactive blocked/paused 恢复。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/main.tsx</code></li>
 <li><code>src/bootstrap/state.ts:getKairosActive</code></li>

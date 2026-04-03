@@ -1530,17 +1530,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2829,24 +2807,7 @@ export function sortMatchersByPriority(matchers, hooksByEventAndMatcher, selecte
 <li>对设置系统：01 复用 settings/policy 事实源，不定义第二套配置真值。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 hook 来源或 matcher 规则时必须验证：</p>
-<ol>
-<li>是否接入 policy gate；</li>
-<li>是否保持 source priority 稳定；</li>
-<li>是否会让 session hooks 泄漏到持久态；</li>
-<li>是否破坏 frontmatter 与 session 注入边界。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>allowManagedHooksOnly / disableAllHooks / plugin-only 组合；</li>
-<li>matcher present/absent 与 no-matcher-metadata；</li>
-<li>source priority 稳定性；</li>
-<li>session hook add/remove/clear；</li>
-<li>frontmatter Stop -&gt; SubagentStop 转换。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/utils/hooks/hooksConfigSnapshot.ts:shouldAllowManagedHooksOnly</code></li>
 <li><code>src/utils/hooks/hooksConfigSnapshot.ts:shouldDisableAllHooksIncludingManaged</code></li>

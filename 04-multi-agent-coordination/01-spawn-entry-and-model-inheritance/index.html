@@ -1128,17 +1128,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2804,23 +2782,7 @@ export function resolveTeammateModel(inputModel: string | undefined, leaderModel
 <li>对 query/tool 主循环：01 仅负责协同入口，不改工具语义。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 spawn 参数或模式时必须验证：</p>
-<ol>
-<li>是否破坏 <code>resolveTeammateModel</code> 的确定性；</li>
-<li>是否引入 explicit/auto 语义漂移；</li>
-<li>是否影响 team 文件恢复能力；</li>
-<li>是否在失败路径保持“无半状态写入”。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li><code>inherit</code> / 指定模型 / 空模型；</li>
-<li>auto fallback 与 explicit 报错；</li>
-<li>名称冲突下 identity 稳定性；</li>
-<li>启动失败时 team 状态无脏写。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/tools/shared/spawnMultiAgent.ts:resolveTeammateModel</code></li>
 <li><code>src/tools/shared/spawnMultiAgent.ts:buildInheritedCliFlags</code></li>

@@ -1759,17 +1759,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2821,24 +2799,7 @@ readonly outbound = new Stream&lt;StdoutMessage&gt;()
 <li>对 CLI/SDK：StructuredIO 是控制平面事实源，外层只消费其稳定协议。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 control request 类型时必须验证：</p>
-<ol>
-<li>是否进入 <code>pendingRequests</code> 唯一生命周期；</li>
-<li>是否具备 cancel 与 late-response 吸收语义；</li>
-<li>是否通过 outbound 保持顺序；</li>
-<li>是否会让 duplicate suppression 误伤正常重试。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>request start/end；</li>
-<li>keep_alive / env update；</li>
-<li>duplicate/orphan/late response；</li>
-<li>local abort vs remote response race；</li>
-<li>inputClosed 批量 reject。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/cli/structuredIO.ts:StructuredIO</code></li>
 <li><code>src/cli/structuredIO.ts:sendRequest</code></li>

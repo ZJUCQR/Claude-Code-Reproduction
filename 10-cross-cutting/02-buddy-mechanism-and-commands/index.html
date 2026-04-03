@@ -2379,17 +2379,6 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2587,17 +2576,6 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2754,24 +2732,7 @@
 <li>对 07：渲染投影可降级，不影响流式消息语义。</li>
 </ul>
 <hr />
-<h2 id="_12">工程约束与演进指引</h2>
-<p>扩展 buddy 时需优先保证：</p>
-<ol>
-<li>新属性不破坏确定性生成（同 seed 同结果）；</li>
-<li>新渲染效果有窄终端退化方案；</li>
-<li>新命令接入统一 slash 守卫；</li>
-<li>新提示注入不膨胀主 prompt 噪声。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>不同用户 seed 的稳定生成；</li>
-<li>稀有度/闪光概率分布抽样；</li>
-<li>宽/窄终端渲染；</li>
-<li>live window 与 trigger 高亮；</li>
-<li>buddy 命令成功/失败/unknown 分支。</li>
-</ul>
-<hr />
-<h2 id="_13">源码锚点</h2>
+<h2 id="_12">源码锚点</h2>
 <ul>
 <li><code>src/buddy/companion.ts:roll</code></li>
 <li><code>src/buddy/companion.ts:rollWithSeed</code></li>

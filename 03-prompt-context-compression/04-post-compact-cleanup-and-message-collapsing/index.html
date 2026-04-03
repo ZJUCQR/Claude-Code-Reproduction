@@ -1050,17 +1050,6 @@
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2687,17 +2676,6 @@
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2900,23 +2878,7 @@ export function runPostCompactCleanup(querySource?: QuerySource): void {
 <li>对 UI 层：collapse 是渲染优化，不是消息协议改写。</li>
 </ul>
 <hr />
-<h2 id="_16">工程约束与演进指引</h2>
-<p>新增 cleanup 或折叠逻辑时必须验证：</p>
-<ol>
-<li>main-thread/subagent 分支是否正确；</li>
-<li>是否引入不可逆展示变换；</li>
-<li>是否影响 post-compact hooks 与附件重建顺序；</li>
-<li>是否在 verbose/debug 路径仍保留可观测细节。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>main-thread compact 与 subagent compact 对比；</li>
-<li>compact 后 systemPrompt/memory/userContext cache 清理；</li>
-<li>fullscreen+verbose 组合下 bash 通知折叠行为；</li>
-<li>collapseReadSearch 连续分组与断组规则。</li>
-</ul>
-<hr />
-<h2 id="_17">源码锚点</h2>
+<h2 id="_16">源码锚点</h2>
 <ul>
 <li><code>src/services/compact/postCompactCleanup.ts:runPostCompactCleanup</code></li>
 <li><code>src/services/compact/compact.ts:compactConversation</code>（post-compact 构造）</li>

@@ -2295,17 +2295,6 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2709,17 +2698,6 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2962,25 +2940,7 @@ if (baseUrl.startsWith('http://') &amp;&amp; !baseUrl.includes('localhost') &amp
 <li>对 07：05 不承载 bridge 长生命周期恢复细节，仅覆盖入口与启动门槛。</li>
 </ul>
 <hr />
-<h2 id="_15">工程约束与演进指引</h2>
-<p>新增管理命令或 bridge 参数时，必须先检查：</p>
-<ol>
-<li>是否确属管理平面（而非应放普通 slash/对话流）；</li>
-<li>是否会绕过现有 trust/auth/baseUrl/policy guard；</li>
-<li>是否会导致交互态与 headless 态安全语义分叉；</li>
-<li>是否会让 Commander 展示面与真实入口行为不一致；</li>
-<li>失败语义是 fail-stop 还是 fail-open，是否与现有链条一致。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>plugin marketplace/add/remove/update/install/uninstall/enable/disable；</li>
-<li><code>install [target]</code> + <code>--force</code>；</li>
-<li><code>remote-control</code> 在 fast-path 与 help 面一致性；</li>
-<li>bridge permissionMode/trust/auth/baseUrl 各类失败路径；</li>
-<li>headless bridge 的 permanent/transient 失败分流。</li>
-</ul>
-<hr />
-<h2 id="_16">源码锚点</h2>
+<h2 id="_15">源码锚点</h2>
 <ul>
 <li><code>src/main.tsx:run</code></li>
 <li><code>src/main.tsx</code>（plugin family command declarations）</li>

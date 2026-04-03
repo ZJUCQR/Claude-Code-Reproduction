@@ -2094,17 +2094,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2112,6 +2101,17 @@
   
     <nav class="md-nav" aria-label="源码锚点">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        章节
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_21" class="md-nav__link">
@@ -2126,17 +2126,6 @@
         
           <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        章节
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         +
@@ -2804,17 +2793,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2822,6 +2800,17 @@
   
     <nav class="md-nav" aria-label="源码锚点">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        章节
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_21" class="md-nav__link">
@@ -2836,17 +2825,6 @@
         
           <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        章节
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         +
@@ -3214,17 +3192,8 @@ return { skillDirCommands, pluginSkills, bundledSkills, builtinPluginSkills }
 <li>对命令系统：04 所有来源最终都要被 <code>commands.ts:getSkills/getCommands</code> 回收。</li>
 </ul>
 <hr />
-<h2 id="_19">工程约束与演进指引</h2>
-<ol>
-<li>新增 bundled 文件能力时，必须沿用 <code>resolveSkillFilePath + safeWriteFile</code> 防线；</li>
-<li>plugin 新字段应继续在 <code>createPluginCommand</code> 统一归一，不要在执行阶段到处解析；</li>
-<li>MCP 侧扩展要通过 builder 契约接入，避免把 <code>loadSkillsDir.ts</code> 拉进循环依赖；</li>
-<li>任何来源扩展都必须在 <code>getSkills/getCommands</code> 层验证是否会破坏顺序与去重；</li>
-<li>保持 degrade-not-crash：来源级失败只能局部失效。</li>
-</ol>
-<hr />
-<h2 id="_20">源码锚点</h2>
-<h3 id="_21">章节</h3>
+<h2 id="_19">源码锚点</h2>
+<h3 id="_20">章节</h3>
 <ul>
 <li><code>src/skills/bundledSkills.ts:registerBundledSkill</code></li>
 <li><code>src/skills/bundledSkills.ts:getBundledSkills</code></li>
@@ -3235,7 +3204,7 @@ return { skillDirCommands, pluginSkills, bundledSkills, builtinPluginSkills }
 <li><code>src/skills/bundledSkills.ts:resolveSkillFilePath</code></li>
 <li><code>src/skills/bundledSkills.ts:prependBaseDir</code></li>
 </ul>
-<h3 id="_22">章节</h3>
+<h3 id="_21">章节</h3>
 <ul>
 <li><code>src/utils/plugins/loadPluginCommands.ts:transformPluginSkillFiles</code></li>
 <li><code>src/utils/plugins/loadPluginCommands.ts:createPluginCommand</code></li>
@@ -3245,7 +3214,7 @@ return { skillDirCommands, pluginSkills, bundledSkills, builtinPluginSkills }
 <li><code>src/utils/plugins/loadPluginCommands.ts:clearPluginCommandCache</code></li>
 <li><code>src/utils/plugins/loadPluginCommands.ts:clearPluginSkillsCache</code></li>
 </ul>
-<h3 id="_23">+</h3>
+<h3 id="_22">+</h3>
 <ul>
 <li><code>src/skills/mcpSkillBuilders.ts:registerMCPSkillBuilders</code></li>
 <li><code>src/skills/mcpSkillBuilders.ts:getMCPSkillBuilders</code></li>

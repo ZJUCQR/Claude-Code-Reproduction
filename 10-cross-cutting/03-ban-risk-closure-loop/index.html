@@ -2416,17 +2416,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2605,17 +2594,6 @@
       
         <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         源码锚点
@@ -2805,24 +2783,7 @@
 <li>对 01：风险处理结果必须消息化，不得破坏主状态机收敛。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增风险控制逻辑时需先明确：</p>
-<ol>
-<li>属于认证恢复、策略阻断还是内容拒绝投影；</li>
-<li>fail-open / fail-stop 语义是否与现有链一致；</li>
-<li>是否会产生无限重试或缓存污染；</li>
-<li>是否补齐 telemetry 事件与脱敏字段。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>OAuth 401/revoked 403 路径；</li>
-<li>MCP invalid_grant + insufficient_scope + needs-auth 缓存；</li>
-<li>bridge trusted-device 与 401 恢复重建；</li>
-<li>policy allow/deny 场景；</li>
-<li>refusal 终态文案与上报链。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/utils/auth.ts</code></li>
 <li><code>src/services/api/withRetry.ts:withRetry</code></li>

@@ -1558,17 +1558,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2822,24 +2800,7 @@ registerStructuredOutputEnforcement(toolUseContext.setAppState, hookAgentId)
 <li>对主链：02 必须把多种协议差异压平，避免调用侧理解六套返回模型。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 hook 协议时必须验证：</p>
-<ol>
-<li>是否接入统一 timeout/abort 机制；</li>
-<li>是否输出统一 HookResult；</li>
-<li>是否对非法输出做 schema/shape 校验；</li>
-<li>是否具备与现有协议等价的失败降级语义。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>command exit code 0/2/other；</li>
-<li>prompt schema success/failure；</li>
-<li>agent structured-output missing/max-turns；</li>
-<li>HTTP allowlist/network/non-2xx；</li>
-<li>async / asyncRewake / forceSyncExecution 分支。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/utils/hooks.ts:parseHookOutput</code></li>
 <li><code>src/utils/hooks.ts:processHookJSONOutput</code></li>

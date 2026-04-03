@@ -776,17 +776,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2709,17 +2698,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2926,25 +2904,7 @@ export async function findRelevantMemories(...) {
 <li>对 UI/transport：memory section 是语义文本，不应被 transport 改写为强约束命令。</li>
 </ul>
 <hr />
-<h2 id="_17">工程约束与演进指引</h2>
-<p>新增注入策略时优先检查：</p>
-<ol>
-<li>是否引入了新的不可降级依赖（若是，需补 fallback）；</li>
-<li>是否改变了 TEAMMEM/KAIROS 分支优先级；</li>
-<li>是否保持 <code>null</code> 退化语义；</li>
-<li>是否为 stale 记忆留了显式提示。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>auto disabled；</li>
-<li>auto enabled；</li>
-<li>TEAMMEM enabled；</li>
-<li>KAIROS active；</li>
-<li>sideQuery abort/failure；</li>
-<li>stale 与 fresh 文件混合召回。</li>
-</ul>
-<hr />
-<h2 id="_18">源码锚点</h2>
+<h2 id="_17">源码锚点</h2>
 <ul>
 <li><code>src/memdir/memdir.ts:buildMemoryLines</code></li>
 <li><code>src/memdir/memdir.ts:buildMemoryPrompt</code></li>

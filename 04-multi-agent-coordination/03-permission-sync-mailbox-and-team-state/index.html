@@ -1184,17 +1184,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2829,24 +2807,7 @@ export async function sendPermissionRequestViaMailbox(
 <li>对 UI：展示应读 team/task 持久态，不以瞬时消息包为最终状态。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增权限字段或通道时必须验证：</p>
-<ol>
-<li>request/response 关联是否仍唯一；</li>
-<li>mailbox 与文件兼容路径是否语义一致；</li>
-<li>是否引入 leader 旁路审批；</li>
-<li>是否保留超时与清理收敛路径。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>leader 缺失场景；</li>
-<li>requestId 不匹配场景；</li>
-<li>mailbox 写失败与重试；</li>
-<li>cleanup 过程中部分失败场景；</li>
-<li>任务反注册与状态清理联动。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/utils/swarm/permissionSync.ts:createPermissionRequest</code></li>
 <li><code>src/utils/swarm/permissionSync.ts:writePermissionRequest</code></li>

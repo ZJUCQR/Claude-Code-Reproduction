@@ -1586,17 +1586,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2819,24 +2797,7 @@ if (hookPermissionResult?.behavior === 'allow') {
 <li>对权限系统：03 是 hook 与规则层的 merge 点，不是替代层。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 permission hook 语义时必须验证：</p>
-<ol>
-<li>是否破坏 allow/deny/ask 的三分结构；</li>
-<li>是否允许 hook 旁路规则层；</li>
-<li>是否让 updatedInput 与 decision 脱节；</li>
-<li>是否破坏 requiresUserInteraction 与 trust/HTTP 安全门。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>PreToolUse allow/deny/ask/passthrough；</li>
-<li>rule deny 覆盖 hook allow；</li>
-<li>PermissionDenied retry；</li>
-<li>interaction-required 工具；</li>
-<li>HTTP allowlist + SSRF 路径。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/services/tools/toolHooks.ts:resolveHookPermissionDecision</code></li>
 <li><code>src/services/tools/toolHooks.ts:runPreToolUseHooks</code></li>

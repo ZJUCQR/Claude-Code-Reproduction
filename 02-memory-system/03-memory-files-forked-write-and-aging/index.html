@@ -843,17 +843,6 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2731,17 +2720,6 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2964,24 +2942,7 @@ export function memoryFreshnessText(mtimeMs: number): string {
 <li>对 prompt 注入（01 子页）：写侧产生的 mtime 最终影响 freshness 提示。</li>
 </ul>
 <hr />
-<h2 id="_18">工程约束与演进指引</h2>
-<p>新增写入工具或放宽权限前必须回答：</p>
-<ol>
-<li>是否仍满足最小权限原则？</li>
-<li>是否会破坏 direct-write 互斥逻辑？</li>
-<li>是否会让 trailing run 不可预测（乱序/重复）？</li>
-<li>是否保留 stale 提示链路？</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>非目标路径写入（应拒绝）；</li>
-<li>inProgress 期间多次触发（应 coalesce）；</li>
-<li>direct-write 检测命中（应 skip fork）；</li>
-<li>旧记忆文件召回（应带 freshness 提示）；</li>
-<li>forked extraction 异常（主链继续）。</li>
-</ul>
-<hr />
-<h2 id="_19">源码锚点</h2>
+<h2 id="_18">源码锚点</h2>
 <ul>
 <li><code>src/services/SessionMemory/sessionMemory.ts:createMemoryFileCanUseTool</code></li>
 <li><code>src/services/SessionMemory/sessionMemory.ts:setupSessionMemoryFile</code></li>

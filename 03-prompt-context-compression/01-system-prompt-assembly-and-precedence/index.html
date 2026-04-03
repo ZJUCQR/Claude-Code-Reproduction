@@ -966,17 +966,6 @@
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2687,17 +2676,6 @@
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2890,23 +2868,7 @@ setSystemPromptSectionCacheEntry(s.name, value)
 <li>对 memory 模块：memory section 作为 dynamic section 注入，不应突破本页定义的缓存边界契约。</li>
 </ul>
 <hr />
-<h2 id="_16">工程约束与演进指引</h2>
-<p>扩展新 section 或新提示来源时必须检查：</p>
-<ol>
-<li>是否破坏 boundary 前后块划分；</li>
-<li>是否需要 cacheBreak（若需要，需给出理由）；</li>
-<li>是否影响 override/agent/custom/default 既有优先级；</li>
-<li>是否在 <code>/compact</code> 后可被正确清理与重建。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>override / coordinator / proactive agent 三分支；</li>
-<li>dynamic section 缓存命中与清空；</li>
-<li>boundary 存在与缺失；</li>
-<li>skipGlobalCacheForSystemPrompt 路径。</li>
-</ul>
-<hr />
-<h2 id="_17">源码锚点</h2>
+<h2 id="_16">源码锚点</h2>
 <ul>
 <li><code>src/utils/systemPrompt.ts:buildEffectiveSystemPrompt</code></li>
 <li><code>src/constants/prompts.ts:getSystemPrompt</code></li>

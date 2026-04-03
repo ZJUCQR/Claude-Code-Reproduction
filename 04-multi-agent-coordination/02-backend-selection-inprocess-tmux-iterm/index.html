@@ -1156,17 +1156,6 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2828,23 +2806,7 @@ export async function detectAndGetBackend(): Promise&lt;BackendDetectionResult&g
 <li>对 bridge 层：02 输出的后端行为必须可被收尾路径统一处理。</li>
 </ul>
 <hr />
-<h2 id="_11">工程约束与演进指引</h2>
-<p>新增后端时必须验证：</p>
-<ol>
-<li>是否接入 <code>detectAndGetBackend</code> 决策链；</li>
-<li>是否遵守 explicit/auto 分支语义；</li>
-<li>是否具备失败后可行动诊断；</li>
-<li>是否与 in-process fallback 状态互斥/兼容清晰。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>inside tmux / iTerm / headless / plain shell 组合；</li>
-<li>explicit tmux 失败 vs auto fallback；</li>
-<li>reset 后重探测一致性；</li>
-<li>in-process 异常回传与继续运行能力。</li>
-</ul>
-<hr />
-<h2 id="_12">源码锚点</h2>
+<h2 id="_11">源码锚点</h2>
 <ul>
 <li><code>src/utils/swarm/backends/registry.ts:detectAndGetBackend</code></li>
 <li><code>src/utils/swarm/backends/registry.ts:isInProcessEnabled</code></li>

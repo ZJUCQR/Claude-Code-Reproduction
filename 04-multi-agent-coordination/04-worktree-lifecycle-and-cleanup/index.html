@@ -1223,17 +1223,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2631,17 +2620,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2860,23 +2838,7 @@ export async function cleanupStaleAgentWorktrees(cutoffDate: Date): Promise&lt;n
 <li>对 git/worktree 命令层：遵守同一安全删除约束，不绕过检查。</li>
 </ul>
 <hr />
-<h2 id="_14">工程约束与演进指引</h2>
-<p>新增清理或隔离能力时必须验证：</p>
-<ol>
-<li>是否破坏 keep/cleanup 显式语义；</li>
-<li>是否绕过 dirty/unpushed 安全门；</li>
-<li>是否在 timeout 路径仍可幂等执行；</li>
-<li>是否能在 pointer/容量状态上完整收尾。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>create/resume/keep/cleanup 全链；</li>
-<li>dirty、unpushed、ephemeral pattern 组合；</li>
-<li>stale 回收多条目部分失败；</li>
-<li>bridge done/timeout 双分支与 pointer 清理一致性。</li>
-</ul>
-<hr />
-<h2 id="_15">源码锚点</h2>
+<h2 id="_14">源码锚点</h2>
 <ul>
 <li><code>src/utils/worktree.ts:getCurrentWorktreeSession</code></li>
 <li><code>src/utils/worktree.ts:restoreWorktreeSession</code></li>

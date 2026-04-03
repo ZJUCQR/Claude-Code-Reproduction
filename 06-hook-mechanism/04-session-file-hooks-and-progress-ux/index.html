@@ -1625,17 +1625,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2631,17 +2620,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2845,24 +2823,7 @@ function handleFileEvent(path: string, event: 'change' | 'add' | 'unlink'): void
 <li>对 query/session 层：04 扩展生命周期，但不得破坏主会话收敛与 watcher 稳定性。</li>
 </ul>
 <hr />
-<h2 id="_14">工程约束与演进指引</h2>
-<p>新增 lifecycle hook 或 UX 反馈机制时必须验证：</p>
-<ol>
-<li>是否保持 main/subagent/session/file 事件边界清晰；</li>
-<li>是否会导致 watcher 重启抖动；</li>
-<li>是否在 transcript/live 模式下都可解释；</li>
-<li>是否在失败时仍保留主会话与主监听循环可用。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>SessionStart startup/resume/clear/compact；</li>
-<li>Stop vs SubagentStop；</li>
-<li>watchPaths changed/unchanged；</li>
-<li>watcher 执行异常后继续监听；</li>
-<li>deferred hook messages 与 collapseHookSummaries。</li>
-</ul>
-<hr />
-<h2 id="_15">源码锚点</h2>
+<h2 id="_14">源码锚点</h2>
 <ul>
 <li><code>src/utils/sessionStart.ts:processSessionStartHooks</code></li>
 <li><code>src/utils/sessionStart.ts:processSetupHooks</code></li>

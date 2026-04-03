@@ -676,17 +676,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2743,17 +2732,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2965,23 +2943,7 @@ if (stopHookResult.blockingErrors.length &gt; 0) {
 <li>与 <code>stopHooks.ts</code>：stop hooks 消费完整 turn 快照并返回结构化裁决，不直接写 query state。</li>
 </ul>
 <hr />
-<h2 id="_17">工程约束与演进指引</h2>
-<p>新增 abort/fallback reason 时必须同步：</p>
-<ol>
-<li>扩展 synthetic error 原因枚举；</li>
-<li>定义是否上冒泡到父级 abortController；</li>
-<li>验证 <code>getCompletedResults/getRemainingResults</code> 的输出一致性；</li>
-<li>验证 query 收尾阶段是否仍能补齐 tool_result。</li>
-</ol>
-<p>建议回归场景：</p>
-<ul>
-<li>streaming 中途 fallback；</li>
-<li>两个并发 Bash，其中一个失败；</li>
-<li>user interrupt + cancel/block 混合工具；</li>
-<li>stop hook 返回 blockingErrors 与 preventContinuation。</li>
-</ul>
-<hr />
-<h2 id="_18">源码锚点</h2>
+<h2 id="_17">源码锚点</h2>
 <ul>
 <li><code>src/services/tools/StreamingToolExecutor.ts:addTool</code></li>
 <li><code>src/services/tools/StreamingToolExecutor.ts:processQueue</code></li>

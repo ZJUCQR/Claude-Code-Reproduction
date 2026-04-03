@@ -2238,17 +2238,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2819,17 +2808,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -3137,27 +3115,7 @@ await cliMain()
 <li>对输出系统：01 只做启动分流，不定义 print/help/stream-json 语义。</li>
 </ul>
 <hr />
-<h2 id="_19">工程约束与演进指引</h2>
-<p>新增入口快路径时，必须同时验证：</p>
-<ol>
-<li>是否真的需要在 entrypoint 层短路（而不是 Commander 子命令）；</li>
-<li>是否需要 <code>enableConfigs()</code>/<code>initSinks()</code> 的前置能力；</li>
-<li>失败是否应 hard-fail 还是 fallthrough 到 full CLI；</li>
-<li>是否破坏已有 guard 的互斥性（尤其 <code>args[0]</code> 家族分支）；</li>
-<li>是否需要 startup profiler checkpoint 保持可观测性。</li>
-</ol>
-<p>最小回归集合：</p>
-<ul>
-<li><code>--version</code>；</li>
-<li>bridge aliases（含 policy deny）；</li>
-<li><code>daemon</code> / <code>--daemon-worker</code>；</li>
-<li><code>ps/logs/attach/kill/--bg</code>；</li>
-<li><code>--worktree --tmux</code>（Windows/无 tmux/成功三态）；</li>
-<li><code>--update/--upgrade</code> rewrite；</li>
-<li><code>--bare</code> + full fallback。</li>
-</ul>
-<hr />
-<h2 id="_20">源码锚点</h2>
+<h2 id="_19">源码锚点</h2>
 <ul>
 <li><code>src/entrypoints/cli.tsx:main</code></li>
 <li><code>src/bridge/bridgeMain.ts:bridgeMain</code></li>

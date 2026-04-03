@@ -815,17 +815,6 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2731,17 +2720,6 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2978,25 +2956,7 @@ const extractSessionMemory = sequential(async function (context) {
 <li>对 03 子页（extractMemories）：session 与长期提取共享“best-effort + 权限收敛”哲学，但状态机独立。</li>
 </ul>
 <hr />
-<h2 id="_18">工程约束与演进指引</h2>
-<p>调整阈值或触发条件时必须同步验证：</p>
-<ol>
-<li>与 autocompact token 口径一致；</li>
-<li>高频 tool_use 场景下不会触发抽取风暴；</li>
-<li>manual/auto 路径都能保证 <code>markExtractionCompleted()</code> 收敛；</li>
-<li>compact 等待仍具 stale/timeout 上限。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>未达初始化阈值；</li>
-<li>达 token 不达 tool-call；</li>
-<li>达 token 且最后回合无 tool_use；</li>
-<li>subagent 触发（应跳过）；</li>
-<li>extraction 超时/stale；</li>
-<li>manual extraction 成功/失败。</li>
-</ul>
-<hr />
-<h2 id="_19">源码锚点</h2>
+<h2 id="_18">源码锚点</h2>
 <ul>
 <li><code>src/services/SessionMemory/sessionMemory.ts:shouldExtractMemory</code></li>
 <li><code>src/services/SessionMemory/sessionMemory.ts:extractSessionMemory</code></li>

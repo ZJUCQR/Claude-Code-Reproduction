@@ -1787,17 +1787,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2809,24 +2787,7 @@ export function createStreamAccumulator(): StreamAccumulatorState {
 <li>对 relay/proxy：只承载传输 framing，不定义业务重试语义。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 transport 或 replay 逻辑时必须验证：</p>
-<ol>
-<li>是否具备 clear close boundary；</li>
-<li>是否区分 retryable/permanent failure；</li>
-<li>是否会打乱 buffered stream_event 顺序；</li>
-<li>是否把 delivery retry 错写成 semantic replay。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>SSE / WS / Hybrid 三分支；</li>
-<li>delayed flush / close semantics；</li>
-<li>reconnect success / give-up；</li>
-<li>Hybrid serial batch upload 失败；</li>
-<li>accumulator clear/replay 行为。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/cli/transports/ccrClient.ts:createStreamAccumulator</code></li>
 <li><code>src/cli/transports/ccrClient.ts:accumulateStreamEvents</code></li>

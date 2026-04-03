@@ -2311,17 +2311,6 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2853,17 +2842,6 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -3208,25 +3186,7 @@ switch (command.type) {
 <li>对 05：03 只负责 bridge-origin slash 入口 gating，不管理 bridge 会话生命周期。</li>
 </ul>
 <hr />
-<h2 id="_22">工程约束与演进指引</h2>
-<p>扩展命令系统或 slash 路由时，优先检查：</p>
-<ol>
-<li>新来源是否通过 <code>loadAllCommands/getCommands</code> 接入，而非旁路；</li>
-<li>新命令是否定义 availability/enabled/bridge-safe/remote-safe 语义；</li>
-<li>是否破坏 <code>skipSlashCommands + bridgeOrigin</code> 的防护顺序；</li>
-<li>是否引入“已知但不可执行”时的静默失败；</li>
-<li><code>findCommand</code> 对 name/alias/getCommandName 的等价性是否保持。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>source merge + dynamic dedupe；</li>
-<li>availability/enabled 过滤；</li>
-<li>remote/bridge 安全过滤；</li>
-<li>malformed/unknown/path-like 三类 slash 输入；</li>
-<li>userInvocable=false 与 fork context 分支。</li>
-</ul>
-<hr />
-<h2 id="_23">源码锚点</h2>
+<h2 id="_22">源码锚点</h2>
 <ul>
 <li><code>src/commands.ts:getSkills</code></li>
 <li><code>src/commands.ts:loadAllCommands</code></li>

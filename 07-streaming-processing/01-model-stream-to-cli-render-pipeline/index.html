@@ -1731,17 +1731,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2609,17 +2598,6 @@
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2815,24 +2793,7 @@ export function handleMessageFromStream(...) {
 <li>对 query/tool 主链：01 是投影视图，不改变业务语义。</li>
 </ul>
 <hr />
-<h2 id="_13">工程约束与演进指引</h2>
-<p>新增 stream 事件或 UI 状态时必须验证：</p>
-<ol>
-<li>是否进入统一装配器；</li>
-<li>是否区分 overlay 状态与 final message 状态；</li>
-<li>是否在 transcript/live 模式下都可解释；</li>
-<li>是否会把 fallback/abort/refusal 混成同一终态。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li><code>content_block_start/delta/stop</code>；</li>
-<li>thinking/text/tool_use 三态；</li>
-<li>refusal/max_tokens/context-window；</li>
-<li>live/static/transcript 渲染差异；</li>
-<li>incomplete stream 与 abort UI 终态。</li>
-</ul>
-<hr />
-<h2 id="_14">源码锚点</h2>
+<h2 id="_13">源码锚点</h2>
 <ul>
 <li><code>src/utils/messages.ts:buildMessageLookups</code></li>
 <li><code>src/utils/messages.ts:normalizeMessagesForAPI</code></li>

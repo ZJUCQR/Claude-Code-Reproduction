@@ -1033,17 +1033,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2709,17 +2698,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2944,23 +2922,7 @@ export async function microcompactMessages(messages, toolUseContext?, querySourc
 <li>对 query：microcompact 返回消息必须可直接进入后续 query 调用，不改变 query 状态机拓扑。</li>
 </ul>
 <hr />
-<h2 id="_17">工程约束与演进指引</h2>
-<p>新增 microcompact 策略时必须验证：</p>
-<ol>
-<li>是否会污染 cachedMC 全局状态；</li>
-<li>是否维持 tool pair 与 message.id 合并不变量；</li>
-<li>是否在不可用场景可靠 no-op；</li>
-<li>是否保留上层 fallback full compact 的机会。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>time-based 触发/不触发；</li>
-<li>cachedMC 可用/不可用；</li>
-<li>SM compact 的 no-memory / empty-template / id-missing / threshold-exceeded；</li>
-<li><code>adjustIndexToPreserveAPIInvariants</code> 对 tool pair 与 thinking 片段补齐。</li>
-</ul>
-<hr />
-<h2 id="_18">源码锚点</h2>
+<h2 id="_17">源码锚点</h2>
 <ul>
 <li><code>src/services/compact/microCompact.ts:microcompactMessages</code></li>
 <li><code>src/services/compact/microCompact.ts:evaluateTimeBasedTrigger</code></li>

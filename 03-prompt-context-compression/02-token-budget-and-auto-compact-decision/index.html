@@ -1005,17 +1005,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2709,17 +2698,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2931,24 +2909,7 @@ export async function shouldAutoCompact(messages, model, querySource, snipTokens
 <li>对 reactive/context-collapse： suppressions 必须与 recover 路径语义一致，防止 withhold 无恢复。</li>
 </ul>
 <hr />
-<h2 id="_17">工程约束与演进指引</h2>
-<p>调整阈值或 gate 时必须验证：</p>
-<ol>
-<li>querySource 禁区是否完整；</li>
-<li>blocking 与 reactive recover 是否出现覆盖冲突；</li>
-<li>熔断阈值是否能避免重复失败风暴；</li>
-<li>budget 续轮是否仍可及时停止。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li><code>session_memory</code> / <code>compact</code> 来源；</li>
-<li>reactive-only/context-collapse 开关组合；</li>
-<li>连续 compact 失败触发熔断；</li>
-<li>withheld 413/media/max_output 的 recover/surface 双路径；</li>
-<li>token budget continuation + diminishing returns 停止。</li>
-</ul>
-<hr />
-<h2 id="_18">源码锚点</h2>
+<h2 id="_17">源码锚点</h2>
 <ul>
 <li><code>src/services/compact/autoCompact.ts:getEffectiveContextWindowSize</code></li>
 <li><code>src/services/compact/autoCompact.ts:getAutoCompactThreshold</code></li>

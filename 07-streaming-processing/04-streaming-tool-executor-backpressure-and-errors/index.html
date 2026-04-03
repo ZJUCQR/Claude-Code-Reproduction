@@ -1826,17 +1826,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2631,17 +2620,6 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2843,24 +2821,7 @@ private canExecuteTool(isConcurrencySafe: boolean): boolean {
 <li>对 toolExecution：04 只做调度与收敛，不重写具体工具业务语义。</li>
 </ul>
 <hr />
-<h2 id="_14">工程约束与演进指引</h2>
-<p>新增 streamed tool 行为时必须验证：</p>
-<ol>
-<li>是否具备明确 admission 规则；</li>
-<li>是否在 interrupt/fallback/error 下有 terminal state；</li>
-<li>是否会破坏 progress 与 final result 的身份关联；</li>
-<li>是否会让 queue drain 路径悬挂。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>concurrency-safe vs exclusive admission；</li>
-<li>sibling abort；</li>
-<li>user interrupt；</li>
-<li>streaming fallback discard；</li>
-<li>synthetic error 与 final drain 顺序。</li>
-</ul>
-<hr />
-<h2 id="_15">源码锚点</h2>
+<h2 id="_14">源码锚点</h2>
 <ul>
 <li><code>src/services/tools/StreamingToolExecutor.ts:addTool</code></li>
 <li><code>src/services/tools/StreamingToolExecutor.ts:processQueue</code></li>

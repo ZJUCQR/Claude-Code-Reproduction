@@ -2043,17 +2043,6 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2063,7 +2052,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2074,7 +2063,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2859,17 +2848,6 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2879,7 +2857,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2890,7 +2868,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -3312,17 +3290,8 @@ reloadTimer = setTimeout(async () =&gt; { ... }, RELOAD_DEBOUNCE_MS)
 <li>对 <code>src/commands.ts</code>：01 的输出必须稳定支撑 <code>getCommands()</code>、<code>getSkillToolCommands()</code>、<code>getSlashCommandToolSkills()</code>。</li>
 </ul>
 <hr />
-<h2 id="_22">工程约束与演进指引</h2>
-<ol>
-<li>新增 frontmatter 字段时，必须在 parser 层定义“合法值 + 默认值 + 非法降级”；</li>
-<li>新增技能来源时，先对齐去重与可见性生命周期，再接入命令系统；</li>
-<li>不要把 GrowthBook 刷新与磁盘变化刷新混成单一路径；</li>
-<li><code>paths</code> 规则应继续贴合 ignore/gitignore 语义，不应引入另一套 DSL；</li>
-<li>变更检测层不要绕过 <code>executeConfigChangeHooks()</code> 直接热重载。</li>
-</ol>
-<hr />
-<h2 id="_23">源码锚点</h2>
-<h3 id="_24">章节</h3>
+<h2 id="_22">源码锚点</h2>
+<h3 id="_23">章节</h3>
 <ul>
 <li><code>src/utils/markdownConfigLoader.ts:resolveStopBoundary</code></li>
 <li><code>src/utils/markdownConfigLoader.ts:getProjectDirsUpToHome</code></li>
@@ -3339,7 +3308,7 @@ reloadTimer = setTimeout(async () =&gt; { ... }, RELOAD_DEBOUNCE_MS)
 <li><code>src/skills/loadSkillsDir.ts:createSkillCommand</code></li>
 <li><code>src/utils/argumentSubstitution.ts:substituteArguments</code></li>
 </ul>
-<h3 id="_25">章节</h3>
+<h3 id="_24">章节</h3>
 <ul>
 <li><code>src/skills/loadSkillsDir.ts:getSkillDirCommands</code></li>
 <li><code>src/skills/loadSkillsDir.ts:getDynamicSkills</code></li>

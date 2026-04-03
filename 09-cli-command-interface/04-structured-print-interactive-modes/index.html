@@ -2311,17 +2311,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2797,17 +2786,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -3069,26 +3047,7 @@
 <li>对 Help 系统：<code>src/commands/help/help.tsx:call</code> 仅挂载 <code>HelpV2</code>，命令数据仍来自 runtime <code>commands</code>。</li>
 </ul>
 <hr />
-<h2 id="_19">工程约束与演进指引</h2>
-<p>扩展 output mode 或建议/帮助 surface 时应检查：</p>
-<ol>
-<li>是否复用 <code>runHeadlessStreaming</code> 统一消息流，而非新增独立执行循环；</li>
-<li>是否定义了 output mode 的非法组合前置校验；</li>
-<li>是否保持 control/system 事件过滤一致；</li>
-<li>是否在 <code>RemoteIO</code> 与 <code>StructuredIO</code> 两侧都保持兼容；</li>
-<li>suggestion 排序/去重是否保持 <code>getCommandName/alias/isHidden</code> 语义一致。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>text/json/stream-json 三模式；</li>
-<li>sdkUrl on/off（RemoteIO/StructuredIO）；</li>
-<li>stream-json verbose 约束；</li>
-<li>sandbox required/unavailable；</li>
-<li>HelpV2 builtin/custom 列表与 hidden 去重；</li>
-<li>suggestion 的 alias 匹配、mid-input slash、apply 行为。</li>
-</ul>
-<hr />
-<h2 id="_20">源码锚点</h2>
+<h2 id="_19">源码锚点</h2>
 <ul>
 <li><code>src/cli/print.ts:getStructuredIO</code></li>
 <li><code>src/cli/print.ts:runHeadlessStreaming</code></li>

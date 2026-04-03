@@ -2093,17 +2093,6 @@
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2113,7 +2102,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2124,7 +2113,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2903,17 +2892,6 @@
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2923,7 +2901,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -2934,7 +2912,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       
         章节
@@ -3388,17 +3366,8 @@ return { type: 'tool_result', tool_use_id: toolUseID, content: `Launching skill:
 <li>对 <code>commands.ts</code>：02 依赖其 surface 过滤，不自建第二套 registry。</li>
 </ul>
 <hr />
-<h2 id="_24">工程约束与演进指引</h2>
-<ol>
-<li>新增 prompt command 属性时，默认应落入 ask（除非显式加入 <code>SAFE_SKILL_PROPERTIES</code>）；</li>
-<li>不要把 validate 逻辑后移到 call（会增加无意义 permission/execution 路径）；</li>
-<li>不要让 SkillTool 重写一份 prompt expansion 逻辑，必须继续复用 <code>processPromptSlashCommand</code>；</li>
-<li>远端 canonical 扩展必须继续保持“先发现后调用”的 session 语义；</li>
-<li>deny-first 顺序是安全底座，变更需有强证据和全链路回归。</li>
-</ol>
-<hr />
-<h2 id="_25">源码锚点</h2>
-<h3 id="_26">章节</h3>
+<h2 id="_24">源码锚点</h2>
+<h3 id="_25">章节</h3>
 <ul>
 <li><code>src/tools/SkillTool/SkillTool.ts:getAllCommands</code></li>
 <li><code>src/tools/SkillTool/SkillTool.ts:validateInput</code></li>
@@ -3409,7 +3378,7 @@ return { type: 'tool_result', tool_use_id: toolUseID, content: `Launching skill:
 <li><code>src/tools/SkillTool/SkillTool.ts:executeRemoteSkill</code></li>
 <li><code>src/tools/SkillTool/SkillTool.ts:mapToolResultToToolResultBlockParam</code></li>
 </ul>
-<h3 id="_27">章节</h3>
+<h3 id="_26">章节</h3>
 <ul>
 <li><code>src/utils/forkedAgent.ts:prepareForkedCommandContext</code></li>
 <li><code>src/utils/forkedAgent.ts:extractResultText</code></li>

@@ -2244,17 +2244,6 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2775,17 +2764,6 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -3063,25 +3041,7 @@ const [commands, agentDefinitionsResult] = await Promise.all([
 <li>对 plugin/MCP 子系统：02 只做启动期注入与刷新时机，不接管其内部解析与执行语义。</li>
 </ul>
 <hr />
-<h2 id="_20">工程约束与演进指引</h2>
-<p>扩展启动流程时优先检查：</p>
-<ol>
-<li>新步骤应放 preAction（阻断）还是 action（可并发/可延后）；</li>
-<li>是否会破坏 worktree-chdir 前后的 cwd 一致性；</li>
-<li>是否会让 subcommands 与默认 action 产生初始化不一致；</li>
-<li>是否应 fail-open（后台任务）或 fail-stop（核心初始化）；</li>
-<li>是否需要 profileCheckpoint 保持可观测。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>preAction 触发顺序（MDM/keychain -&gt; init -&gt; sinks -&gt; migrations）；</li>
-<li><code>--plugin-dir</code> 在 <code>plugin/mcp/auth/doctor</code> 子命令中的可见性；</li>
-<li>worktree 模式下 commands/agents 加载正确 cwd；</li>
-<li>non-interactive 的 env 应用 + git/system 预取；</li>
-<li>stdin 超时 warning 路径。</li>
-</ul>
-<hr />
-<h2 id="_21">源码锚点</h2>
+<h2 id="_20">源码锚点</h2>
 <ul>
 <li><code>src/main.tsx:main</code></li>
 <li><code>src/main.tsx:run</code></li>

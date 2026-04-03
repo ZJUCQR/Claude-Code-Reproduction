@@ -404,7 +404,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        . `` 持有命令执行前栅栏
+        . 持有命令执行前栅栏
       
     </span>
   </a>
@@ -595,17 +595,6 @@
       
         <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         源码锚点
@@ -2616,7 +2605,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        . `` 持有命令执行前栅栏
+        . 持有命令执行前栅栏
       
     </span>
   </a>
@@ -2809,17 +2798,6 @@
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2844,7 +2822,7 @@
 
 
 
-<h1 id="_1">代理循环与工具：入口与启动装配（深潜审计版）</h1>
+<h1 id="_1">入口与启动装配</h1>
 <h2 id="_2">核心论点</h2>
 <p>启动链的核心价值不是“尽快进入交互”，而是建立<strong>可执行且一致</strong>的运行前提：</p>
 <ol>
@@ -2858,7 +2836,7 @@
 <h2 id="_3">运行时状态所有权</h2>
 <h3 id="-"><code>.</code> 入口持有-裁剪权</h3>
 <p><code>main()</code> 可在不加载完整运行时的前提下处理特定参数（例如版本号）；这避免无意义初始化与副作用。</p>
-<h3 id="_4"><code>.</code> `` 持有命令执行前栅栏</h3>
+<h3 id="_4"><code>.</code> 持有命令执行前栅栏</h3>
 <p><code>program.hook('preAction', ...)</code> 负责在真正 command action 前完成初始化、环境同步与必要检查。</p>
 <h3 id="_5"><code>.</code> 持有启动状态落盘权</h3>
 <p><code>setup(...)</code> 负责：
@@ -2901,9 +2879,15 @@ async function main(): Promise&lt;void&gt; {
   initSinks()
 }
 </code></pre>
-<p>关键语义：
-- 先定 cwd，再做依赖 cwd 的初始化；
-- session memory 与 sinks 在 setup 收尾阶段接入，确保 query 前可用。</p>
+<p>关键语义：</p>
+<ul>
+<li>
+<p>先定 cwd，再做依赖 cwd 的初始化；</p>
+</li>
+<li>
+<p>session memory 与 sinks 在 setup 收尾阶段接入，确保 query 前可用。</p>
+</li>
+</ul>
 <h3 id="_10">分支</h3>
 <pre><code class="language-ts">if (worktreeEnabled) {
   worktreeSession = await createWorktreeForSession(...)
@@ -2993,22 +2977,7 @@ async function main(): Promise&lt;void&gt; {
 <li>对 06 hooks：hooks 配置快照由 setup 维护，执行期仅消费。</li>
 </ul>
 <hr />
-<h2 id="_19">工程约束与演进指引</h2>
-<p>新增启动参数或启动步骤时必须评估：</p>
-<ol>
-<li>是否影响最终 cwd/projectRoot；</li>
-<li>是否需要在 preAction 栅栏内执行；</li>
-<li>是否会影响 hooks/sinks 初始化顺序；</li>
-<li>失败后是硬终止还是可降级。</li>
-</ol>
-<p>建议启动改动回归用例：
-- 纯 fast-path（<code>--version</code>）
-- 默认 full-path
-- <code>--worktree</code> 成功
-- <code>--worktree</code> 失败
-- preAction + setup 并行路径下的 cwd 一致性</p>
-<hr />
-<h2 id="_20">源码锚点</h2>
+<h2 id="_19">源码锚点</h2>
 <ul>
 <li><code>src/entrypoints/cli.tsx:main</code></li>
 <li><code>src/main.tsx:run</code></li>

@@ -860,17 +860,6 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2709,17 +2698,6 @@
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2925,25 +2903,7 @@ await runExtraction({ context, appendSystemMessage })
 <li>对 observability：事件命名与字段需可追踪门控序列与失败阶段。</li>
 </ul>
 <hr />
-<h2 id="_15">工程约束与演进指引</h2>
-<p>新增 gate 或埋点时，至少保证：</p>
-<ol>
-<li>事件语义一一对应（disabled/coalesced/error/success）；</li>
-<li>once-log 场景不会丢失关键首次信号；</li>
-<li>fire-and-forget 路径有对应 drain 保障；</li>
-<li>异常处理不会改变 stopHook 的 preventContinuation 逻辑。</li>
-</ol>
-<p>建议回归：</p>
-<ul>
-<li>gate 全关；</li>
-<li>gate 开启但 remote mode；</li>
-<li>inProgress 下多次 stop 连续触发；</li>
-<li>runExtraction 抛错；</li>
-<li>stopHooks 抛错；</li>
-<li>print 收尾 drain 超时。</li>
-</ul>
-<hr />
-<h2 id="_16">源码锚点</h2>
+<h2 id="_15">源码锚点</h2>
 <ul>
 <li><code>src/query/stopHooks.ts:handleStopHooks</code></li>
 <li><code>src/query/stopHooks.ts</code>（<code>executeExtractMemories</code> 调用分支）</li>

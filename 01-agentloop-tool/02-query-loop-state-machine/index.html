@@ -443,7 +443,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        追踪状态 ``
+        追踪状态
       
     </span>
   </a>
@@ -459,12 +459,12 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        端到端流程（单轮完整切片）
+        端到端流程
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="端到端流程（单轮完整切片）">
+    <nav class="md-nav" aria-label="端到端流程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -504,7 +504,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /终止阶段
+        终止阶段
       
     </span>
   </a>
@@ -543,7 +543,7 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ：先清理旧流，再重建执行器
+        清理旧流，重建执行器
       
     </span>
   </a>
@@ -662,17 +662,6 @@
       
         <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         源码锚点
@@ -2666,7 +2655,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        追踪状态 ``
+        追踪状态
       
     </span>
   </a>
@@ -2682,12 +2671,12 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        端到端流程（单轮完整切片）
+        端到端流程
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="端到端流程（单轮完整切片）">
+    <nav class="md-nav" aria-label="端到端流程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2727,7 +2716,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        /终止阶段
+        终止阶段
       
     </span>
   </a>
@@ -2766,7 +2755,7 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ：先清理旧流，再重建执行器
+        清理旧流，重建执行器
       
     </span>
   </a>
@@ -2887,17 +2876,6 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2922,7 +2900,7 @@
 
 
 
-<h1 id="_1">代理循环与工具：回合状态机（深潜审计版）</h1>
+<h1 id="_1">回合状态机</h1>
 <h2 id="_2">核心论点</h2>
 <p><code>queryLoop</code> 不是“循环调用模型”，而是一个<strong>显式状态重建型自动机</strong>：每个 <code>continue</code> 都构造新的 <code>State</code>，每个 <code>return</code> 都携带终止原因。这个设计把复杂恢复流程（withheld 错误、fallback、hook 阻断、token budget 续轮）从“隐式流程”提升为“可审计转移”。</p>
 <p>核心证据（状态定义）：</p>
@@ -2976,7 +2954,7 @@ let state: State = {
 - 每轮顶部解构状态；
 - 每个分支写回完整 <code>next State</code>；
 - 管理 continue 与 return 的一致语义。</p>
-<h3 id="_6">追踪状态 ``</h3>
+<h3 id="_6">追踪状态</h3>
 <pre><code class="language-ts">// src/query.ts
 const queryTracking = toolUseContext.queryTracking
   ? {
@@ -2997,7 +2975,7 @@ toolUseContext = {
 - 同链路重用 <code>chainId</code>，层级 <code>depth+1</code>；
 - 首轮新建链路 ID。</p>
 <hr />
-<h2 id="_7">端到端流程（单轮完整切片）</h2>
+<h2 id="_7">端到端流程</h2>
 <h3 id="_8">预处理阶段（进入模型前）</h3>
 <p>1) compact boundary 后消息窗口：</p>
 <pre><code class="language-ts">let messagesForQuery = [...getMessagesAfterCompactBoundary(messages)]
@@ -3078,7 +3056,7 @@ for await (const update of toolUpdates) {
   }
 }
 </code></pre>
-<h3 id="_11">/终止阶段</h3>
+<h3 id="_11">终止阶段</h3>
 <ul>
 <li>若无 follow-up 工具，进入 <code>handleStopHooks(...)</code>；</li>
 <li>根据 <code>preventContinuation</code>/<code>blockingErrors</code> 选择终止或续轮。</li>
@@ -3165,7 +3143,7 @@ for await (const update of toolUpdates) {
 </table>
 <hr />
 <h2 id="_13">失败、恢复与降级</h2>
-<h3 id="_14">：先清理旧流，再重建执行器</h3>
+<h3 id="_14">清理旧流，重建执行器</h3>
 <pre><code class="language-ts">if (streamingFallbackOccured) {
   for (const msg of assistantMessages) {
     yield { type: 'tombstone' as const, message: msg }
@@ -3324,31 +3302,7 @@ return { reason: isWithheldMedia ? 'image_error' : 'prompt_too_long' }
 <li>对 <code>stopHooks.ts</code>：接受 <code>preventContinuation</code> 和 <code>blockingErrors</code> 结构化返回；终止决策在 query 层。</li>
 </ul>
 <hr />
-<h2 id="_22">工程约束与演进指引</h2>
-<p>新增恢复分支时必须同步定义：</p>
-<p>1) <code>transition.reason</code>；
-2) 是否推进 <code>turnCount</code>；
-3) 是否需要 bypass stop hooks；
-4) 是否需要补齐 missing tool_result；
-5) 与 <code>hasAttemptedReactiveCompact</code>、<code>maxOutputTokensRecoveryCount</code> 的交互。</p>
-<p>推荐新增分支模板：</p>
-<pre><code class="language-ts">const next: State = {
-  messages: ...,
-  toolUseContext,
-  autoCompactTracking: ...,
-  maxOutputTokensRecoveryCount: ...,
-  hasAttemptedReactiveCompact: ...,
-  maxOutputTokensOverride: ...,
-  pendingToolUseSummary: ...,
-  stopHookActive: ...,
-  turnCount: ...,
-  transition: { reason: 'your_new_reason' as const },
-}
-state = next
-continue
-</code></pre>
-<hr />
-<h2 id="_23">源码锚点</h2>
+<h2 id="_22">源码锚点</h2>
 <ul>
 <li><code>src/query.ts:query</code></li>
 <li><code>src/query.ts:queryLoop</code></li>

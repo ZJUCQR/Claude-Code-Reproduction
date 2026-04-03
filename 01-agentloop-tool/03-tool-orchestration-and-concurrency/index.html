@@ -620,17 +620,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2743,17 +2732,6 @@
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工程约束与演进指引
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
         源码锚点
       
     </span>
@@ -2973,22 +2951,7 @@ markToolUseAsComplete(toolUseContext, toolUse.id)
 <li>对工具定义 <code>Tool.ts</code>：并发安全由工具声明，调度器只消费判定，不猜测工具副作用。</li>
 </ul>
 <hr />
-<h2 id="_17">工程约束与演进指引</h2>
-<p>新增工具并发能力时必须验证：</p>
-<ol>
-<li><code>isConcurrencySafe</code> 以<strong>解析后的输入</strong>判断，而非原始对象；</li>
-<li>contextModifier 若依赖先后顺序，必须返回“可延迟回放”的纯函数；</li>
-<li>若工具有隐式共享资源（文件锁、进程态、外部会话），默认不并发；</li>
-<li>不要在调度层引入工具特判，除非它是通用语义（例如全局安全门）。</li>
-</ol>
-<p>建议新增并发工具回归用例：</p>
-<ul>
-<li>连续 3 个安全工具 + 1 个不安全工具 + 2 个安全工具；</li>
-<li>中间工具报错时，前后批次 context 是否可审计；</li>
-<li><code>inProgressToolUseIDs</code> 在异常路径是否清零。</li>
-</ul>
-<hr />
-<h2 id="_18">源码锚点</h2>
+<h2 id="_17">源码锚点</h2>
 <ul>
 <li><code>src/services/tools/toolOrchestration.ts:getMaxToolUseConcurrency</code></li>
 <li><code>src/services/tools/toolOrchestration.ts:runTools</code></li>
