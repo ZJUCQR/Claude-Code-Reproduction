@@ -1171,17 +1171,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1302,17 +1291,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2678,17 +2656,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2809,17 +2776,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -3043,19 +2999,6 @@
 
 
 <h1 id="_1">协议集成层集成层（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/05-mcp-protocol</code> 的入口页，仅负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
-<p>证据边界覆盖：</p>
-<ul>
-<li><code>src/services/mcp/client.ts</code></li>
-<li><code>src/utils/mcpValidation.ts</code></li>
-<li><code>src/utils/mcpOutputStorage.ts</code></li>
-<li><code>src/services/mcp/mcpStringUtils.ts</code></li>
-<li><code>src/services/mcpServerApproval.tsx</code></li>
-<li><code>src/cli/print.ts</code></li>
-<li><code>src/cli/handlers/mcp.tsx</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>05 模块是“<strong>外部协议收敛层</strong>”：把 transport、鉴权、发现、调用和结果差异压缩成主链可消费的稳定语义。</p>
 <p>目标不是“全部成功”，而是“局部失败时仍可解释、可恢复、可退化”。</p>
@@ -3217,25 +3160,6 @@
 </ul>
 <hr />
 <h2 id="_3">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页覆盖 05 模块“<strong>MCP 协议收敛层</strong>”的全链行为：连接生命周期、能力发现、工具调用与 elicitation 重试、结果规范化与大输出治理、CLI/UI 管理面与审批协同。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/services/mcp/client.ts</code></li>
-<li><code>src/utils/mcpValidation.ts</code></li>
-<li><code>src/utils/mcpOutputStorage.ts</code></li>
-<li><code>src/services/mcp/mcpStringUtils.ts</code></li>
-<li><code>src/services/mcpServerApproval.tsx</code></li>
-<li><code>src/cli/print.ts</code></li>
-<li><code>src/cli/handlers/mcp.tsx</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>query-loop 主状态机本体（仅引用其消费契约）；</li>
-<li>通用权限策略引擎本体（仅引用 MCP 接入点）；</li>
-<li>非 MCP tool 执行协议。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>05 模块要解决的不是“把 server 连上”，而是把不稳定外部协议压成<strong>主链可承受的稳定语义</strong>：</p>
 <ol>

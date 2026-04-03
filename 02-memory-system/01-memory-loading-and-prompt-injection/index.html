@@ -596,17 +596,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2540,17 +2529,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2767,22 +2745,6 @@
 
 
 <h1 id="_1">记忆系统：加载与 注入（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页仅覆盖 <strong>memory 读侧注入链</strong>，证据范围：</p>
-<ul>
-<li><code>src/memdir/memdir.ts</code></li>
-<li><code>src/memdir/findRelevantMemories.ts</code></li>
-<li><code>src/memdir/memoryAge.ts</code></li>
-<li><code>src/constants/prompts.ts</code></li>
-<li><code>src/QueryEngine.ts</code></li>
-</ul>
-<p>本页不覆盖：</p>
-<ul>
-<li>SessionMemory 写侧抽取（见 02）；</li>
-<li>extractMemories 后台整理（见 03）；</li>
-<li>gate 与观测总收敛（见 04）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p><code>loadMemoryPrompt()</code> 的核心职责不是“拼一段提示词”，而是：</p>
 <ol>

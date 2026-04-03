@@ -1573,17 +1573,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1715,17 +1704,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2678,17 +2656,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2820,17 +2787,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -3043,20 +2999,6 @@
 
 
 <h1 id="_1">流式处理（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/07-streaming-processing</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载 streaming 机制深潜。</p>
-<p>证据边界覆盖：</p>
-<ul>
-<li><code>src/services/api/claude.ts</code></li>
-<li><code>src/utils/messages.ts</code></li>
-<li><code>src/cli/structuredIO.ts</code></li>
-<li><code>src/cli/transports/*.ts</code></li>
-<li><code>src/services/tools/StreamingToolExecutor.ts</code></li>
-<li><code>src/query.ts</code></li>
-<li><code>src/screens/REPL.tsx</code></li>
-<li><code>src/components/Messages.tsx</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>07 模块是“<strong>实时语义投影层</strong>”：把模型流、控制请求、transport 重放与工具执行进度压缩成可关联、可恢复、可渲染的统一流。</p>
 <p>目标不是“更快打印”，而是“更快时仍不乱语义”。</p>
@@ -3221,29 +3163,6 @@
 </ul>
 <hr />
 <h2 id="_4">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页覆盖 07 模块“<strong>流式语义收敛层</strong>”：模型流事件解析、StructuredIO 请求关联、transport buffering/replay、streaming tool executor、CLI/REPL/UI 渲染与 completion/error/abort/fallback 语义。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/services/api/claude.ts</code></li>
-<li><code>src/utils/messages.ts</code></li>
-<li><code>src/services/api/errors.ts</code></li>
-<li><code>src/cli/structuredIO.ts</code></li>
-<li><code>src/cli/transports/ccrClient.ts</code></li>
-<li><code>src/cli/transports/HybridTransport.ts</code></li>
-<li><code>src/upstreamproxy/relay.ts</code></li>
-<li><code>src/services/tools/StreamingToolExecutor.ts</code></li>
-<li><code>src/query.ts</code></li>
-<li><code>src/screens/REPL.tsx</code></li>
-<li><code>src/components/Messages.tsx</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>模型决策本体与 tool 业务语义；</li>
-<li>slash 命令注册语义；</li>
-<li>非 streaming 模式下的普通一次性响应路径。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>07 模块的第一职责不是“快显示”，而是<strong>语义可关联、可恢复、可去重</strong>：</p>
 <ol>

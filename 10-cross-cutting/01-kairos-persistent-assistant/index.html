@@ -2232,17 +2232,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2490,17 +2479,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2667,28 +2645,6 @@
 
 
 <h1 id="_1">持久助手运行链（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖 KAIROS assistant 模式的跨模块主链：激活门控、全局状态传播、Auto-Dream、Proactive 与 cron 调度。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/main.tsx</code></li>
-<li><code>src/bootstrap/state.ts</code></li>
-<li><code>src/services/autoDream/autoDream.ts</code></li>
-<li><code>src/services/autoDream/consolidationLock.ts</code></li>
-<li><code>src/services/autoDream/consolidationPrompt.ts</code></li>
-<li><code>src/tasks/DreamTask/DreamTask.ts</code></li>
-<li><code>src/utils/cronScheduler.ts</code></li>
-<li><code>src/utils/cronTasks.ts</code></li>
-<li><code>src/proactive/index.ts</code></li>
-<li><code>src/memdir/paths.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>query/tool 主循环细节（见 01）；</li>
-<li>memory 文件 schema 细节（见 02）；</li>
-<li>CLI 命令注册细节（见 09）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>KAIROS 的核心不是“后台常驻”本身，而是把一次性会话升级为<strong>可持续、可调度、可收敛的助手运行面</strong>：</p>
 <ol>

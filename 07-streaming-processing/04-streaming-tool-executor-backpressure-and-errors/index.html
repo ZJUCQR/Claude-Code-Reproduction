@@ -1685,17 +1685,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2501,17 +2490,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2689,21 +2667,6 @@
 
 
 <h1 id="_1">、背压与错误传播（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖“<strong>streamed tool use 的调度与终态收敛</strong>”：队列 admission、并发/独占、progress yield、sibling abort、fallback discard、synthetic error propagation。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/services/tools/StreamingToolExecutor.ts</code></li>
-<li><code>src/query.ts</code></li>
-<li><code>src/services/tools/toolExecution.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>request correlation ledger（见 02）；</li>
-<li>transport buffering/replay（见 03）；</li>
-<li>UI 渲染层本体（见 01）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>StreamingToolExecutor 的核心目标不是“并发多跑几个工具”，而是让 streamed tool use 在实时输出下仍保持有序和可终止：</p>
 <ol>

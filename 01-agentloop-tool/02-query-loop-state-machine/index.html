@@ -395,17 +395,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2629,17 +2618,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2945,21 +2923,6 @@
 
 
 <h1 id="_1">代理循环与工具：回合状态机（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只解剖 <code>src/query.ts</code> 在回合级的状态机行为，重点是：</p>
-<ul>
-<li><code>State</code> 持有的跨分支状态；</li>
-<li><code>while(true)</code> 内的 continue/return 分支；</li>
-<li>fallback / abort / compact / stop-hook 阻断恢复链；</li>
-<li><code>tool_use</code> 到 <code>tool_result</code> 的协议完整性保障。</li>
-</ul>
-<p>不展开：</p>
-<ul>
-<li>工具权限决策内部细节（见 04 页）；</li>
-<li>并发批次切分算法细节（见 03 页）；</li>
-<li>stop hooks 细粒度内部执行（见 05 页）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p><code>queryLoop</code> 不是“循环调用模型”，而是一个<strong>显式状态重建型自动机</strong>：每个 <code>continue</code> 都构造新的 <code>State</code>，每个 <code>return</code> 都携带终止原因。这个设计把复杂恢复流程（withheld 错误、fallback、hook 阻断、token budget 续轮）从“隐式流程”提升为“可审计转移”。</p>
 <p>核心证据（状态定义）：</p>

@@ -652,17 +652,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2551,17 +2540,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2789,21 +2767,6 @@
 
 
 <h1 id="_1">记忆系统：文件写入、执行与时效（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页聚焦 <strong>memory 写侧安全边界与一致性语义</strong>，证据范围：</p>
-<ul>
-<li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
-<li><code>src/services/extractMemories/extractMemories.ts</code></li>
-<li><code>src/utils/forkedAgent.ts</code></li>
-<li><code>src/memdir/memoryAge.ts</code></li>
-<li><code>src/memdir/findRelevantMemories.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>触发阈值细节（见 02）；</li>
-<li>gate/观测总收敛（见 04）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>写侧治理的核心不是“写进去”，而是“三件事同时成立”：</p>
 <ol>

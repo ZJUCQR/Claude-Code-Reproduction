@@ -479,17 +479,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2557,17 +2546,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2801,18 +2779,6 @@
 
 
 <h1 id="_1">代理循环与工具：、与输出边界（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖两条关键链：</p>
-<ol>
-<li><code>src/services/tools/StreamingToolExecutor.ts</code> 的流式工具调度；</li>
-<li><code>src/query/stopHooks.ts</code> 的回合末治理与阻断。</li>
-</ol>
-<p>以及它们在 <code>src/query.ts</code> 中的衔接点（fallback/abort/drain）。</p>
-<p>不覆盖：
-- 单工具权限判定实现细节（见 04）；
-- query 主循环全量状态机（见 02）；
-- transport/UI 展示层实现（见 07）。</p>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>Streaming 路径最大的工程难点是三件事同时成立：</p>
 <ul>

@@ -2286,17 +2286,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2488,17 +2477,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2665,30 +2643,6 @@
 
 
 <h1 id="_1">风险闭环：///（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖客户端可证实的“风险相关执行闭环”：认证失效处理、策略阻断、模型 refusal 显示、遥测上报与本地状态清理。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/utils/auth.ts</code></li>
-<li><code>src/services/api/withRetry.ts</code></li>
-<li><code>src/services/api/errors.ts</code></li>
-<li><code>src/services/api/sessionIngress.ts</code></li>
-<li><code>src/services/mcp/auth.ts</code></li>
-<li><code>src/services/mcp/client.ts</code></li>
-<li><code>src/bridge/trustedDevice.ts</code></li>
-<li><code>src/bridge/bridgeApi.ts</code></li>
-<li><code>src/bridge/remoteBridgeCore.ts</code></li>
-<li><code>src/services/policyLimits/index.ts</code></li>
-<li><code>src/services/remoteManagedSettings/*</code></li>
-<li><code>src/services/analytics/sink.ts</code></li>
-<li><code>src/services/analytics/firstPartyEventLoggingExporter.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>服务端封禁评分模型；</li>
-<li>上游 moderation 具体判定算法。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>从客户端源码可证实的不是“本地封号引擎”，而是<strong>分布式阻断与恢复闭环</strong>：</p>
 <ol>

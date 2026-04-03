@@ -1858,17 +1858,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2668,17 +2657,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3023,23 +3001,6 @@
 
 
 <h1 id="_1">转译与 执行（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖用户平面的 slash 入口如何接入统一 skill 命令抽象，并在 runtime 里分流到 inline/fork/background fork。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx</code></li>
-<li><code>src/utils/forkedAgent.ts</code></li>
-<li><code>src/utils/argumentSubstitution.ts</code></li>
-<li><code>src/utils/hooks/registerSkillHooks.ts</code></li>
-<li><code>src/commands.ts</code>（用于“共享事实源”锚点）</li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>目录扫描/frontmatter/discovery（见 01）</li>
-<li>SkillTool 权限决策（见 02）</li>
-<li>bundled/plugin/MCP taxonomy（见 04）</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>slash 不是另一套技能执行框架，而是 skill 命令系统的<strong>用户平面入口</strong>。核心约束：</p>
 <ol>

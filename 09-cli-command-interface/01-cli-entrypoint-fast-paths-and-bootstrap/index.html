@@ -2003,17 +2003,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2595,17 +2584,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2877,27 +2855,6 @@
 
 
 <h1 id="-">入口-与启动（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖 <strong>entrypoint 层 argv 分流与 full CLI 启动前 bootstrap</strong>，即：</p>
-<ul>
-<li>哪些路径在 <code>src/entrypoints/cli.tsx:main</code> 里被短路（fast-path）；</li>
-<li>哪些路径必须先做 config/auth/policy gate 才能继续；</li>
-<li>何时才允许落入 <code>../main.js</code> 的完整 Commander 生命周期；</li>
-<li><code>--worktree --tmux</code> 的早期分流如何与主路径解耦。</li>
-</ul>
-<p>证据边界（仅本页使用）：</p>
-<ul>
-<li><code>src/entrypoints/cli.tsx:main</code></li>
-<li><code>src/bridge/bridgeMain.ts:bridgeMain</code></li>
-<li><code>src/utils/worktree.ts:execIntoTmuxWorktree</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>Commander 组装与 <code>preAction</code> 初始化屏障（见 02）；</li>
-<li>registry/slash/help/output 投影（见 03/04）；</li>
-<li>bridge 内部状态机与 recovery 细节（见 05）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>09-01 的核心不是“入口调用 main()”，而是三条硬约束：</p>
 <ol>

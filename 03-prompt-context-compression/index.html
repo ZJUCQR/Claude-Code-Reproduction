@@ -769,17 +769,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -900,17 +889,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2639,17 +2617,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2770,17 +2737,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2965,17 +2921,6 @@
 
 
 <h1 id="_1">提示词与上下文压缩（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/03-prompt-context-compression</code> 的入口页，给出 03 模块职责边界、阅读顺序与页面所有权。</p>
-<p>证据边界覆盖：</p>
-<ul>
-<li><code>src/utils/systemPrompt.ts</code></li>
-<li><code>src/constants/prompts.ts</code></li>
-<li><code>src/services/compact/*.ts</code></li>
-<li><code>src/query.ts</code></li>
-<li><code>src/query/tokenBudget.ts</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>03 模块是“<strong>上下文资源治理层</strong>”：在 token 受限下保持对话与工具执行语义可继续。</p>
 <p>它解决的不是“少 token”，而是“压缩后仍可运行”。</p>
@@ -3144,27 +3089,6 @@
 </ul>
 <hr />
 <h2 id="_3">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页是 03 模块总览收敛页，聚焦以下执行平面：</p>
-<ul>
-<li><code>src/utils/systemPrompt.ts</code></li>
-<li><code>src/constants/prompts.ts</code></li>
-<li><code>src/services/compact/autoCompact.ts</code></li>
-<li><code>src/services/compact/microCompact.ts</code></li>
-<li><code>src/services/compact/sessionMemoryCompact.ts</code></li>
-<li><code>src/services/compact/compact.ts</code></li>
-<li><code>src/services/compact/postCompactCleanup.ts</code></li>
-<li><code>src/query.ts</code></li>
-<li><code>src/query/tokenBudget.ts</code></li>
-</ul>
-<p>本页目标不是复述 01~04 子页细节，而是统一回答：</p>
-<ul>
-<li>哪些状态在何处拥有；</li>
-<li>何时触发 compact、何时禁止；</li>
-<li>失败如何 recover/degrade；</li>
-<li>哪些不变量跨 compact/query/cleanup 成立。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>该模块核心不是“节省 token”，而是“<strong>在上下文缩减后维持可继续执行的语义拓扑</strong>”。</p>
 <p>它是四段式体系：</p>

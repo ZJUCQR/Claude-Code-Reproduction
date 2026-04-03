@@ -1975,17 +1975,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2117,17 +2106,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2606,17 +2584,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2748,17 +2715,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2899,35 +2855,6 @@
 
 
 <h1 id="_1">命令行界面（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/09-cli-command-interface</code> 的入口页，只负责：</p>
-<ul>
-<li>模块边界定义；</li>
-<li>阅读路径与章节分工；</li>
-<li>关键源码锚点索引。</li>
-</ul>
-<p>覆盖边界（模块级）：</p>
-<ul>
-<li>entrypoint fast-path 与 full CLI fallback</li>
-<li>Commander/preAction 初始化屏障</li>
-<li>command registry + slash routing</li>
-<li>structured output/help/suggestions 投影</li>
-<li>plugin/install/remote-control 管理命令族 guard</li>
-</ul>
-<p>对应源码簇：</p>
-<ul>
-<li><code>src/entrypoints/cli.tsx</code></li>
-<li><code>src/main.tsx</code></li>
-<li><code>src/commands.ts</code></li>
-<li><code>src/utils/slashCommandParsing.ts</code></li>
-<li><code>src/utils/processUserInput/processUserInput.ts</code></li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx</code></li>
-<li><code>src/cli/print.ts</code></li>
-<li><code>src/components/HelpV2/*</code></li>
-<li><code>src/utils/suggestions/commandSuggestions.ts</code></li>
-<li><code>src/bridge/bridgeMain.ts</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>09 模块是 CLI 控制平面：</p>
 <ul>
@@ -3109,36 +3036,6 @@
 </ul>
 <hr />
 <h2 id="_4">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页是 09 模块总览页，覆盖命令行控制平面的 5 条主链：</p>
-<ol>
-<li>entrypoint fast-path 与 delayed import fallback；</li>
-<li>Commander 装配、preAction 初始化屏障与 action 编排；</li>
-<li>command registry 合流与 slash 路由分发；</li>
-<li>text/json/stream-json/help/suggestion 投影；</li>
-<li>plugin/install/remote-control 管理命令族与 bridge 启动 guard。</li>
-</ol>
-<p>证据范围：</p>
-<ul>
-<li><code>src/entrypoints/cli.tsx:main</code></li>
-<li><code>src/main.tsx:main</code></li>
-<li><code>src/main.tsx:run</code></li>
-<li><code>src/commands.ts:getCommands</code></li>
-<li><code>src/utils/processUserInput/processUserInput.ts:processUserInput</code></li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx:processSlashCommand</code></li>
-<li><code>src/cli/print.ts:getStructuredIO</code></li>
-<li><code>src/cli/print.ts:runHeadlessStreaming</code></li>
-<li><code>src/components/HelpV2/HelpV2.tsx:HelpV2</code></li>
-<li><code>src/utils/suggestions/commandSuggestions.ts:generateCommandSuggestions</code></li>
-<li><code>src/bridge/bridgeMain.ts:bridgeMain</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>query/tool 主执行状态机（见 01）；</li>
-<li>bridge 长连接恢复细节状态机（见 07）；</li>
-<li>skills 内部 discovery/runtime 细节（见 08）。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>09 的本质不是“命令很多”，而是<strong>把同一 command/message 语义稳定投影到不同入口与输出协议</strong>。</p>
 <ul>

@@ -970,17 +970,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1101,17 +1090,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2728,17 +2706,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2859,17 +2826,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -3143,19 +3099,6 @@
 
 
 <h1 id="_1">多 协同（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/04-multi-agent-coordination</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
-<p>证据边界覆盖：</p>
-<ul>
-<li><code>src/tools/shared/spawnMultiAgent.ts</code></li>
-<li><code>src/utils/swarm/backends/*.ts</code></li>
-<li><code>src/utils/swarm/permissionSync.ts</code></li>
-<li><code>src/utils/swarm/teamHelpers.ts</code></li>
-<li><code>src/utils/tasks.ts</code></li>
-<li><code>src/utils/worktree.ts</code></li>
-<li><code>src/bridge/bridgeMain.ts</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>04 模块是“<strong>多执行单元协同治理层</strong>”：在不同后端与隔离策略下，保持 teammate 的创建、权限、状态与清理语义一致且可恢复。</p>
 <p>它解决的不是“多开几个 agent”，而是“多 agent 失败后仍能正确收敛”。</p>
@@ -3311,28 +3254,6 @@
 </ul>
 <hr />
 <h2 id="_3">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页覆盖 04 模块“<strong>全链协同状态机</strong>”：从 spawn 入口到 backend 选择、permission mailbox、team/task 状态一致性、worktree 生命周期与 bridge 收尾。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/tools/shared/spawnMultiAgent.ts</code></li>
-<li><code>src/utils/swarm/backends/registry.ts</code></li>
-<li><code>src/utils/swarm/backends/detection.ts</code></li>
-<li><code>src/utils/swarm/inProcessRunner.ts</code></li>
-<li><code>src/utils/swarm/permissionSync.ts</code></li>
-<li><code>src/utils/swarm/teamHelpers.ts</code></li>
-<li><code>src/utils/tasks.ts</code></li>
-<li><code>src/utils/worktree.ts</code></li>
-<li><code>src/bridge/bridgeMain.ts</code></li>
-<li><code>src/bridge/bridgePointer.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>单 agent query/tool 执行语义（见 01 模块）；</li>
-<li>memory/compact 内部算法（见 02/03 模块）；</li>
-<li>slash 命令入口定义本体（仅引用其协同后果）。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>04 模块的核心不是“并行执行”，而是把多执行单元压成<strong>可审计、可恢复、可回收</strong>的一致协议：</p>
 <ol>

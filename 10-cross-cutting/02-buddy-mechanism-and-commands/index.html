@@ -2260,17 +2260,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2479,17 +2468,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2645,24 +2623,6 @@
 
 
 <h1 id="_1">机制与命令投影（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖 BUDDY 子系统的架构侧语义：确定性生成、渲染投影、命令入口、上下文注入与上线门控。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/buddy/types.ts</code></li>
-<li><code>src/buddy/companion.ts</code></li>
-<li><code>src/buddy/sprites.ts</code></li>
-<li><code>src/buddy/CompanionSprite.tsx</code></li>
-<li><code>src/buddy/prompt.ts</code></li>
-<li><code>src/buddy/useBuddyNotification.tsx</code></li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx</code>（命令路由契约）</li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>具体 UX 文案与活动运营策略；</li>
-<li>非 BUDDY 通用 slash 路由细节（见 09-03）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>BUDDY 不是独立执行引擎，而是<strong>挂接在现有 CLI/Prompt 管线上的轻状态伴侣层</strong>：</p>
 <ol>

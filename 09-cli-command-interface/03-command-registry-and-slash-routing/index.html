@@ -2059,17 +2059,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2612,17 +2601,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2911,33 +2889,6 @@
 
 
 <h1 id="_1">命令注册与 路由（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只讨论 09 模块的“命令事实源 -&gt; 输入路由”主链：</p>
-<ul>
-<li><code>src/commands.ts</code> 如何把多来源命令并轨并做执行前过滤；</li>
-<li><code>src/utils/processUserInput/processUserInput.ts</code> 如何决定 slash/非 slash 分流；</li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx</code> 如何把 <code>/cmd args</code> 路由到 local/local-jsx/prompt/fork。</li>
-</ul>
-<p>证据范围：</p>
-<ul>
-<li><code>src/commands.ts:getSkills</code></li>
-<li><code>src/commands.ts:loadAllCommands</code></li>
-<li><code>src/commands.ts:getCommands</code></li>
-<li><code>src/commands.ts:getSkillToolCommands</code></li>
-<li><code>src/commands.ts:getSlashCommandToolSkills</code></li>
-<li><code>src/commands.ts:isBridgeSafeCommand</code></li>
-<li><code>src/commands.ts:filterCommandsForRemoteMode</code></li>
-<li><code>src/utils/slashCommandParsing.ts:parseSlashCommand</code></li>
-<li><code>src/utils/processUserInput/processUserInput.ts:processUserInput</code></li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx:processSlashCommand</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>CLI 顶层 fast-path（见 01）；</li>
-<li>Commander/preAction 初始化屏障（见 02）；</li>
-<li>structured output / bridge 生命周期（见 04/05）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>03 的核心是：<strong>slash 不是一套独立系统，而是 command registry 的一个消费者投影</strong>。</p>
 <p>具体体现为：</p>

@@ -423,17 +423,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2557,17 +2546,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2801,18 +2779,6 @@
 
 
 <h1 id="_1">代理循环与工具：批处理编排与并发策略（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖 <code>src/services/tools/toolOrchestration.ts</code>，并以 <code>src/services/tools/toolExecution.ts</code> 的接口行为作为必要上下文。</p>
-<p>关注点：
-- 工具批次如何切分；
-- 并发与串行如何共存；
-- 并发时 context modifier 为什么要延迟回放；
-- <code>inProgressToolUseIDs</code> 如何保证生命周期闭环。</p>
-<p>不展开：
-- 单工具权限细节（见 04）；
-- Query 主循环恢复链（见 02）；
-- Streaming executor 内部调度（见 05）。</p>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p><code>toolOrchestration.ts</code> 的核心不是“并发执行工具”，而是“在保持消息语义稳定的前提下最大化吞吐”：</p>
 <ul>

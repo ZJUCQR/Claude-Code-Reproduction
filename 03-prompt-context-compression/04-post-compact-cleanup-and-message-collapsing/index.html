@@ -881,17 +881,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2529,17 +2518,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2745,22 +2723,6 @@
 
 
 <h1 id="_1">与压缩：压缩后清理与消息折叠（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖 compact 执行后的“<strong>收尾与展示层收敛</strong>”，证据范围：</p>
-<ul>
-<li><code>src/services/compact/postCompactCleanup.ts</code></li>
-<li><code>src/services/compact/compact.ts</code>（post-compact 构造与 hooks）</li>
-<li><code>src/services/compact/compactWarningState.ts</code></li>
-<li><code>src/services/compact/compactWarningHook.ts</code></li>
-<li><code>src/utils/collapseReadSearch.ts</code></li>
-<li><code>src/utils/collapseBackgroundBashNotifications.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>compact 触发判定（见 02）；</li>
-<li>micro/session-memory compact 内部执行（见 03）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>压缩“成功”并不意味着流程结束；真正的稳定点在 post-compact cleanup：</p>
 <ol>

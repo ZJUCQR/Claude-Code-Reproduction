@@ -1629,17 +1629,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2490,17 +2479,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2667,20 +2645,6 @@
 
 
 <h1 id="_1">协议与请求关联（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖“<strong>异步控制平面</strong>”与“<strong>request-response correlation</strong>”：control_request/control_response、keep_alive、cancel、duplicate/orphan/late response、pendingRequests 生命周期。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/cli/structuredIO.ts</code></li>
-<li><code>src/cli/print.ts</code>（control_request/control_response 消费上下文）</li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>transport buffering/replay（见 03）；</li>
-<li>streamed tool queue/backpressure（见 04）；</li>
-<li>UI 渲染投影（见 01）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>Structured I/O 的核心价值不是“把 JSON 行发出去”，而是把异步控制平面建模为可验证账本：</p>
 <ol>

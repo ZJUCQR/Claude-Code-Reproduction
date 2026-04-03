@@ -1774,17 +1774,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1916,17 +1905,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2617,17 +2595,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2759,17 +2726,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2921,33 +2877,6 @@
 
 
 <h1 id="_1">技能库（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/08-skill-library</code> 入口页，只负责模块边界、阅读路径、关键锚点，不承载实现细节。</p>
-<p>覆盖边界（模块级）：</p>
-<ul>
-<li>discovery/loading/indexing</li>
-<li>command surface 投影</li>
-<li>SkillTool runtime/permission</li>
-<li>slash/fork user-plane execution</li>
-<li>bundled/plugin/MCP merge semantics</li>
-<li>reload/change propagation</li>
-</ul>
-<p>对应源码簇：</p>
-<ul>
-<li><code>src/skills/loadSkillsDir.ts</code></li>
-<li><code>src/utils/frontmatterParser.ts</code></li>
-<li><code>src/utils/markdownConfigLoader.ts</code></li>
-<li><code>src/commands.ts</code></li>
-<li><code>src/tools/SkillTool/SkillTool.ts</code></li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx</code></li>
-<li><code>src/utils/forkedAgent.ts</code></li>
-<li><code>src/skills/bundledSkills.ts</code></li>
-<li><code>src/utils/plugins/loadPluginCommands.ts</code></li>
-<li><code>src/skills/mcpSkillBuilders.ts</code></li>
-<li><code>src/utils/skills/skillChangeDetector.ts</code></li>
-<li><code>src/hooks/useSkillsChange.ts</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>08 模块是“多来源技能能力总线”：</p>
 <ul>
@@ -3127,34 +3056,6 @@
 </ul>
 <hr />
 <h2 id="_4">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页是 08 模块总览页，覆盖 skill 系统的完整主链与跨页契约：</p>
-<ul>
-<li>发现与加载（discovery/indexing）</li>
-<li>命令面投影（UI/slash/model）</li>
-<li>SkillTool 运行时与权限决策</li>
-<li>slash 用户平面执行与 fork 分流</li>
-<li>bundled/plugin/MCP 多来源合流</li>
-<li>缓存失效、动态激活与变更传播</li>
-</ul>
-<p>证据范围：</p>
-<ul>
-<li><code>src/skills/loadSkillsDir.ts</code></li>
-<li><code>src/utils/frontmatterParser.ts</code></li>
-<li><code>src/utils/markdownConfigLoader.ts</code></li>
-<li><code>src/commands.ts</code></li>
-<li><code>src/tools/SkillTool/SkillTool.ts</code></li>
-<li><code>src/utils/processUserInput/processSlashCommand.tsx</code></li>
-<li><code>src/utils/forkedAgent.ts</code></li>
-<li><code>src/utils/argumentSubstitution.ts</code></li>
-<li><code>src/skills/bundledSkills.ts</code></li>
-<li><code>src/utils/plugins/loadPluginCommands.ts</code></li>
-<li><code>src/skills/mcpSkillBuilders.ts</code></li>
-<li><code>src/utils/skills/skillChangeDetector.ts</code></li>
-<li><code>src/hooks/useSkillsChange.ts</code></li>
-<li><code>src/utils/hooks/registerSkillHooks.ts</code></li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>08 模块本质是“可扩展命令能力总线”：</p>
 <ul>

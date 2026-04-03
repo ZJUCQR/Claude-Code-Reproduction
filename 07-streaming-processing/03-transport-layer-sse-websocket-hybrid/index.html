@@ -1657,17 +1657,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2490,17 +2479,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2667,22 +2645,6 @@
 
 
 <h1 id="_1">传输层（//）（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖“<strong>链路级可靠性</strong>”：SSE/WebSocket/Hybrid transport 的 buffering、flush、replay、reconnect、retry budget 与 close semantics。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/cli/transports/ccrClient.ts</code></li>
-<li><code>src/cli/transports/HybridTransport.ts</code></li>
-<li><code>src/upstreamproxy/relay.ts</code></li>
-<li>相关 transport 实现（SSE / WebSocket）</li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>StructuredIO semantic correlation（见 02）；</li>
-<li>streamed tool queue/backpressure（见 04）；</li>
-<li>render/UI 投影视图（见 01）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>transport 层的职责不是“尽量把包送到”，而是让 delivery retry 与 semantic replay 分离：</p>
 <ol>

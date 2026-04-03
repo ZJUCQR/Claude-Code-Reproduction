@@ -568,17 +568,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -710,17 +699,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2689,17 +2667,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2831,17 +2798,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -3065,22 +3021,6 @@
 
 
 <h1 id="_1">记忆系统（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/02-memory-system</code> 的入口页，给出 02 模块统一语义框架与阅读顺序。证据边界覆盖：</p>
-<ul>
-<li><code>src/memdir/memdir.ts</code></li>
-<li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
-<li><code>src/services/SessionMemory/sessionMemoryUtils.ts</code></li>
-<li><code>src/services/extractMemories/extractMemories.ts</code></li>
-<li><code>src/services/compact/autoCompact.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>Query 主循环状态机（01）；</li>
-<li>Prompt compression 全量算法（03）；</li>
-<li>多 agent 编排细节（04）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>记忆系统不是“让模型知道更多”的泛化功能，而是“<strong>让长期事实在可控权限与可审计失败语义下进入提示系统</strong>”的治理层。</p>
 <p>其核心约束：</p>
@@ -3254,23 +3194,6 @@
 </ul>
 <hr />
 <h2 id="_4">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页是 02 模块总览收敛页，聚焦以下执行平面：</p>
-<ul>
-<li><code>src/memdir/memdir.ts</code></li>
-<li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
-<li><code>src/services/SessionMemory/sessionMemoryUtils.ts</code></li>
-<li><code>src/services/extractMemories/extractMemories.ts</code></li>
-<li><code>src/services/compact/autoCompact.ts</code></li>
-</ul>
-<p>本页目标不是复述 01~04 子页细节，而是建立统一语义地图：</p>
-<ul>
-<li>读侧提示注入在何处 gate；</li>
-<li>写侧抽取在何处串行与限权；</li>
-<li>失败路径如何 fail-open/fail-closed；</li>
-<li>哪些不变量跨文件成立。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>Memory 子系统本质是“<strong>受门控的事实提炼与注入层</strong>”，不是“上下文越多越好”的缓存层。它由三段组成：</p>
 <ol>

@@ -1830,17 +1830,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2651,17 +2640,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2989,29 +2967,6 @@
 
 
 <h1 id="_1">运行时、与权限决策（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖 08 模块里“<strong>模型平面如何通过 SkillTool 调用 skill</strong>”的运行时层：</p>
-<ul>
-<li>skill 输入校验</li>
-<li>deny/allow/ask 权限顺序</li>
-<li>inline/fork/remote canonical 执行分叉</li>
-<li>tool_result 统一回传语义</li>
-<li>与 command registry 的关系</li>
-</ul>
-<p>证据范围：</p>
-<ul>
-<li><code>src/tools/SkillTool/SkillTool.ts</code></li>
-<li><code>src/commands.ts</code></li>
-<li><code>src/utils/forkedAgent.ts</code></li>
-<li><code>src/utils/argumentSubstitution.ts</code>（用于参数语义锚点）</li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>discovery/frontmatter/loading（见 01）</li>
-<li>slash 用户入口与后台 fork 回注（见 03）</li>
-<li>bundled/plugin/MCP taxonomy（见 04）</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>SkillTool 不是“模型版 slash 包装器”，而是同一命令事实源上的<strong>授权执行壳</strong>。它做四件事：</p>
 <ol>

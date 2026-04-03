@@ -1372,17 +1372,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1503,17 +1492,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -2678,17 +2656,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2809,17 +2776,6 @@
     <span class="md-ellipsis">
       
         深度审计正文
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
       
     </span>
   </a>
@@ -3043,25 +2999,6 @@
 
 
 <h1 id="_1">钩子机制（入口审计页）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页是 <code>docs/06-hook-mechanism</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
-<p>证据边界覆盖：</p>
-<ul>
-<li><code>src/utils/hooks.ts</code></li>
-<li><code>src/utils/hooks/hooksConfigSnapshot.ts</code></li>
-<li><code>src/utils/hooks/hooksSettings.ts</code></li>
-<li><code>src/utils/hooks/sessionHooks.ts</code></li>
-<li><code>src/utils/hooks/execPromptHook.ts</code></li>
-<li><code>src/utils/hooks/execAgentHook.ts</code></li>
-<li><code>src/utils/hooks/execHttpHook.ts</code></li>
-<li><code>src/services/tools/toolHooks.ts</code></li>
-<li><code>src/services/tools/toolExecution.ts</code></li>
-<li><code>src/utils/sessionStart.ts</code></li>
-<li><code>src/query/stopHooks.ts</code></li>
-<li><code>src/utils/hooks/fileChangedWatcher.ts</code></li>
-<li><code>src/utils/hooks/hookEvents.ts</code></li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>06 模块是“<strong>策略注入执行面</strong>”：把配置、匹配、执行、权限桥接、生命周期 hooks 与进度展示收敛成统一可审计协议。</p>
 <p>目标不是“hook 越多越灵活”，而是“hook 足够强大且仍可约束、可恢复、可观测”。</p>
@@ -3229,34 +3166,6 @@
 </ul>
 <hr />
 <h2 id="_3">深度审计正文</h2>
-<h2 id="1_1">1)范围与证据边界</h2>
-<p>本页覆盖 06 模块“<strong>Hook 策略注入执行面</strong>”的全链行为：配置快照与 matcher 选择、command/prompt/agent/http 等执行协议、tool permission 桥接、安全护栏、Session/File hooks 生命周期与 progress UX。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/utils/hooks.ts</code></li>
-<li><code>src/utils/hooks/hooksConfigSnapshot.ts</code></li>
-<li><code>src/utils/hooks/hooksSettings.ts</code></li>
-<li><code>src/utils/hooks/sessionHooks.ts</code></li>
-<li><code>src/utils/hooks/registerFrontmatterHooks.ts</code></li>
-<li><code>src/utils/hooks/execPromptHook.ts</code></li>
-<li><code>src/utils/hooks/execAgentHook.ts</code></li>
-<li><code>src/utils/hooks/execHttpHook.ts</code></li>
-<li><code>src/services/tools/toolHooks.ts</code></li>
-<li><code>src/services/tools/toolExecution.ts</code></li>
-<li><code>src/utils/sessionStart.ts</code></li>
-<li><code>src/query/stopHooks.ts</code></li>
-<li><code>src/utils/hooks/fileChangedWatcher.ts</code></li>
-<li><code>src/utils/hooks/hookEvents.ts</code></li>
-<li><code>src/utils/collapseHookSummaries.ts</code></li>
-<li><code>src/hooks/useDeferredHookMessages.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>tool 主执行协议本体（仅覆盖 hook 如何介入）；</li>
-<li>query-loop 主状态机本体；</li>
-<li>全局权限规则系统实现细节（仅覆盖 hook 与其合成语义）。</li>
-</ul>
-<hr />
 <h2 id="2_1">2)核心论点</h2>
 <p>Hook 不是“附加回调层”，而是系统策略注入的<strong>正式执行面</strong>：</p>
 <ol>

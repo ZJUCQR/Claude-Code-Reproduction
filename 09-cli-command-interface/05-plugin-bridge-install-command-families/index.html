@@ -2115,17 +2115,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2540,17 +2529,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2767,28 +2745,6 @@
 
 
 <h1 id="_1">命令族（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖 09 模块里的<strong>管理平面命令族</strong>，以及它们与 bridge 运行面的契约边界：</p>
-<ul>
-<li><code>plugin</code> 命令族（含 marketplace/install/enable/disable/update）；</li>
-<li><code>install [target]</code> 本地安装命令；</li>
-<li><code>remote-control</code> / <code>assistant</code> 等 bridge 入口命令（Commander 注册层）；</li>
-<li>bridge 运行时入口 <code>bridgeMain</code> 与 daemon worker 入口 <code>runBridgeHeadless</code> 的 guard 链。</li>
-</ul>
-<p>证据范围：</p>
-<ul>
-<li><code>src/main.tsx:run</code>（命令族注册与 help 面）</li>
-<li><code>src/bridge/bridgeMain.ts:bridgeMain</code></li>
-<li><code>src/bridge/bridgeMain.ts:runBridgeHeadless</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>argv 顶层 fast-path 命中规则（见 01）；</li>
-<li>registry/slash 主路由（见 03）；</li>
-<li>print/structured output 协议投影（见 04）；</li>
-<li>replBridge/useReplBridge 的长生命周期状态机（见 07）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>05 的核心不是“多几个管理命令”，而是：<strong>把高风险/高副作用能力压缩到可审计的管理平面，并用双层 guard 保证 remote-control 启动安全</strong>。</p>
 <p>具体体现：</p>

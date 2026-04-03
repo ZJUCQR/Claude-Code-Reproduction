@@ -451,17 +451,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2590,17 +2579,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2867,20 +2845,6 @@
 
 
 <h1 id="_1">代理循环与工具：单工具执行、权限与错误封装（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖 <code>src/services/tools/toolExecution.ts</code> 的单工具事务闭环：</p>
-<ul>
-<li><code>runToolUse</code>：入口与总兜底；</li>
-<li><code>streamedCheckPermissionsAndCallTool</code>：流式桥接；</li>
-<li><code>checkPermissionsAndCallTool</code>：校验、hooks、权限、调用、后处理。</li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>批次并发调度（见 03）；</li>
-<li>Query 级恢复状态机（见 02）；</li>
-<li>stop hooks 总收尾（见 05）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p><code>toolExecution.ts</code> 的价值不在“把 tool.call 跑通”，而在把工具调用转译成可审计协议事务：</p>
 <p>1) 输入结构必须可验证；

@@ -1428,17 +1428,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2490,17 +2479,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2667,23 +2645,6 @@
 
 
 <h1 id="_1">执行器（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页覆盖“<strong>Hook 执行协议层</strong>”：command/prompt/agent/http/function/callback 的执行语义、输入输出协议、超时/取消/格式校验。</p>
-<p>证据范围：</p>
-<ul>
-<li><code>src/utils/hooks.ts</code></li>
-<li><code>src/utils/hooks/execPromptHook.ts</code></li>
-<li><code>src/utils/hooks/execAgentHook.ts</code></li>
-<li><code>src/utils/hooks/execHttpHook.ts</code></li>
-<li><code>src/utils/hooks/AsyncHookRegistry.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>配置来源与 matcher 选择（见 01）；</li>
-<li>permission/tool 决策桥接（见 03）；</li>
-<li>session/file watcher/progress UX（见 04）。</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>执行协议层的职责不是“多支持几种 hook 类型”，而是把多样执行方式统一成标准 HookResult：</p>
 <ol>

@@ -1802,17 +1802,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2629,17 +2618,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1)范围与证据边界
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2945,30 +2923,6 @@
 
 
 <h1 id="_1">发现、加载与索引（深潜审计版）</h1>
-<h2 id="1">1)范围与证据边界</h2>
-<p>本页只覆盖 08 模块里“<strong>技能如何从文件系统与配置源进入统一命令抽象</strong>”这一层：</p>
-<ul>
-<li>目录发现与上行边界</li>
-<li>Markdown/frontmatter 解析与字段归一</li>
-<li>技能命令对象构造</li>
-<li>conditional/dynamic 技能激活</li>
-<li>file watcher 触发的缓存失效与刷新</li>
-</ul>
-<p>证据边界（逐文件）：</p>
-<ul>
-<li><code>src/skills/loadSkillsDir.ts</code></li>
-<li><code>src/utils/frontmatterParser.ts</code></li>
-<li><code>src/utils/markdownConfigLoader.ts</code></li>
-<li><code>src/utils/skills/skillChangeDetector.ts</code></li>
-<li><code>src/hooks/useSkillsChange.ts</code></li>
-</ul>
-<p>不覆盖：</p>
-<ul>
-<li>SkillTool validate/permission/call（见 02）</li>
-<li>slash 入口与 fork 执行（见 03）</li>
-<li>bundled/plugin/MCP 来源 taxonomy（见 04）</li>
-</ul>
-<hr />
 <h2 id="2">2)核心论点</h2>
 <p>这一层的本质不是“扫目录+读 md”，而是把<strong>高度脏乱的输入面</strong>压平为下游可消费的稳定 command facts：</p>
 <ol>
