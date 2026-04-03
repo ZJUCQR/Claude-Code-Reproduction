@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>总览 - Claude Code Source Architecture</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Claude Code Source Architecture</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../" class="nav-link">架构总览</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">AgentLoop 与 Tool</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01-agentloop-tool/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="dropdown-item">入口与启动装配</a>
+</li>
+                                    
+<li>
+    <a href="../01-agentloop-tool/02-query-loop-state-machine/" class="dropdown-item">Query 回合状态机</a>
+</li>
+                                    
+<li>
+    <a href="../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="dropdown-item">Tool 编排与并发策略</a>
+</li>
+                                    
+<li>
+    <a href="../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="dropdown-item">Tool 执行、权限与错误封装</a>
+</li>
+                                    
+<li>
+    <a href="../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="dropdown-item">Streaming/StopHooks/输出边界</a>
+</li>
+                                    
+<li>
+    <a href="../01-agentloop-tool/agentloop-tool/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">记忆系统</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../02-memory-system/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../02-memory-system/01-memory-loading-and-prompt-injection/" class="dropdown-item">加载与 Prompt 注入</a>
+</li>
+                                    
+<li>
+    <a href="../02-memory-system/02-session-memory-extraction-pipeline/" class="dropdown-item">SessionMemory 抽取链路</a>
+</li>
+                                    
+<li>
+    <a href="../02-memory-system/03-memory-files-forked-write-and-aging/" class="dropdown-item">文件写入、隔离执行与时效</a>
+</li>
+                                    
+<li>
+    <a href="../02-memory-system/04-gates-failure-modes-and-observability/" class="dropdown-item">Gate、失败模式与可观测性</a>
+</li>
+                                    
+<li>
+    <a href="../02-memory-system/memory-system/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Prompt 与上下文压缩</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../03-prompt-context-compression/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="dropdown-item">System Prompt 组装与优先级</a>
+</li>
+                                    
+<li>
+    <a href="../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="dropdown-item">Token 预算与自动压缩判定</a>
+</li>
+                                    
+<li>
+    <a href="../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="dropdown-item">Microcompact 与 SessionMemory Compact</a>
+</li>
+                                    
+<li>
+    <a href="../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="dropdown-item">压缩后清理与消息折叠</a>
+</li>
+                                    
+<li>
+    <a href="../03-prompt-context-compression/prompt-context-compression/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">多 Agent 协同策略</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../04-multi-agent-coordination/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="dropdown-item">Spawn 入口与模型继承</a>
+</li>
+                                    
+<li>
+    <a href="../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="dropdown-item">Backend 选择（in-process / tmux / iTerm）</a>
+</li>
+                                    
+<li>
+    <a href="../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="dropdown-item">权限同步、Mailbox 与团队状态</a>
+</li>
+                                    
+<li>
+    <a href="../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="dropdown-item">Worktree 生命周期与清理</a>
+</li>
+                                    
+<li>
+    <a href="../04-multi-agent-coordination/multi-agent-coordination/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">MCP 协议</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">总览</a>
+</li>
+                                    
+<li>
+    <a href="01-connection-lifecycle-and-auth/" class="dropdown-item">连接生命周期与鉴权</a>
+</li>
+                                    
+<li>
+    <a href="02-tools-resources-commands-discovery/" class="dropdown-item">Tools/Resources/Commands 发现</a>
+</li>
+                                    
+<li>
+    <a href="03-result-transform-and-elicitation-retry/" class="dropdown-item">结果转换与 Elicitation 重试</a>
+</li>
+                                    
+<li>
+    <a href="04-cli-ui-management-and-plugin-integration/" class="dropdown-item">CLI/UI 管理与插件集成</a>
+</li>
+                                    
+<li>
+    <a href="mcp-protocol/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Hook 机制</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../06-hook-mechanism/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="dropdown-item">配置注册与匹配器</a>
+</li>
+                                    
+<li>
+    <a href="../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="dropdown-item">Agent/HTTP/Prompt 三类执行器</a>
+</li>
+                                    
+<li>
+    <a href="../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="dropdown-item">Tool 权限决策与安全防护</a>
+</li>
+                                    
+<li>
+    <a href="../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="dropdown-item">Session/File Hook 与进度反馈</a>
+</li>
+                                    
+<li>
+    <a href="../06-hook-mechanism/hook-mechanism/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">流式处理</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../07-streaming-processing/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="dropdown-item">模型流到 CLI 渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="dropdown-item">Structured I/O 协议与请求关联</a>
+</li>
+                                    
+<li>
+    <a href="../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="dropdown-item">传输层（SSE / WebSocket / Hybrid）</a>
+</li>
+                                    
+<li>
+    <a href="../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="dropdown-item">Streaming Tool Executor、背压与错误传播</a>
+</li>
+                                    
+<li>
+    <a href="../07-streaming-processing/streaming-processing/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Skill 技能库</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../08-skill-library/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../08-skill-library/01-skill-discovery-loading-and-indexing/" class="dropdown-item">发现、加载与索引</a>
+</li>
+                                    
+<li>
+    <a href="../08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="dropdown-item">SkillTool 运行时、UI 与权限决策</a>
+</li>
+                                    
+<li>
+    <a href="../08-skill-library/03-slash-command-translation-and-fork-execution/" class="dropdown-item">Slash 转译与 Fork 执行</a>
+</li>
+                                    
+<li>
+    <a href="../08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="dropdown-item">Bundled Skills 分类与使用场景</a>
+</li>
+                                    
+<li>
+    <a href="../08-skill-library/skill-library/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CLI 命令行界面</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09-cli-command-interface/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="dropdown-item">入口 fast-path 与启动</a>
+</li>
+                                    
+<li>
+    <a href="../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="dropdown-item">Commander 装配、preAction 与初始化</a>
+</li>
+                                    
+<li>
+    <a href="../09-cli-command-interface/03-command-registry-and-slash-routing/" class="dropdown-item">命令注册与 Slash 路由</a>
+</li>
+                                    
+<li>
+    <a href="../09-cli-command-interface/04-structured-print-interactive-modes/" class="dropdown-item">Structured/Print/Interactive 输出模式</a>
+</li>
+                                    
+<li>
+    <a href="../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="dropdown-item">Plugin/Bridge/Install 命令族</a>
+</li>
+                                    
+<li>
+    <a href="../09-cli-command-interface/cli-command-interface/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">覆盖报告</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../coverage/coverage-summary/" class="dropdown-item">概览</a>
+</li>
+                                    
+<li>
+    <a href="../coverage/uncategorized-resolutions/" class="dropdown-item">未归类处置</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../04-multi-agent-coordination/multi-agent-coordination/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="01-connection-lifecycle-and-auth/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#mcp" class="nav-link">MCP 协议集成层（入口审计页）</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-scope-evidence-boundary" class="nav-link">1) Scope 与 Evidence Boundary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-core-thesis" class="nav-link">2) Core Thesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-runtime-state-ownership" class="nav-link">3) Runtime State Ownership</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-end-to-end-flow" class="nav-link">4) End-to-end Flow（高层）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-guard-decision-matrix" class="nav-link">5) Guard / Decision Matrix（入口级）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-failure-recovery-degradation" class="nav-link">6) Failure / Recovery / Degradation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-invariants" class="nav-link">7) Invariants</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-cross-module-contracts" class="nav-link">8) Cross-module Contracts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-engineering-constraints-evolution-guidance" class="nav-link">9) Engineering Constraints / Evolution Guidance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-source-anchors" class="nav-link">10) Source Anchors + 子页导航</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="mcp">MCP 协议集成层（入口审计页）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页是 <code>docs/architecture/05-mcp-protocol</code> 的入口页，仅负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
+<p>证据边界覆盖：</p>
+<ul>
+<li><code>src/services/mcp/client.ts</code></li>
+<li><code>src/utils/mcpValidation.ts</code></li>
+<li><code>src/utils/mcpOutputStorage.ts</code></li>
+<li><code>src/services/mcp/mcpStringUtils.ts</code></li>
+<li><code>src/services/mcpServerApproval.tsx</code></li>
+<li><code>src/cli/print.ts</code></li>
+<li><code>src/cli/handlers/mcp.tsx</code></li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>05 模块是“<strong>外部协议收敛层</strong>”：把 transport、鉴权、发现、调用和结果差异压缩成主链可消费的稳定语义。</p>
+<p>目标不是“全部成功”，而是“局部失败时仍可解释、可恢复、可退化”。</p>
+<hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>所有者</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连接与重连态</td>
+<td><code>client.ts</code></td>
+<td>建连、缓存、会话过期恢复</td>
+</tr>
+<tr>
+<td>发现与投影态</td>
+<td><code>client.ts</code> + <code>mcpStringUtils.ts</code></td>
+<td>tools/resources/commands 映射</td>
+</tr>
+<tr>
+<td>调用协商态</td>
+<td><code>client.ts</code></td>
+<td>tool call + elicitation retry</td>
+</tr>
+<tr>
+<td>输出治理态</td>
+<td><code>mcpValidation.ts</code> + <code>mcpOutputStorage.ts</code></td>
+<td>截断/落盘/二进制处理</td>
+</tr>
+<tr>
+<td>管理与审批态</td>
+<td><code>mcpServerApproval.tsx</code> + CLI handlers</td>
+<td>pending approvals 与配置管理</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow（高层）</h2>
+<ol>
+<li>聚合 MCP 配置并连接 server。  </li>
+<li>拉取 tools/resources/commands 并映射内部对象。  </li>
+<li>调用工具，必要时进入 URL elicitation 协商与重试。  </li>
+<li>对返回结果做规范化与大输出治理。  </li>
+<li>通过 CLI/UI 与审批流程维护 server 生命周期。</li>
+</ol>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix（入口级）</h2>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>行为</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>connection guard</td>
+<td>client 非 connected</td>
+<td>discovery/call 退化</td>
+<td>局部可用</td>
+</tr>
+<tr>
+<td>capability guard</td>
+<td>server 无 tools/resources/prompts</td>
+<td>跳过对应 list</td>
+<td>防无意义请求</td>
+</tr>
+<tr>
+<td>elicitation guard</td>
+<td><code>UrlElicitationRequired</code></td>
+<td>进入 accept/decline/cancel 分支</td>
+<td>协商闭环</td>
+</tr>
+<tr>
+<td>retry bound guard</td>
+<td>超过重试上限</td>
+<td>停止重试</td>
+<td>防循环风暴</td>
+</tr>
+<tr>
+<td>output budget guard</td>
+<td>内容超阈值</td>
+<td>truncate 或 persist</td>
+<td>防上下文超载</td>
+</tr>
+<tr>
+<td>approval guard</td>
+<td>project pending servers</td>
+<td>先审批后可用</td>
+<td>防未授权接入</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<ul>
+<li>transport/auth 失败：按 server 级别失败，不拖垮全局。  </li>
+<li>session-expired：清缓存并重连重试。  </li>
+<li>discovery 失败：返回空集合，保持其余 server 可用。  </li>
+<li>elicitation 拒绝：返回解释性结果并终止重试。  </li>
+<li>大输出异常：截断或落盘提示，不把异常 payload 直接上送。</li>
+</ul>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li>MCP 原始返回必须先规范化再入模。  </li>
+<li>连接缓存与发现缓存失效必须联动。  </li>
+<li>URL elicitation 必须保留拒绝分支与重试上界。  </li>
+<li>命名空间必须稳定（<code>mcp__...</code>）以避免跨 server 冲突。  </li>
+<li>pending project servers 需经审批后才可用。  </li>
+<li>失败处理必须优先“部分可用”而非全局中断。</li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>对 query/tool 主链：输出标准化结果，不泄漏 MCP 私有异常形态。  </li>
+<li>对 hooks：可参与协商决策，但不绕过重试边界。  </li>
+<li>对 CLI/UI：管理面与 runtime 配置共用同一事实源。  </li>
+<li>对安全层：工具元信息是信号，不替代最终权限决策。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<p>扩展 MCP 时必须验证：</p>
+<ol>
+<li>新 transport 是否接入统一连接状态机；</li>
+<li>新对象发现是否支持 capability gate 与局部退化；</li>
+<li>新返回类型是否先经过 transform/process 链；</li>
+<li>新管理命令是否进入审批/刷新闭环。</li>
+</ol>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors + 子页导航</h2>
+<h3 id="_1">关键锚点</h3>
+<ul>
+<li><code>src/services/mcp/client.ts:connectToServer</code></li>
+<li><code>src/services/mcp/client.ts:ensureConnectedClient</code></li>
+<li><code>src/services/mcp/client.ts:fetchToolsForClient</code></li>
+<li><code>src/services/mcp/client.ts:callMCPToolWithUrlElicitationRetry</code></li>
+<li><code>src/services/mcp/client.ts:transformMCPResult</code></li>
+<li><code>src/services/mcp/client.ts:processMCPResult</code></li>
+<li><code>src/utils/mcpValidation.ts:mcpContentNeedsTruncation</code></li>
+<li><code>src/utils/mcpOutputStorage.ts:persistBinaryContent</code></li>
+<li><code>src/services/mcpServerApproval.tsx:handleMcpjsonServerApprovals</code></li>
+<li><code>src/cli/handlers/mcp.tsx:mcpListHandler</code></li>
+</ul>
+<h3 id="_2">阅读顺序</h3>
+<ul>
+<li><a href="mcp-protocol/">总览主文：mcp-protocol.md</a></li>
+<li><a href="01-connection-lifecycle-and-auth/">01 连接生命周期与鉴权</a></li>
+<li><a href="02-tools-resources-commands-discovery/">02 Tools/Resources/Commands 发现</a></li>
+<li><a href="03-result-transform-and-elicitation-retry/">03 结果转换与 Elicitation 重试</a></li>
+<li>
+<p><a href="04-cli-ui-management-and-plugin-integration/">04 CLI/UI 管理与插件集成</a></p>
+</li>
+<li>
+<p>覆盖映射：<a href="../coverage/src-module-mapping.csv"><code>../coverage/src-module-mapping.csv</code></a></p>
+</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

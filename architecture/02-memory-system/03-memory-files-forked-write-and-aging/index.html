@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>文件写入、隔离执行与时效 - Claude Code Source Architecture</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Claude Code Source Architecture</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../" class="nav-link">架构总览</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">AgentLoop 与 Tool</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-agentloop-tool/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="dropdown-item">入口与启动装配</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/02-query-loop-state-machine/" class="dropdown-item">Query 回合状态机</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="dropdown-item">Tool 编排与并发策略</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="dropdown-item">Tool 执行、权限与错误封装</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="dropdown-item">Streaming/StopHooks/输出边界</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/agentloop-tool/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">记忆系统</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../01-memory-loading-and-prompt-injection/" class="dropdown-item">加载与 Prompt 注入</a>
+</li>
+                                    
+<li>
+    <a href="../02-session-memory-extraction-pipeline/" class="dropdown-item">SessionMemory 抽取链路</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">文件写入、隔离执行与时效</a>
+</li>
+                                    
+<li>
+    <a href="../04-gates-failure-modes-and-observability/" class="dropdown-item">Gate、失败模式与可观测性</a>
+</li>
+                                    
+<li>
+    <a href="../memory-system/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Prompt 与上下文压缩</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="dropdown-item">System Prompt 组装与优先级</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="dropdown-item">Token 预算与自动压缩判定</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="dropdown-item">Microcompact 与 SessionMemory Compact</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="dropdown-item">压缩后清理与消息折叠</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/prompt-context-compression/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">多 Agent 协同策略</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="dropdown-item">Spawn 入口与模型继承</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="dropdown-item">Backend 选择（in-process / tmux / iTerm）</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="dropdown-item">权限同步、Mailbox 与团队状态</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="dropdown-item">Worktree 生命周期与清理</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">MCP 协议</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../05-mcp-protocol/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="dropdown-item">连接生命周期与鉴权</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="dropdown-item">Tools/Resources/Commands 发现</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="dropdown-item">结果转换与 Elicitation 重试</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="dropdown-item">CLI/UI 管理与插件集成</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/mcp-protocol/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Hook 机制</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../06-hook-mechanism/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="dropdown-item">配置注册与匹配器</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="dropdown-item">Agent/HTTP/Prompt 三类执行器</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="dropdown-item">Tool 权限决策与安全防护</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="dropdown-item">Session/File Hook 与进度反馈</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/hook-mechanism/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">流式处理</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../07-streaming-processing/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="dropdown-item">模型流到 CLI 渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="dropdown-item">Structured I/O 协议与请求关联</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="dropdown-item">传输层（SSE / WebSocket / Hybrid）</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="dropdown-item">Streaming Tool Executor、背压与错误传播</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/streaming-processing/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Skill 技能库</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../08-skill-library/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/01-skill-discovery-loading-and-indexing/" class="dropdown-item">发现、加载与索引</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="dropdown-item">SkillTool 运行时、UI 与权限决策</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/03-slash-command-translation-and-fork-execution/" class="dropdown-item">Slash 转译与 Fork 执行</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="dropdown-item">Bundled Skills 分类与使用场景</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/skill-library/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CLI 命令行界面</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../09-cli-command-interface/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="dropdown-item">入口 fast-path 与启动</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="dropdown-item">Commander 装配、preAction 与初始化</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/03-command-registry-and-slash-routing/" class="dropdown-item">命令注册与 Slash 路由</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/04-structured-print-interactive-modes/" class="dropdown-item">Structured/Print/Interactive 输出模式</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="dropdown-item">Plugin/Bridge/Install 命令族</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/cli-command-interface/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">覆盖报告</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../coverage/coverage-summary/" class="dropdown-item">概览</a>
+</li>
+                                    
+<li>
+    <a href="../../coverage/uncategorized-resolutions/" class="dropdown-item">未归类处置</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../02-session-memory-extraction-pipeline/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../04-gates-failure-modes-and-observability/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#forked" class="nav-link">记忆系统：文件写入、Forked 执行与时效（深潜审计版）</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-scope-evidence-boundary" class="nav-link">1) Scope 与 Evidence Boundary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-core-thesis" class="nav-link">2) Core Thesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-runtime-state-ownership" class="nav-link">3) Runtime State Ownership</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-end-to-end-flow" class="nav-link">4) End-to-end Flow</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-guard-decision-matrix" class="nav-link">5) Guard / Decision Matrix</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-failure-recovery-degradation" class="nav-link">6) Failure / Recovery / Degradation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-invariants" class="nav-link">7) Invariants</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-cross-module-contracts" class="nav-link">8) Cross-module Contracts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-engineering-constraints-evolution-guidance" class="nav-link">9) Engineering Constraints / Evolution Guidance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-source-anchors" class="nav-link">10) Source Anchors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="forked">记忆系统：文件写入、Forked 执行与时效（深潜审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页聚焦 <strong>memory 写侧安全边界与一致性语义</strong>，证据范围：</p>
+<ul>
+<li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts</code></li>
+<li><code>src/utils/forkedAgent.ts</code></li>
+<li><code>src/memdir/memoryAge.ts</code></li>
+<li><code>src/memdir/findRelevantMemories.ts</code></li>
+</ul>
+<p>不覆盖：</p>
+<ul>
+<li>触发阈值细节（见 02）；</li>
+<li>gate/观测总收敛（见 04）。</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>写侧治理的核心不是“写进去”，而是“三件事同时成立”：</p>
+<ol>
+<li><strong>权限必须精确收敛</strong>（只写允许的 memory 路径）；</li>
+<li><strong>执行必须上下文隔离</strong>（forked agent 不污染主线程状态）；</li>
+<li><strong>时效必须显式化</strong>（旧记忆要带 stale 语义）。</li>
+</ol>
+<p>这三条决定了 memory 系统是否会从“增强能力”变成“隐形风险源”。</p>
+<hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键机制</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单文件写权限</td>
+<td><code>sessionMemory.ts</code></td>
+<td><code>createMemoryFileCanUseTool(memoryPath)</code></td>
+<td>仅允许 Edit 指定文件</td>
+</tr>
+<tr>
+<td>目录级写权限</td>
+<td><code>extractMemories.ts</code></td>
+<td><code>createAutoMemCanUseTool(memoryDir)</code></td>
+<td>允许受限 read/write 工具集合</td>
+</tr>
+<tr>
+<td>forked 执行隔离态</td>
+<td><code>sessionMemory.ts</code> + <code>forkedAgent.ts</code></td>
+<td><code>createSubagentContext</code> + <code>overrides.readFileState</code></td>
+<td>避免主上下文 read cache 污染</td>
+</tr>
+<tr>
+<td>写入游标推进</td>
+<td><code>extractMemories.ts</code></td>
+<td><code>lastMemoryMessageUuid</code></td>
+<td>成功后推进，失败不推进</td>
+</tr>
+<tr>
+<td>时效状态</td>
+<td><code>memoryAge.ts</code></td>
+<td><code>mtimeMs -&gt; memoryAgeDays/freshness</code></td>
+<td>将陈旧风险转译为文本提示</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow</h2>
+<h3 id="41-sessionmemory">4.1 SessionMemory 单文件限权写入</h3>
+<pre><code class="language-ts">// src/services/SessionMemory/sessionMemory.ts
+export function createMemoryFileCanUseTool(memoryPath: string): CanUseToolFn {
+  return async (tool: Tool, input: unknown) =&gt; {
+    if (
+      tool.name === FILE_EDIT_TOOL_NAME &amp;&amp;
+      typeof input === 'object' &amp;&amp;
+      input !== null &amp;&amp;
+      'file_path' in input
+    ) {
+      const filePath = input.file_path
+      if (typeof filePath === 'string' &amp;&amp; filePath === memoryPath) {
+        return { behavior: 'allow' as const, updatedInput: input }
+      }
+    }
+    return {
+      behavior: 'deny' as const,
+      message: `only ${FILE_EDIT_TOOL_NAME} on ${memoryPath} is allowed`,
+      decisionReason: { type: 'other' as const, reason: ... },
+    }
+  }
+}
+</code></pre>
+<h3 id="42-extractmemories">4.2 extractMemories 目录级受限执行</h3>
+<p><code>runExtraction()</code> 通过 <code>createAutoMemCanUseTool(memoryDir)</code> 赋予 forked agent 受限工具能力；并在已检测到主会话直接写 memory 时 skip fork，避免重复提取。</p>
+<h3 id="43-trailing-coalescing">4.3 trailing coalescing（写侧并发治理）</h3>
+<pre><code class="language-ts">// src/services/extractMemories/extractMemories.ts
+if (inProgress) {
+  pendingContext = { context, appendSystemMessage }
+  return
+}
+
+await runExtraction({ context, appendSystemMessage })
+
+// finally
+const trailing = pendingContext
+pendingContext = undefined
+if (trailing) {
+  await runExtraction({ context: trailing.context, isTrailingRun: true })
+}
+</code></pre>
+<h3 id="44">4.4 时效输出</h3>
+<pre><code class="language-ts">// src/memdir/memoryAge.ts
+export function memoryFreshnessText(mtimeMs: number): string {
+  const d = memoryAgeDays(mtimeMs)
+  if (d &lt;= 1) return ''
+  return (
+    `This memory is ${d} days old. ` +
+    `Memories are point-in-time observations, not live state — ` +
+    `claims about code behavior or file:line citations may be outdated. ` +
+    `Verify against current code before asserting as fact.`
+  )
+}
+</code></pre>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>动作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Session 文件写入</td>
+<td>tool=Edit 且 <code>file_path===memoryPath</code></td>
+<td>allow</td>
+<td>单文件可写</td>
+</tr>
+<tr>
+<td>Session 文件写入</td>
+<td>非上述条件</td>
+<td>deny</td>
+<td>fail-closed</td>
+</tr>
+<tr>
+<td>extract direct-write 互斥</td>
+<td><code>hasMemoryWritesSince(...)</code></td>
+<td>skip fork + 推进 cursor</td>
+<td>避免重复提取</td>
+</tr>
+<tr>
+<td>extract 重入</td>
+<td><code>inProgress=true</code></td>
+<td>stash latest pending</td>
+<td>合并多次触发</td>
+</tr>
+<tr>
+<td>trailing 执行</td>
+<td>finally 检测 pending</td>
+<td>运行 trailing run</td>
+<td>补齐新增区间</td>
+</tr>
+<tr>
+<td>stale 提示</td>
+<td>memoryAgeDays &gt; 1</td>
+<td>注入 freshness 文本</td>
+<td>提醒复核当前代码</td>
+</tr>
+<tr>
+<td>fresh 记忆</td>
+<td>memoryAgeDays &lt;= 1</td>
+<td>无 stale 警告</td>
+<td>降低噪音</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h3 id="61">6.1 权限拒绝链：拒绝优先于模糊写入</h3>
+<p><code>createMemoryFileCanUseTool</code> deny 非目标路径，确保“要么合法写入，要么明确失败”。</p>
+<h3 id="62-forked-best-effort">6.2 forked 抽取失败链：best-effort</h3>
+<p><code>runExtraction</code> catch 仅日志与埋点，不将失败上抛主循环。</p>
+<h3 id="63-pending">6.3 重入恢复链：pending 覆盖旧值</h3>
+<p>进行中重入只保留最新 <code>pendingContext</code>；当前 run 结束后 trailing 补跑，避免 N 次触发导致 N 次并发写。</p>
+<h3 id="64">6.4 时效恢复链：文本层风险提示</h3>
+<p>旧记忆不会被自动删；通过 freshness note 把“需验证当前状态”前置给模型。</p>
+<h3 id="65">6.5 读缓存污染恢复</h3>
+<p>SessionMemory 写前使用 <code>createSubagentContext</code> 与独立 <code>readFileState</code>，防止主 context dedup/cache 误判。</p>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li>SessionMemory 写权限必须是“单文件 Edit”最小集合。  </li>
+<li>extractMemories 写权限必须受 memoryDir 约束。  </li>
+<li>forked agent 不能污染主线程 read/write 缓存状态。  </li>
+<li>inProgress 重入必须 coalesce，不能并发写同一 memory 区间。  </li>
+<li>cursor 只在成功或显式 skip（direct write）后推进。  </li>
+<li>trailing run 只能补新增区间，不能回放全历史。  </li>
+<li>stale 记忆必须有显式风险文本，不得默默当实时事实。  </li>
+<li>写侧失败不能击穿主会话响应路径。  </li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>对 01（tool 权限执行）：memory 写入策略通过统一 <code>canUseTool</code> 接口落地，不建旁路权限系统。  </li>
+<li>对 02（session extraction）：02 决定“何时写”；本页定义“写时如何安全”。  </li>
+<li>对 04（gates/observability）：本页产生拒绝、coalesce、error 事件信号，04 统一可观测解释。  </li>
+<li>对 prompt 注入（01 子页）：写侧产生的 mtime 最终影响 freshness 提示。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<p>新增写入工具或放宽权限前必须回答：</p>
+<ol>
+<li>是否仍满足最小权限原则？</li>
+<li>是否会破坏 direct-write 互斥逻辑？</li>
+<li>是否会让 trailing run 不可预测（乱序/重复）？</li>
+<li>是否保留 stale 提示链路？</li>
+</ol>
+<p>建议回归：</p>
+<ul>
+<li>非目标路径写入（应拒绝）；</li>
+<li>inProgress 期间多次触发（应 coalesce）；</li>
+<li>direct-write 检测命中（应 skip fork）；</li>
+<li>旧记忆文件召回（应带 freshness 提示）；</li>
+<li>forked extraction 异常（主链继续）。</li>
+</ul>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors</h2>
+<ul>
+<li><code>src/services/SessionMemory/sessionMemory.ts:createMemoryFileCanUseTool</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:setupSessionMemoryFile</code></li>
+<li><code>src/services/SessionMemory/sessionMemory.ts:manuallyExtractSessionMemory</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:runExtraction</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:executeExtractMemories</code></li>
+<li><code>src/services/extractMemories/extractMemories.ts:hasMemoryWritesSince</code>（调用分支）</li>
+<li><code>src/utils/forkedAgent.ts</code>（cacheSafeParams/readFileState 隔离契约）</li>
+<li><code>src/memdir/memoryAge.ts:memoryAgeDays</code></li>
+<li><code>src/memdir/memoryAge.ts:memoryFreshnessText</code></li>
+<li><code>src/memdir/findRelevantMemories.ts:findRelevantMemories</code></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

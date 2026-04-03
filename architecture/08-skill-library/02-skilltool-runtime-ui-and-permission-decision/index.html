@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>SkillTool 运行时、UI 与权限决策 - Claude Code Source Architecture</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Claude Code Source Architecture</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../" class="nav-link">架构总览</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">AgentLoop 与 Tool</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../01-agentloop-tool/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/01-entrypoint-and-bootstrap/" class="dropdown-item">入口与启动装配</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/02-query-loop-state-machine/" class="dropdown-item">Query 回合状态机</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/03-tool-orchestration-and-concurrency/" class="dropdown-item">Tool 编排与并发策略</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/04-tool-execution-permissions-and-errors/" class="dropdown-item">Tool 执行、权限与错误封装</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/05-streaming-hooks-and-output-boundaries/" class="dropdown-item">Streaming/StopHooks/输出边界</a>
+</li>
+                                    
+<li>
+    <a href="../../01-agentloop-tool/agentloop-tool/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">记忆系统</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../02-memory-system/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/01-memory-loading-and-prompt-injection/" class="dropdown-item">加载与 Prompt 注入</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/02-session-memory-extraction-pipeline/" class="dropdown-item">SessionMemory 抽取链路</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/03-memory-files-forked-write-and-aging/" class="dropdown-item">文件写入、隔离执行与时效</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/04-gates-failure-modes-and-observability/" class="dropdown-item">Gate、失败模式与可观测性</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/memory-system/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Prompt 与上下文压缩</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="dropdown-item">System Prompt 组装与优先级</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="dropdown-item">Token 预算与自动压缩判定</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="dropdown-item">Microcompact 与 SessionMemory Compact</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="dropdown-item">压缩后清理与消息折叠</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/prompt-context-compression/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">多 Agent 协同策略</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="dropdown-item">Spawn 入口与模型继承</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="dropdown-item">Backend 选择（in-process / tmux / iTerm）</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="dropdown-item">权限同步、Mailbox 与团队状态</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="dropdown-item">Worktree 生命周期与清理</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">MCP 协议</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../05-mcp-protocol/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="dropdown-item">连接生命周期与鉴权</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="dropdown-item">Tools/Resources/Commands 发现</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="dropdown-item">结果转换与 Elicitation 重试</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="dropdown-item">CLI/UI 管理与插件集成</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/mcp-protocol/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Hook 机制</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../06-hook-mechanism/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="dropdown-item">配置注册与匹配器</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="dropdown-item">Agent/HTTP/Prompt 三类执行器</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="dropdown-item">Tool 权限决策与安全防护</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="dropdown-item">Session/File Hook 与进度反馈</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/hook-mechanism/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">流式处理</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../07-streaming-processing/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="dropdown-item">模型流到 CLI 渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="dropdown-item">Structured I/O 协议与请求关联</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="dropdown-item">传输层（SSE / WebSocket / Hybrid）</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="dropdown-item">Streaming Tool Executor、背压与错误传播</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/streaming-processing/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Skill 技能库</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../01-skill-discovery-loading-and-indexing/" class="dropdown-item">发现、加载与索引</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">SkillTool 运行时、UI 与权限决策</a>
+</li>
+                                    
+<li>
+    <a href="../03-slash-command-translation-and-fork-execution/" class="dropdown-item">Slash 转译与 Fork 执行</a>
+</li>
+                                    
+<li>
+    <a href="../04-bundled-skills-taxonomy-and-use-cases/" class="dropdown-item">Bundled Skills 分类与使用场景</a>
+</li>
+                                    
+<li>
+    <a href="../skill-library/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CLI 命令行界面</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../09-cli-command-interface/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="dropdown-item">入口 fast-path 与启动</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="dropdown-item">Commander 装配、preAction 与初始化</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/03-command-registry-and-slash-routing/" class="dropdown-item">命令注册与 Slash 路由</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/04-structured-print-interactive-modes/" class="dropdown-item">Structured/Print/Interactive 输出模式</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="dropdown-item">Plugin/Bridge/Install 命令族</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/cli-command-interface/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">覆盖报告</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../coverage/coverage-summary/" class="dropdown-item">概览</a>
+</li>
+                                    
+<li>
+    <a href="../../coverage/uncategorized-resolutions/" class="dropdown-item">未归类处置</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../01-skill-discovery-loading-and-indexing/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../03-slash-command-translation-and-fork-execution/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#skilltool-ui" class="nav-link">SkillTool 运行时、UI 与权限决策（深潜审计版）</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-scope-evidence-boundary" class="nav-link">1) Scope 与 Evidence Boundary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-core-thesis" class="nav-link">2) Core Thesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-runtime-state-ownership" class="nav-link">3) Runtime State Ownership</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-end-to-end-flow" class="nav-link">4) End-to-end Flow</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-guard-decision-matrix" class="nav-link">5) Guard / Decision Matrix</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-failure-recovery-degradation" class="nav-link">6) Failure / Recovery / Degradation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-invariants" class="nav-link">7) Invariants</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-cross-module-contracts" class="nav-link">8) Cross-module Contracts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-engineering-constraints-evolution-guidance" class="nav-link">9) Engineering Constraints / Evolution Guidance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-source-anchors" class="nav-link">10) Source Anchors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="skilltool-ui">SkillTool 运行时、UI 与权限决策（深潜审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页只覆盖 08 模块里“<strong>模型平面如何通过 SkillTool 调用 skill</strong>”的运行时层：</p>
+<ul>
+<li>skill 输入校验</li>
+<li>deny/allow/ask 权限顺序</li>
+<li>inline/fork/remote canonical 执行分叉</li>
+<li>tool_result 统一回传语义</li>
+<li>与 command registry 的关系</li>
+</ul>
+<p>证据范围：</p>
+<ul>
+<li><code>src/tools/SkillTool/SkillTool.ts</code></li>
+<li><code>src/commands.ts</code></li>
+<li><code>src/utils/forkedAgent.ts</code></li>
+<li><code>src/utils/argumentSubstitution.ts</code>（用于参数语义锚点）</li>
+</ul>
+<p>不覆盖：</p>
+<ul>
+<li>discovery/frontmatter/loading（见 01）</li>
+<li>slash 用户入口与后台 fork 回注（见 03）</li>
+<li>bundled/plugin/MCP taxonomy（见 04）</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p>SkillTool 不是“模型版 slash 包装器”，而是同一命令事实源上的<strong>授权执行壳</strong>。它做四件事：</p>
+<ol>
+<li>把可调用目标限定为 prompt skill；</li>
+<li>把权限判决序列固定为 deny-first；</li>
+<li>把 inline/fork/remote canonical 三条执行通路统一回 <code>tool_result</code> 协议；</li>
+<li>把来源差异（本地/MCP/remote）在正确层面恢复，而不是混成一条“统一安全假设”。</li>
+</ol>
+<hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<table>
+<thead>
+<tr>
+<th>状态类别</th>
+<th>所有者</th>
+<th>关键函数</th>
+<th>职责</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>运行期命令汇总态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>getAllCommands</code></td>
+<td>本地 commands + MCP skill commands 合流</td>
+</tr>
+<tr>
+<td>输入校验态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>validateInput</code></td>
+<td>阻断空输入、未知 skill、非 prompt、禁模型调用</td>
+</tr>
+<tr>
+<td>权限裁决态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>checkPermissions</code></td>
+<td>deny &gt; (canonical allow) &gt; allow &gt; safe-auto-allow &gt; ask</td>
+</tr>
+<tr>
+<td>执行分叉态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>call</code>, <code>executeForkedSkill</code>, <code>executeRemoteSkill</code></td>
+<td>inline/fork/remote 路由</td>
+</tr>
+<tr>
+<td>上下文补丁态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>contextModifier</code></td>
+<td>allowedTools/model/effort 注入后续上下文</td>
+</tr>
+<tr>
+<td>结果协议态</td>
+<td><code>SkillTool.ts</code></td>
+<td><code>mapToolResultToToolResultBlockParam</code></td>
+<td>fork/inline 结果统一 tool_result 输出</td>
+</tr>
+<tr>
+<td>命令投影视图态</td>
+<td><code>commands.ts</code></td>
+<td><code>getSkillToolCommands</code>, <code>getMcpSkillCommands</code>, <code>getSlashCommandToolSkills</code></td>
+<td>不同 consumer 的可见命令面分层</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow</h2>
+<h3 id="41-mcp">4.1 命令汇总先做 MCP 精确过滤</h3>
+<p><code>getAllCommands()</code> 不把所有 MCP prompt 放进来，只纳入 <code>loadedFrom === 'mcp'</code> 的 skill：</p>
+<pre><code class="language-ts">const mcpSkills = context
+  .getAppState()
+  .mcp.commands.filter(
+    cmd =&gt; cmd.type === 'prompt' &amp;&amp; cmd.loadedFrom === 'mcp',
+  )
+if (mcpSkills.length === 0) return getCommands(getProjectRoot())
+const localCommands = await getCommands(getProjectRoot())
+return uniqBy([...localCommands, ...mcpSkills], 'name')
+</code></pre>
+<p>这一步阻断了“猜中 mcp prompt 名字就可走 SkillTool”的绕行入口。</p>
+<h3 id="42-validateinput-permission">4.2 validateInput：失败前移到 permission 之前</h3>
+<p><code>validateInput()</code> 把大多数错误前置：</p>
+<pre><code class="language-ts">const trimmed = skill.trim()
+if (!trimmed) return { result: false, message: `Invalid skill format: ${skill}`, errorCode: 1 }
+
+const normalizedCommandName = trimmed.startsWith('/') ? trimmed.substring(1) : trimmed
+...
+const foundCommand = findCommand(normalizedCommandName, commands)
+if (!foundCommand) return { result: false, message: `Unknown skill: ${normalizedCommandName}`, errorCode: 2 }
+
+if (foundCommand.disableModelInvocation) return { result: false, ... errorCode: 4 }
+if (foundCommand.type !== 'prompt') return { result: false, ... errorCode: 5 }
+</code></pre>
+<p>remote canonical（<code>_canonical_&lt;slug&gt;</code>）在本地 lookup 前被拦截：</p>
+<pre><code class="language-ts">const slug = remoteSkillModules!.stripCanonicalPrefix(normalizedCommandName)
+if (slug !== null) {
+  const meta = remoteSkillModules!.getDiscoveredRemoteSkill(slug)
+  if (!meta) return { result: false, ... errorCode: 6 }
+  return { result: true }
+}
+</code></pre>
+<h3 id="43-checkpermissions">4.3 checkPermissions：顺序就是策略</h3>
+<p>判决顺序按代码固定，不是注释约定：</p>
+<p>1) deny rules</p>
+<pre><code class="language-ts">const denyRules = getRuleByContentsForTool(permissionContext, SkillTool as Tool, 'deny')
+for (const [ruleContent, rule] of denyRules.entries()) {
+  if (ruleMatches(ruleContent)) {
+    return { behavior: 'deny', message: `Skill execution blocked by permission rules`, decisionReason: { type: 'rule', rule } }
+  }
+}
+</code></pre>
+<p>2) remote canonical auto-allow（但在 deny 之后）</p>
+<pre><code class="language-ts">const slug = remoteSkillModules!.stripCanonicalPrefix(commandName)
+if (slug !== null) {
+  return { behavior: 'allow', updatedInput: { skill, args }, decisionReason: undefined }
+}
+</code></pre>
+<p>3) allow rules</p>
+<pre><code class="language-ts">const allowRules = getRuleByContentsForTool(permissionContext, SkillTool as Tool, 'allow')
+for (const [ruleContent, rule] of allowRules.entries()) {
+  if (ruleMatches(ruleContent)) {
+    return { behavior: 'allow', updatedInput: { skill, args }, decisionReason: { type: 'rule', rule } }
+  }
+}
+</code></pre>
+<p>4) safe auto-allow</p>
+<pre><code class="language-ts">if (commandObj?.type === 'prompt' &amp;&amp; skillHasOnlySafeProperties(commandObj)) {
+  return { behavior: 'allow', updatedInput: { skill, args }, decisionReason: undefined }
+}
+</code></pre>
+<p>5) ask（并附规则建议）</p>
+<pre><code class="language-ts">return {
+  behavior: 'ask',
+  message: `Execute skill: ${commandName}`,
+  suggestions,
+  updatedInput: { skill, args },
+  metadata: commandObj ? { command: commandObj } : undefined,
+}
+</code></pre>
+<p>其中 <code>ruleMatches()</code> 同时处理 exact 与 <code>:*</code> 前缀规则，且统一去掉前导 <code>/</code>，保证 slash 命名与 SkillTool 命名一致：</p>
+<pre><code class="language-ts">const normalizedRule = ruleContent.startsWith('/') ? ruleContent.substring(1) : ruleContent
+if (normalizedRule === commandName) return true
+if (normalizedRule.endsWith(':*')) {
+  const prefix = normalizedRule.slice(0, -2)
+  return commandName.startsWith(prefix)
+}
+</code></pre>
+<h3 id="44-call">4.4 call：三条执行路径</h3>
+<p><code>call()</code> 的执行顺序：</p>
+<ol>
+<li>canonical skill -&gt; <code>executeRemoteSkill</code></li>
+<li><code>context==='fork'</code> -&gt; <code>executeForkedSkill</code></li>
+<li>默认 inline -&gt; 复用 <code>processPromptSlashCommand</code></li>
+</ol>
+<pre><code class="language-ts">const slug = remoteSkillModules!.stripCanonicalPrefix(commandName)
+if (slug !== null) {
+  return executeRemoteSkill(slug, commandName, parentMessage, context)
+}
+...
+if (command?.type === 'prompt' &amp;&amp; command.context === 'fork') {
+  return executeForkedSkill(...)
+}
+...
+const processedCommand = await processPromptSlashCommand(commandName, args || '', commands, context)
+if (!processedCommand.shouldQuery) {
+  throw new Error('Command processing failed')
+}
+</code></pre>
+<p>这点非常关键：SkillTool inline 路径并不自建 prompt 展开逻辑，而是复用 slash 的 prompt 主链。</p>
+<h3 id="45-inline">4.5 inline 不是“立即执行工具”，而是注入后续上下文</h3>
+<p><code>contextModifier()</code> 做的是下一跳上下文补丁：</p>
+<pre><code class="language-ts">if (allowedTools.length &gt; 0) {
+  const previousGetAppState = modifiedContext.getAppState
+  modifiedContext = {
+    ...modifiedContext,
+    getAppState() {
+      const appState = previousGetAppState()
+      return {
+        ...appState,
+        toolPermissionContext: {
+          ...appState.toolPermissionContext,
+          alwaysAllowRules: {
+            ...appState.toolPermissionContext.alwaysAllowRules,
+            command: [...new Set([...(appState.toolPermissionContext.alwaysAllowRules.command || []), ...allowedTools])],
+          },
+        },
+      }
+    },
+  }
+}
+</code></pre>
+<p>model/effort 也通过同一 modifier 链注入：</p>
+<pre><code class="language-ts">if (model) {
+  modifiedContext = {
+    ...modifiedContext,
+    options: {
+      ...modifiedContext.options,
+      mainLoopModel: resolveSkillModelOverride(model, ctx.options.mainLoopModel),
+    },
+  }
+}
+...
+if (effort !== undefined) {
+  const previousGetAppState = modifiedContext.getAppState
+  modifiedContext = {
+    ...modifiedContext,
+    getAppState() {
+      const appState = previousGetAppState()
+      return { ...appState, effortValue: effort }
+    },
+  }
+}
+</code></pre>
+<h3 id="46-fork">4.6 fork：隔离执行并回收结果</h3>
+<p><code>executeForkedSkill()</code> 复用 <code>prepareForkedCommandContext()</code>，走独立 <code>runAgent()</code>：</p>
+<pre><code class="language-ts">const { modifiedGetAppState, baseAgent, promptMessages, skillContent } =
+  await prepareForkedCommandContext(command, args || '', context)
+...
+for await (const message of runAgent({
+  agentDefinition,
+  promptMessages,
+  toolUseContext: { ...context, getAppState: modifiedGetAppState },
+  canUseTool,
+  isAsync: false,
+  querySource: 'agent:custom',
+  model: command.model as ModelAlias | undefined,
+  availableTools: context.options.tools,
+  override: { agentId },
+})) {
+  agentMessages.push(message)
+}
+</code></pre>
+<p>结果抽取与收尾：</p>
+<pre><code class="language-ts">const resultText = extractResultText(agentMessages, 'Skill execution completed')
+...
+return { data: { success: true, commandName, status: 'forked', agentId, result: resultText } }
+...
+finally { clearInvokedSkillsForAgent(agentId) }
+</code></pre>
+<h3 id="47-remote-canonicalsession-discovery">4.7 remote canonical：session discovery 驱动</h3>
+<p><code>executeRemoteSkill()</code> 先确认 session 已发现，再加载远端 skill 内容：</p>
+<pre><code class="language-ts">const meta = getDiscoveredRemoteSkill(slug)
+if (!meta) {
+  throw new Error(`Remote skill ${slug} was not discovered in this session...`)
+}
+...
+loadResult = await loadRemoteSkill(slug, meta.url)
+</code></pre>
+<p>随后把 frontmatter body 内容注入消息，并做 <code>${CLAUDE_SKILL_DIR}</code> / <code>${CLAUDE_SESSION_ID}</code> 替换：</p>
+<pre><code class="language-ts">const { content: bodyContent } = parseFrontmatter(content, skillPath)
+const skillDir = dirname(skillPath)
+...
+let finalContent = `Base directory for this skill: ${normalizedDir}\n\n${bodyContent}`
+finalContent = finalContent.replace(/\$\{CLAUDE_SKILL_DIR\}/g, normalizedDir)
+finalContent = finalContent.replace(/\$\{CLAUDE_SESSION_ID\}/g, getSessionId())
+</code></pre>
+<p>并通过 <code>addInvokedSkill(...)</code> 进入压缩保留状态。</p>
+<h3 id="48-tool_result">4.8 最终统一成 tool_result</h3>
+<p><code>mapToolResultToToolResultBlockParam()</code> 区分 fork 与 inline 文案，但协议一致：</p>
+<pre><code class="language-ts">if ('status' in result &amp;&amp; result.status === 'forked') {
+  return { type: 'tool_result', tool_use_id: toolUseID, content: `Skill &quot;${result.commandName}&quot; completed (forked execution)...` }
+}
+return { type: 'tool_result', tool_use_id: toolUseID, content: `Launching skill: ${result.commandName}` }
+</code></pre>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<h3 id="51-validate-permission-guards">5.1 validate / permission guards</h3>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>动作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>empty-input guard</td>
+<td><code>skill.trim()===''</code></td>
+<td>validate fail</td>
+<td>立即止损</td>
+</tr>
+<tr>
+<td>slash-prefix guard</td>
+<td>skill 以 <code>/</code> 开头</td>
+<td>归一化去前缀</td>
+<td>slash/SkillTool 语义一致</td>
+</tr>
+<tr>
+<td>remote-discovery guard</td>
+<td>canonical slug 未发现</td>
+<td>validate fail(errorCode 6)</td>
+<td>禁止凭空调用远端 skill</td>
+</tr>
+<tr>
+<td>unknown-skill guard</td>
+<td><code>findCommand</code> miss</td>
+<td>validate fail(errorCode 2)</td>
+<td>不进入 permission</td>
+</tr>
+<tr>
+<td>model-invocation guard</td>
+<td><code>disableModelInvocation</code></td>
+<td>validate fail(errorCode 4)</td>
+<td>模型入口硬阻断</td>
+</tr>
+<tr>
+<td>prompt-type guard</td>
+<td><code>type !== 'prompt'</code></td>
+<td>validate fail(errorCode 5)</td>
+<td>SkillTool 语义收敛</td>
+</tr>
+<tr>
+<td>deny-first guard</td>
+<td>deny rule 命中</td>
+<td><code>behavior:'deny'</code></td>
+<td>显式否决优先</td>
+</tr>
+<tr>
+<td>canonical-auto-allow guard</td>
+<td>canonical slug 命中</td>
+<td>allow</td>
+<td>系统特例，但晚于 deny</td>
+</tr>
+<tr>
+<td>allow-rule guard</td>
+<td>allow rule 命中</td>
+<td>allow</td>
+<td>用户显式放行</td>
+</tr>
+<tr>
+<td>safe-props guard</td>
+<td>仅安全属性</td>
+<td>allow</td>
+<td>降低 ask 噪音</td>
+</tr>
+<tr>
+<td>ask fallback guard</td>
+<td>无匹配规则</td>
+<td>ask + suggestions</td>
+<td>可审计授权闭环</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-execution-guards">5.2 execution guards</h3>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>动作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>remote-route guard</td>
+<td>canonical slug</td>
+<td><code>executeRemoteSkill</code></td>
+<td>绕过本地 slash expansion</td>
+</tr>
+<tr>
+<td>fork-route guard</td>
+<td><code>command.context==='fork'</code></td>
+<td><code>executeForkedSkill</code></td>
+<td>子代理隔离执行</td>
+</tr>
+<tr>
+<td>inline-route guard</td>
+<td>其他 prompt skill</td>
+<td><code>processPromptSlashCommand</code></td>
+<td>与 slash 展开保持一致</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h3 id="61-validate">6.1 validate 阶段失败优先</h3>
+<p>SkillTool 把“不可执行”的状态前置到 validate：</p>
+<ul>
+<li>未知/空 skill</li>
+<li>非 prompt command</li>
+<li><code>disable-model-invocation</code></li>
+<li>未发现 canonical 远端 skill</li>
+</ul>
+<p>避免进入 permission 弹窗和执行路径，减少无意义分支。</p>
+<h3 id="62-deny">6.2 deny 的强终态</h3>
+<p>一旦 deny 命中立即返回，不再继续 allow/safe/canonical 放行分支。终态可解释：</p>
+<pre><code class="language-ts">message: `Skill execution blocked by permission rules`
+</code></pre>
+<h3 id="63-fork">6.3 fork 失败与状态清理</h3>
+<p>fork 路径使用 <code>finally { clearInvokedSkillsForAgent(agentId) }</code>，即使异常也会清理 skill state，避免跨 agent 污染。</p>
+<h3 id="64-remote-load">6.4 remote load 失败显式化</h3>
+<p><code>executeRemoteSkill()</code> 加载异常直接抛出明确错误，并记录 telemetry，不回退本地命令：</p>
+<pre><code class="language-ts">throw new Error(`Failed to load remote skill ${slug}: ${msg}`)
+</code></pre>
+<h3 id="65-inline">6.5 inline 处理失败不静默</h3>
+<p>当 <code>processPromptSlashCommand()</code> 返回 <code>shouldQuery=false</code> 时直接抛错：</p>
+<pre><code class="language-ts">if (!processedCommand.shouldQuery) {
+  throw new Error('Command processing failed')
+}
+</code></pre>
+<p>防止半成品 prompt 注入。</p>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li>SkillTool 只执行 prompt skill。  </li>
+<li><code>disableModelInvocation</code> 必须在 validate 阶段硬阻断。  </li>
+<li>权限顺序必须是 deny-first。  </li>
+<li>remote canonical 可以默认 allow，但必须服从 deny。  </li>
+<li>inline 和 fork 虽执行语义不同，但都必须回到统一 tool_result 协议。  </li>
+<li>SkillTool inline prompt 展开必须复用 slash 主链函数，避免双轨实现。</li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>对 01：02 消费 discovery 后 command facts，不重新解释 frontmatter。  </li>
+<li>对 03：02 是模型平面；03 是用户平面入口。两者共享命令事实源与 prompt 展开核心。  </li>
+<li>对 04：02 承接来源差异，不把 bundled/plugin/MCP/remote 抹平成同一安全假设。  </li>
+<li>对 <code>commands.ts</code>：02 依赖其 surface 过滤，不自建第二套 registry。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<ol>
+<li>新增 prompt command 属性时，默认应落入 ask（除非显式加入 <code>SAFE_SKILL_PROPERTIES</code>）；</li>
+<li>不要把 validate 逻辑后移到 call（会增加无意义 permission/execution 路径）；</li>
+<li>不要让 SkillTool 重写一份 prompt expansion 逻辑，必须继续复用 <code>processPromptSlashCommand</code>；</li>
+<li>远端 canonical 扩展必须继续保持“先发现后调用”的 session 语义；</li>
+<li>deny-first 顺序是安全底座，变更需有强证据和全链路回归。</li>
+</ol>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors</h2>
+<h3 id="skilltool-runtime-permission-execution">SkillTool runtime / permission / execution</h3>
+<ul>
+<li><code>src/tools/SkillTool/SkillTool.ts:getAllCommands</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:validateInput</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:checkPermissions</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:call</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:executeForkedSkill</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:skillHasOnlySafeProperties</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:executeRemoteSkill</code></li>
+<li><code>src/tools/SkillTool/SkillTool.ts:mapToolResultToToolResultBlockParam</code></li>
+</ul>
+<h3 id="shared-execution-helpers-command-surfaces">shared execution helpers / command surfaces</h3>
+<ul>
+<li><code>src/utils/forkedAgent.ts:prepareForkedCommandContext</code></li>
+<li><code>src/utils/forkedAgent.ts:extractResultText</code></li>
+<li><code>src/commands.ts:getCommands</code></li>
+<li><code>src/commands.ts:getMcpSkillCommands</code></li>
+<li><code>src/commands.ts:getSkillToolCommands</code></li>
+<li><code>src/commands.ts:getSlashCommandToolSkills</code></li>
+<li><code>src/commands.ts:findCommand</code></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Tool 执行、权限与错误封装 - Claude Code Source Architecture</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Claude Code Source Architecture</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../" class="nav-link">架构总览</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">AgentLoop 与 Tool</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../01-entrypoint-and-bootstrap/" class="dropdown-item">入口与启动装配</a>
+</li>
+                                    
+<li>
+    <a href="../02-query-loop-state-machine/" class="dropdown-item">Query 回合状态机</a>
+</li>
+                                    
+<li>
+    <a href="../03-tool-orchestration-and-concurrency/" class="dropdown-item">Tool 编排与并发策略</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Tool 执行、权限与错误封装</a>
+</li>
+                                    
+<li>
+    <a href="../05-streaming-hooks-and-output-boundaries/" class="dropdown-item">Streaming/StopHooks/输出边界</a>
+</li>
+                                    
+<li>
+    <a href="../agentloop-tool/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">记忆系统</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../02-memory-system/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/01-memory-loading-and-prompt-injection/" class="dropdown-item">加载与 Prompt 注入</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/02-session-memory-extraction-pipeline/" class="dropdown-item">SessionMemory 抽取链路</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/03-memory-files-forked-write-and-aging/" class="dropdown-item">文件写入、隔离执行与时效</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/04-gates-failure-modes-and-observability/" class="dropdown-item">Gate、失败模式与可观测性</a>
+</li>
+                                    
+<li>
+    <a href="../../02-memory-system/memory-system/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Prompt 与上下文压缩</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/01-system-prompt-assembly-and-precedence/" class="dropdown-item">System Prompt 组装与优先级</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/02-token-budget-and-auto-compact-decision/" class="dropdown-item">Token 预算与自动压缩判定</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/03-microcompact-sessionmemory-compact/" class="dropdown-item">Microcompact 与 SessionMemory Compact</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/" class="dropdown-item">压缩后清理与消息折叠</a>
+</li>
+                                    
+<li>
+    <a href="../../03-prompt-context-compression/prompt-context-compression/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">多 Agent 协同策略</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/" class="dropdown-item">Spawn 入口与模型继承</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/" class="dropdown-item">Backend 选择（in-process / tmux / iTerm）</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/" class="dropdown-item">权限同步、Mailbox 与团队状态</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/" class="dropdown-item">Worktree 生命周期与清理</a>
+</li>
+                                    
+<li>
+    <a href="../../04-multi-agent-coordination/multi-agent-coordination/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">MCP 协议</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../05-mcp-protocol/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/01-connection-lifecycle-and-auth/" class="dropdown-item">连接生命周期与鉴权</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/02-tools-resources-commands-discovery/" class="dropdown-item">Tools/Resources/Commands 发现</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/03-result-transform-and-elicitation-retry/" class="dropdown-item">结果转换与 Elicitation 重试</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/04-cli-ui-management-and-plugin-integration/" class="dropdown-item">CLI/UI 管理与插件集成</a>
+</li>
+                                    
+<li>
+    <a href="../../05-mcp-protocol/mcp-protocol/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Hook 机制</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../06-hook-mechanism/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/01-hook-config-registry-and-matchers/" class="dropdown-item">配置注册与匹配器</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/02-exec-agent-http-prompt-hooks/" class="dropdown-item">Agent/HTTP/Prompt 三类执行器</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/03-tool-permission-decision-and-security-guards/" class="dropdown-item">Tool 权限决策与安全防护</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/04-session-file-hooks-and-progress-ux/" class="dropdown-item">Session/File Hook 与进度反馈</a>
+</li>
+                                    
+<li>
+    <a href="../../06-hook-mechanism/hook-mechanism/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">流式处理</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../07-streaming-processing/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/01-model-stream-to-cli-render-pipeline/" class="dropdown-item">模型流到 CLI 渲染管线</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/02-structured-io-protocol-and-request-correlation/" class="dropdown-item">Structured I/O 协议与请求关联</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/03-transport-layer-sse-websocket-hybrid/" class="dropdown-item">传输层（SSE / WebSocket / Hybrid）</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/" class="dropdown-item">Streaming Tool Executor、背压与错误传播</a>
+</li>
+                                    
+<li>
+    <a href="../../07-streaming-processing/streaming-processing/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Skill 技能库</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../08-skill-library/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/01-skill-discovery-loading-and-indexing/" class="dropdown-item">发现、加载与索引</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/02-skilltool-runtime-ui-and-permission-decision/" class="dropdown-item">SkillTool 运行时、UI 与权限决策</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/03-slash-command-translation-and-fork-execution/" class="dropdown-item">Slash 转译与 Fork 执行</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/04-bundled-skills-taxonomy-and-use-cases/" class="dropdown-item">Bundled Skills 分类与使用场景</a>
+</li>
+                                    
+<li>
+    <a href="../../08-skill-library/skill-library/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">CLI 命令行界面</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../09-cli-command-interface/" class="dropdown-item">总览</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/" class="dropdown-item">入口 fast-path 与启动</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/02-commander-assembly-preaction-and-init/" class="dropdown-item">Commander 装配、preAction 与初始化</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/03-command-registry-and-slash-routing/" class="dropdown-item">命令注册与 Slash 路由</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/04-structured-print-interactive-modes/" class="dropdown-item">Structured/Print/Interactive 输出模式</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/05-plugin-bridge-install-command-families/" class="dropdown-item">Plugin/Bridge/Install 命令族</a>
+</li>
+                                    
+<li>
+    <a href="../../09-cli-command-interface/cli-command-interface/" class="dropdown-item">历史单篇深度文</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">覆盖报告</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../coverage/coverage-summary/" class="dropdown-item">概览</a>
+</li>
+                                    
+<li>
+    <a href="../../coverage/uncategorized-resolutions/" class="dropdown-item">未归类处置</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../03-tool-orchestration-and-concurrency/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../05-streaming-hooks-and-output-boundaries/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#agentloop-tool" class="nav-link">AgentLoop 与 Tool：单工具执行、权限与错误封装（深潜审计版）</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-scope-evidence-boundary" class="nav-link">1) Scope 与 Evidence Boundary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-core-thesis" class="nav-link">2) Core Thesis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-runtime-state-ownership" class="nav-link">3) Runtime State Ownership</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-end-to-end-flow" class="nav-link">4) End-to-end Flow（单工具事务）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-guard-decision-matrix" class="nav-link">5) Guard / Decision Matrix</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-failure-recovery-degradation" class="nav-link">6) Failure / Recovery / Degradation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-invariants" class="nav-link">7) Invariants</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-cross-module-contracts" class="nav-link">8) Cross-module Contracts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-engineering-constraints-evolution-guidance" class="nav-link">9) Engineering Constraints / Evolution Guidance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-source-anchors" class="nav-link">10) Source Anchors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="agentloop-tool">AgentLoop 与 Tool：单工具执行、权限与错误封装（深潜审计版）</h1>
+<h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
+<p>本页只覆盖 <code>src/services/tools/toolExecution.ts</code> 的单工具事务闭环：</p>
+<ul>
+<li><code>runToolUse</code>：入口与总兜底；</li>
+<li><code>streamedCheckPermissionsAndCallTool</code>：流式桥接；</li>
+<li><code>checkPermissionsAndCallTool</code>：校验、hooks、权限、调用、后处理。</li>
+</ul>
+<p>不覆盖：</p>
+<ul>
+<li>批次并发调度（见 03）；</li>
+<li>Query 级恢复状态机（见 02）；</li>
+<li>stop hooks 总收尾（见 05）。</li>
+</ul>
+<hr />
+<h2 id="2-core-thesis">2) Core Thesis</h2>
+<p><code>toolExecution.ts</code> 的价值不在“把 tool.call 跑通”，而在把工具调用转译成可审计协议事务：</p>
+<p>1) 输入结构必须可验证；
+2) 权限决策必须可解释；
+3) 执行失败必须可消息化；
+4) hook 可干预但不能破坏 <code>tool_use_id</code> 对偶关系。</p>
+<p>核心入口证据：</p>
+<pre><code class="language-ts">export async function* runToolUse(
+  toolUse: ToolUseBlock,
+  assistantMessage: AssistantMessage,
+  canUseTool: CanUseToolFn,
+  toolUseContext: ToolUseContext,
+): AsyncGenerator&lt;MessageUpdateLazy, void&gt; {
+  const toolName = toolUse.name
+  let tool = findToolByName(toolUseContext.options.tools, toolName)
+  ...
+}
+</code></pre>
+<hr />
+<h2 id="3-runtime-state-ownership">3) Runtime State Ownership</h2>
+<h3 id="31-runtooluse">3.1 <code>runToolUse</code>：工具识别与外围分支</h3>
+<p>职责：
+- 在可用工具集中解析工具；
+- fallback 到 base tools 的 alias 兼容路径；
+- unknown tool / 预中断分支直接消息化返回。</p>
+<h3 id="32-streamedcheckpermissionsandcalltool">3.2 <code>streamedCheckPermissionsAndCallTool</code>：统一输出通道</h3>
+<p>职责：
+- 把 progress 事件与最终结果合并为同一 <code>AsyncIterable</code>；
+- 避免上层再拼接两路流。</p>
+<p>核心片段：</p>
+<pre><code class="language-ts">const stream = new Stream&lt;MessageUpdateLazy&gt;()
+checkPermissionsAndCallTool(..., progress =&gt; {
+  stream.enqueue({
+    message: createProgressMessage({
+      toolUseID: progress.toolUseID,
+      parentToolUseID: toolUseID,
+      data: progress.data,
+    }),
+  })
+})
+  .then(results =&gt; {
+    for (const result of results) {
+      stream.enqueue(result)
+    }
+  })
+  .catch(error =&gt; {
+    stream.error(error)
+  })
+  .finally(() =&gt; {
+    stream.done()
+  })
+</code></pre>
+<h3 id="33-checkpermissionsandcalltool">3.3 <code>checkPermissionsAndCallTool</code>：事务主控</h3>
+<p>职责：
+- schema 与语义校验；
+- pre/post hooks；
+- 权限决策归一；
+- <code>tool.call</code> 执行与结果封装；
+- 失败路径 + failure hooks。</p>
+<hr />
+<h2 id="4-end-to-end-flow">4) End-to-end Flow（单工具事务）</h2>
+<ol>
+<li>工具发现与 alias 回退。</li>
+<li>schema 校验（<code>safeParse</code>）。</li>
+<li><code>validateInput</code> 语义校验。</li>
+<li>预启动 bash classifier（并行化权限判断）。</li>
+<li>执行 PreToolUse hooks（可改输入、可 stop）。</li>
+<li>解析最终权限决策。</li>
+<li>权限拒绝：构造 error tool_result 并返回。</li>
+<li>权限允许：执行 <code>tool.call</code>。</li>
+<li>map result block -&gt; 存储处理 -&gt; 构造 user message。</li>
+<li>执行 PostToolUse hooks。</li>
+<li>成功返回结果列表。</li>
+<li>失败 catch：执行 PostToolUseFailure hooks 并返回错误结果。</li>
+</ol>
+<hr />
+<h2 id="5-guard-decision-matrix">5) Guard / Decision Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Guard</th>
+<th>条件</th>
+<th>动作</th>
+<th>输出语义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>unknown tool</td>
+<td>tool 与 alias 都未命中</td>
+<td>直接返回错误</td>
+<td><code>&lt;tool_use_error&gt;No such tool</code></td>
+</tr>
+<tr>
+<td>pre-abort</td>
+<td><code>abortController.signal.aborted</code></td>
+<td>返回 cancel result</td>
+<td><code>tool_result is_error=true</code></td>
+</tr>
+<tr>
+<td>schema fail</td>
+<td><code>safeParse</code> 失败</td>
+<td>返回 InputValidationError</td>
+<td>error tool_result</td>
+</tr>
+<tr>
+<td>validate fail</td>
+<td><code>validateInput.result=false</code></td>
+<td>返回业务错误</td>
+<td>error tool_result</td>
+</tr>
+<tr>
+<td>prehook stop</td>
+<td>hook 发 <code>stop</code></td>
+<td>立即返回 stop result</td>
+<td>error tool_result</td>
+</tr>
+<tr>
+<td>permission deny</td>
+<td><code>behavior !== allow</code></td>
+<td>返回拒绝语义+可选内容块</td>
+<td>error tool_result (+attachments)</td>
+</tr>
+<tr>
+<td>call throw</td>
+<td><code>tool.call</code> 抛错</td>
+<td>失败 hooks + 错误封装</td>
+<td>error tool_result</td>
+</tr>
+<tr>
+<td>posthook prevent</td>
+<td><code>shouldPreventContinuation</code></td>
+<td>附加 stopped_continuation</td>
+<td>attachment + result</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-failure-recovery-degradation">6) Failure / Recovery / Degradation</h2>
+<h3 id="61">6.1 工具不存在：兼容路径后仍失败才报错</h3>
+<pre><code class="language-ts">let tool = findToolByName(toolUseContext.options.tools, toolName)
+if (!tool) {
+  const fallbackTool = findToolByName(getAllBaseTools(), toolName)
+  if (fallbackTool &amp;&amp; fallbackTool.aliases?.includes(toolName)) {
+    tool = fallbackTool
+  }
+}
+...
+if (!tool) {
+  yield {
+    message: createUserMessage({
+      content: [
+        {
+          type: 'tool_result',
+          content: `&lt;tool_use_error&gt;Error: No such tool available: ${toolName}&lt;/tool_use_error&gt;`,
+          is_error: true,
+          tool_use_id: toolUse.id,
+        },
+      ],
+    }),
+  }
+  return
+}
+</code></pre>
+<p>语义：
+- 先兼容，后失败；
+- 失败路径可被模型继续消费。</p>
+<h3 id="62">6.2 输入防御：双层校验 + 防御性剥离</h3>
+<h4 id="schema">schema 校验失败</h4>
+<pre><code class="language-ts">const parsedInput = tool.inputSchema.safeParse(input)
+if (!parsedInput.success) {
+  let errorContent = formatZodValidationError(tool.name, parsedInput.error)
+  ...
+  return [{ message: createUserMessage({ ... is_error: true ... }) }]
+}
+</code></pre>
+<h4 id="_1">语义校验失败</h4>
+<pre><code class="language-ts">const isValidCall = await tool.validateInput?.(parsedInput.data, toolUseContext)
+if (isValidCall?.result === false) {
+  return [{ message: createUserMessage({ ... is_error: true ... }) }]
+}
+</code></pre>
+<h4 id="defense-in-depth">defense-in-depth 清洗</h4>
+<pre><code class="language-ts">let processedInput = parsedInput.data
+if (
+  tool.name === BASH_TOOL_NAME &amp;&amp;
+  processedInput &amp;&amp;
+  typeof processedInput === 'object' &amp;&amp;
+  '_simulatedSedEdit' in processedInput
+) {
+  const { _simulatedSedEdit: _, ...rest } = processedInput as ...
+  processedInput = rest as typeof processedInput
+}
+</code></pre>
+<p>语义：即便 schema 应该拦住，也在执行前再剥离一次内部字段。</p>
+<h3 id="63-pretooluse-hooks">6.3 PreToolUse hooks：可阻断事务</h3>
+<pre><code class="language-ts">for await (const result of runPreToolUseHooks(...)) {
+  switch (result.type) {
+    case 'hookPermissionResult':
+      hookPermissionResult = result.hookPermissionResult
+      break
+    case 'hookUpdatedInput':
+      processedInput = result.updatedInput
+      break
+    case 'preventContinuation':
+      shouldPreventContinuation = result.shouldPreventContinuation
+      break
+    case 'stop':
+      resultingMessages.push({
+        message: createUserMessage({
+          content: [createToolResultStopMessage(toolUseID)],
+          toolUseResult: `Error: ${stopReason}`,
+          sourceToolAssistantUUID: assistantMessage.uuid,
+        }),
+      })
+      return resultingMessages
+  }
+}
+</code></pre>
+<p>语义：PreToolUse 不是“日志 hook”，而是可改输入、可提前停机的控制层。</p>
+<h3 id="64">6.4 权限拒绝：拒绝也是协议内结果</h3>
+<pre><code class="language-ts">if (permissionDecision.behavior !== 'allow') {
+  const messageContent: ContentBlockParam[] = [
+    {
+      type: 'tool_result',
+      content: errorMessage,
+      is_error: true,
+      tool_use_id: toolUseID,
+    },
+  ]
+
+  if (rejectContentBlocks?.length) {
+    messageContent.push(...rejectContentBlocks)
+  }
+
+  resultingMessages.push({
+    message: createUserMessage({
+      content: messageContent,
+      imagePasteIds: rejectImageIds,
+      toolUseResult: `Error: ${errorMessage}`,
+      sourceToolAssistantUUID: assistantMessage.uuid,
+    }),
+  })
+
+  return resultingMessages
+}
+</code></pre>
+<p>语义：deny 不抛异常，而是生成带 <code>tool_use_id</code> 的标准错误结果。</p>
+<h3 id="65">6.5 调用成功：映射、裁剪、后处理</h3>
+<pre><code class="language-ts">const result = await tool.call(callInput, {...}, canUseTool, assistantMessage, progress =&gt; {...})
+...
+const mappedToolResultBlock = tool.mapToolResultToToolResultBlockParam(
+  result.data,
+  toolUseID,
+)
+...
+const toolResultBlock = preMappedBlock
+  ? await processPreMappedToolResultBlock(...)
+  : await processToolResultBlock(tool, toolUseResult, toolUseID)
+</code></pre>
+<p>语义：
+- <code>tool.call</code> 不是最终输出，后面还有映射与存储层处理；
+- 输出语义仍由统一格式器收敛。</p>
+<h3 id="66-failure-hooks">6.6 调用失败：failure hooks + 错误封装</h3>
+<pre><code class="language-ts">} catch (error) {
+  ...
+  const hookMessages: MessageUpdateLazy&lt;AttachmentMessage | ProgressMessage&lt;HookProgress&gt;&gt;[] = []
+  for await (const hookResult of runPostToolUseFailureHooks(...)) {
+    hookMessages.push(hookResult)
+  }
+
+  return [
+    {
+      message: createUserMessage({
+        content: [
+          {
+            type: 'tool_result',
+            content,
+            is_error: true,
+            tool_use_id: toolUseID,
+          },
+        ],
+      }),
+    },
+    ...hookMessages,
+  ]
+}
+</code></pre>
+<p>语义：失败后也维持协议完整，并运行 failure hooks 做收尾增强。</p>
+<hr />
+<h2 id="7-invariants">7) Invariants</h2>
+<ol>
+<li>每次 <code>runToolUse</code> 最终都必须返回可消费消息（成功或错误）。</li>
+<li><code>tool_use_id</code> 必须贯穿到最终 <code>tool_result</code>。</li>
+<li>权限拒绝必须走协议内消息，不能抛穿 query loop。</li>
+<li>hook 改写输入不得破坏 <code>tool.call</code> 参数一致性。</li>
+<li><code>toolDecisions</code> 必须在 finally 清理，避免跨调用污染。</li>
+<li>failure hooks 即使失败也不能让主错误消息丢失。</li>
+<li>alias 只用于兼容，不得覆盖主工具语义。</li>
+<li>输入校验失败必须在调用前终止，禁止带病执行。</li>
+</ol>
+<hr />
+<h2 id="8-cross-module-contracts">8) Cross-module Contracts</h2>
+<ul>
+<li>上游（query/orchestration/executor）只依赖 <code>MessageUpdateLazy</code> 协议。</li>
+<li>下游工具必须遵循 <code>Tool</code> 合约：<code>inputSchema</code>、<code>call</code>、<code>mapToolResultToToolResultBlockParam</code>。</li>
+<li>权限系统通过 <code>resolveHookPermissionDecision</code> 汇总 hook 与 canUseTool 决策，工具层不自建分裂权限路径。</li>
+</ul>
+<hr />
+<h2 id="9-engineering-constraints-evolution-guidance">9) Engineering Constraints / Evolution Guidance</h2>
+<p>新增工具或新权限策略时必须验证：</p>
+<ol>
+<li>schema 与 validateInput 覆盖边界输入；</li>
+<li>deny 路径可完整生成 <code>tool_result</code>；</li>
+<li>failure hooks 不会吞掉主错误；</li>
+<li><code>contentBlocks/imagePasteIds</code> 在 allow/deny 都可稳定序列化；</li>
+<li>telemetry 不泄漏敏感输入（详情日志需显式开关）。</li>
+</ol>
+<p>推荐新增工具自测最小清单：</p>
+<ul>
+<li>unknown tool 名称</li>
+<li>schema 错误输入</li>
+<li>validateInput 拒绝</li>
+<li>permission deny</li>
+<li>call throw</li>
+<li>call success + post hook</li>
+<li>user interrupt during execution</li>
+</ul>
+<hr />
+<h2 id="10-source-anchors">10) Source Anchors</h2>
+<ul>
+<li><code>src/services/tools/toolExecution.ts:runToolUse</code></li>
+<li><code>src/services/tools/toolExecution.ts:streamedCheckPermissionsAndCallTool</code></li>
+<li><code>src/services/tools/toolExecution.ts:checkPermissionsAndCallTool</code></li>
+<li><code>src/services/tools/toolExecution.ts</code>（unknown tool + alias fallback）</li>
+<li><code>src/services/tools/toolExecution.ts</code>（schema/validateInput 分支）</li>
+<li><code>src/services/tools/toolExecution.ts</code>（PreToolUse hooks）</li>
+<li><code>src/services/tools/toolExecution.ts</code>（permission deny 分支）</li>
+<li><code>src/services/tools/toolExecution.ts</code>（tool.call 成功路径）</li>
+<li><code>src/services/tools/toolExecution.ts</code>（PostToolUse / PostToolUseFailure）</li>
+<li><code>src/Tool.ts</code>（工具契约）</li>
+<li><code>src/utils/permissions/PermissionResult.ts</code></li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
