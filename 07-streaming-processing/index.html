@@ -1861,17 +1861,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2851,17 +2840,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2896,7 +2874,7 @@
 
 <h1 id="_1">流式处理（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/07-streaming-processing</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载 streaming 机制深潜。</p>
+<p>本页是 <code>docs/07-streaming-processing</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载 streaming 机制深潜。</p>
 <p>证据边界覆盖：</p>
 <ul>
 <li><code>src/services/api/claude.ts</code></li>
@@ -3057,11 +3035,12 @@
 <li><code>src/services/tools/StreamingToolExecutor.ts:processQueue</code></li>
 <li><code>src/services/api/errors.ts:getErrorMessageIfRefusal</code></li>
 <li><code>src/screens/REPL.tsx</code></li>
-<li><code>src/components/Messages.tsx</code></li>
-</ul>
-<h3 id="_3">阅读顺序</h3>
-<ul>
-<li><a href="streaming-processing/">总览主文：streaming-processing.md</a></li>
+<li>
+<p><code>src/components/Messages.tsx</code></p>
+</li>
+<li>
+<p><a href="streaming-processing/">总览主文：streaming-processing.md</a></p>
+</li>
 <li><a href="01-model-stream-to-cli-render-pipeline/">01 模型流到 CLI 渲染管线</a></li>
 <li><a href="02-structured-io-protocol-and-request-correlation/">02 Structured I/O 协议与请求关联</a></li>
 <li><a href="03-transport-layer-sse-websocket-hybrid/">03 传输层（SSE / WebSocket / Hybrid）</a></li>

@@ -2090,17 +2090,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2851,17 +2840,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2896,7 +2874,7 @@
 
 <h1 id="skill">Skill 技能库（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/08-skill-library</code> 入口页，只负责模块边界、阅读路径、关键锚点，不承载实现细节。</p>
+<p>本页是 <code>docs/08-skill-library</code> 入口页，只负责模块边界、阅读路径、关键锚点，不承载实现细节。</p>
 <p>覆盖边界（模块级）：</p>
 <ul>
 <li>discovery/loading/indexing</li>
@@ -3085,11 +3063,12 @@
 <li><code>src/skills/bundledSkills.ts:registerBundledSkill</code></li>
 <li><code>src/utils/plugins/loadPluginCommands.ts:getPluginSkills</code></li>
 <li><code>src/skills/mcpSkillBuilders.ts:registerMCPSkillBuilders</code></li>
-<li><code>src/utils/skills/skillChangeDetector.ts:scheduleReload</code></li>
-</ul>
-<h3 id="_2">阅读顺序</h3>
-<ul>
-<li><a href="skill-library/">总览主文：skill-library.md</a></li>
+<li>
+<p><code>src/utils/skills/skillChangeDetector.ts:scheduleReload</code></p>
+</li>
+<li>
+<p><a href="skill-library/">总览主文：skill-library.md</a></p>
+</li>
 <li><a href="01-skill-discovery-loading-and-indexing/">01 发现、加载与索引</a></li>
 <li><a href="02-skilltool-runtime-ui-and-permission-decision/">02 SkillTool 运行时、UI 与权限决策</a></li>
 <li><a href="03-slash-command-translation-and-fork-execution/">03 Slash 转译与 Fork 执行</a></li>

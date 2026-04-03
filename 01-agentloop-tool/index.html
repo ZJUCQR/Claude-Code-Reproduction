@@ -459,17 +459,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2851,17 +2840,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2896,7 +2874,7 @@
 
 <h1 id="agentloop-tool">AgentLoop 与 Tool 执行管线（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/01-agentloop-tool</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
+<p>本页是 <code>docs/01-agentloop-tool</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
 <p>证据边界覆盖：</p>
 <ul>
 <li><code>src/query.ts</code></li>
@@ -3061,11 +3039,12 @@
 <li><code>src/services/tools/toolExecution.ts:checkPermissionsAndCallTool</code></li>
 <li><code>src/services/tools/StreamingToolExecutor.ts:addTool</code></li>
 <li><code>src/services/tools/StreamingToolExecutor.ts:getRemainingResults</code></li>
-<li><code>src/query/stopHooks.ts:handleStopHooks</code></li>
-</ul>
-<h3 id="_2">阅读顺序</h3>
-<ul>
-<li><a href="agentloop-tool/">总览主文：agentloop-tool.md</a></li>
+<li>
+<p><code>src/query/stopHooks.ts:handleStopHooks</code></p>
+</li>
+<li>
+<p><a href="agentloop-tool/">总览主文：agentloop-tool.md</a></p>
+</li>
 <li><a href="01-entrypoint-and-bootstrap/">01 入口与启动装配</a></li>
 <li><a href="02-query-loop-state-machine/">02 Query 回合状态机</a></li>
 <li><a href="03-tool-orchestration-and-concurrency/">03 Tool 编排与并发策略</a></li>

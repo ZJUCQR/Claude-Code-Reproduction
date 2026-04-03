@@ -716,17 +716,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2851,17 +2840,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#see-also" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2896,7 +2874,7 @@
 
 <h1 id="_1">记忆系统（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/02-memory-system</code> 的入口页，给出 02 模块统一语义框架与阅读顺序。证据边界覆盖：</p>
+<p>本页是 <code>docs/02-memory-system</code> 的入口页，给出 02 模块统一语义框架与阅读顺序。证据边界覆盖：</p>
 <ul>
 <li><code>src/memdir/memdir.ts</code></li>
 <li><code>src/services/SessionMemory/sessionMemory.ts</code></li>
@@ -3068,11 +3046,12 @@
 <li><code>src/services/SessionMemory/sessionMemoryUtils.ts:waitForSessionMemoryExtraction</code></li>
 <li><code>src/services/extractMemories/extractMemories.ts:runExtraction</code></li>
 <li><code>src/services/extractMemories/extractMemories.ts:executeExtractMemories</code></li>
-<li><code>src/services/compact/autoCompact.ts:autoCompactIfNeeded</code></li>
-</ul>
-<h3 id="_3">阅读顺序</h3>
-<ul>
-<li><a href="memory-system/">总览主文：memory-system.md</a></li>
+<li>
+<p><code>src/services/compact/autoCompact.ts:autoCompactIfNeeded</code></p>
+</li>
+<li>
+<p><a href="memory-system/">总览主文：memory-system.md</a></p>
+</li>
 <li><a href="01-memory-loading-and-prompt-injection/">01 加载与 Prompt 注入</a></li>
 <li><a href="02-session-memory-extraction-pipeline/">02 SessionMemory 抽取链路</a></li>
 <li><a href="03-memory-files-forked-write-and-aging/">03 文件写入、fork 与时效</a></li>

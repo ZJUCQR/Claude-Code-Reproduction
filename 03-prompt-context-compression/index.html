@@ -944,17 +944,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2839,17 +2828,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2874,7 +2852,7 @@
 
 <h1 id="prompt">Prompt 与上下文压缩（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/03-prompt-context-compression</code> 的入口页，给出 03 模块职责边界、阅读顺序与页面所有权。</p>
+<p>本页是 <code>docs/03-prompt-context-compression</code> 的入口页，给出 03 模块职责边界、阅读顺序与页面所有权。</p>
 <p>证据边界覆盖：</p>
 <ul>
 <li><code>src/utils/systemPrompt.ts</code></li>
@@ -3040,11 +3018,12 @@
 <li><code>src/services/compact/compact.ts:compactConversation</code></li>
 <li><code>src/services/compact/postCompactCleanup.ts:runPostCompactCleanup</code></li>
 <li><code>src/query/tokenBudget.ts:checkTokenBudget</code></li>
-<li><code>src/query.ts</code>（withheld/recovery）</li>
-</ul>
-<h3 id="_2">阅读顺序</h3>
-<ul>
-<li><a href="prompt-context-compression/">总览主文：prompt-context-compression.md</a></li>
+<li>
+<p><code>src/query.ts</code>（withheld/recovery）</p>
+</li>
+<li>
+<p><a href="prompt-context-compression/">总览主文：prompt-context-compression.md</a></p>
+</li>
 <li><a href="01-system-prompt-assembly-and-precedence/">01 System Prompt 组装与优先级</a></li>
 <li><a href="02-token-budget-and-auto-compact-decision/">02 Token 预算与自动压缩判定</a></li>
 <li><a href="03-microcompact-sessionmemory-compact/">03 Microcompact 与 SessionMemory Compact</a></li>

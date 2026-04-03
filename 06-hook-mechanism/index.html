@@ -1631,17 +1631,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2839,17 +2828,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2874,7 +2852,7 @@
 
 <h1 id="hook">Hook 机制（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/06-hook-mechanism</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
+<p>本页是 <code>docs/06-hook-mechanism</code> 的入口页，只负责模块边界、阅读顺序与页面所有权，不承载子机制深潜。</p>
 <p>证据边界覆盖：</p>
 <ul>
 <li><code>src/utils/hooks.ts</code></li>
@@ -3047,11 +3025,12 @@
 <li><code>src/services/tools/toolHooks.ts:resolveHookPermissionDecision</code></li>
 <li><code>src/query/stopHooks.ts:handleStopHooks</code></li>
 <li><code>src/utils/hooks/fileChangedWatcher.ts:initializeFileChangedWatcher</code></li>
-<li><code>src/utils/hooks/hookEvents.ts:emitHookProgress</code></li>
-</ul>
-<h3 id="_2">阅读顺序</h3>
-<ul>
-<li><a href="hook-mechanism/">总览主文：hook-mechanism.md</a></li>
+<li>
+<p><code>src/utils/hooks/hookEvents.ts:emitHookProgress</code></p>
+</li>
+<li>
+<p><a href="hook-mechanism/">总览主文：hook-mechanism.md</a></p>
+</li>
 <li><a href="01-hook-config-registry-and-matchers/">01 Hook 配置注册与匹配器</a></li>
 <li><a href="02-exec-agent-http-prompt-hooks/">02 Agent/HTTP/Prompt 执行器</a></li>
 <li><a href="03-tool-permission-decision-and-security-guards/">03 Tool 权限决策与安全防护</a></li>

@@ -257,6 +257,17 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        源码主链锚点（总览）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         十大模块
       
     </span>
@@ -2592,6 +2603,17 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        源码主链锚点（总览）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         十大模块
       
     </span>
@@ -2617,19 +2639,72 @@
 
 
 <h1 id="claude-code">Claude Code 源码架构总览</h1>
-<p>本页为站点首页与架构总览合并页，仅保留十个核心模块入口。</p>
-<h2 id="_1">十大模块</h2>
+<p>本页为首页与架构总览合并页，覆盖 <code>src/</code> 的 10 个核心能力模块与主链锚点。</p>
+<h2 id="_1">源码主链锚点（总览）</h2>
+<ul>
+<li><code>src/entrypoints/cli.tsx</code>（CLI 启动分流与 fast-path）</li>
+<li><code>src/main.tsx</code>（Commander 装配与 <code>preAction</code> 初始化屏障）</li>
+<li><code>src/query.ts</code>（主 query loop 状态机）</li>
+<li><code>src/services/tools/toolOrchestration.ts</code>（工具批次编排与并发分流）</li>
+<li><code>src/services/tools/toolExecution.ts</code>（单工具执行、权限与错误语义）</li>
+<li><code>src/services/mcp/client.ts</code>（MCP 连接、发现与调用）</li>
+<li><code>src/utils/hooks.ts</code>（Hook 统一执行入口）</li>
+<li><code>src/cli/structuredIO.ts</code>（结构化协议 request-response 关联）</li>
+<li><code>src/tools/SkillTool/SkillTool.ts</code>（Skill 运行时与权限决策）</li>
+</ul>
+<h2 id="_2">十大模块</h2>
 <ol>
 <li><a href="01-agentloop-tool/">AgentLoop 与 Tool</a></li>
+<li><a href="01-agentloop-tool/01-entrypoint-and-bootstrap/">入口与启动装配</a></li>
+<li><a href="01-agentloop-tool/02-query-loop-state-machine/">Query 回合状态机</a></li>
+<li><a href="01-agentloop-tool/03-tool-orchestration-and-concurrency/">Tool 编排与并发策略</a></li>
+<li><a href="01-agentloop-tool/04-tool-execution-permissions-and-errors/">Tool 执行、权限与错误封装</a></li>
+<li><a href="01-agentloop-tool/05-streaming-hooks-and-output-boundaries/">Streaming / StopHooks / 输出边界</a></li>
 <li><a href="02-memory-system/">记忆系统</a></li>
+<li><a href="02-memory-system/01-memory-loading-and-prompt-injection/">加载与 Prompt 注入</a></li>
+<li><a href="02-memory-system/02-session-memory-extraction-pipeline/">SessionMemory 抽取链路</a></li>
+<li><a href="02-memory-system/03-memory-files-forked-write-and-aging/">文件写入、隔离执行与时效</a></li>
+<li><a href="02-memory-system/04-gates-failure-modes-and-observability/">Gate、失败模式与可观测性</a></li>
 <li><a href="03-prompt-context-compression/">Prompt 与上下文压缩</a></li>
+<li><a href="03-prompt-context-compression/01-system-prompt-assembly-and-precedence/">System Prompt 组装与优先级</a></li>
+<li><a href="03-prompt-context-compression/02-token-budget-and-auto-compact-decision/">Token 预算与自动压缩判定</a></li>
+<li><a href="03-prompt-context-compression/03-microcompact-sessionmemory-compact/">Microcompact 与 SessionMemory Compact</a></li>
+<li><a href="03-prompt-context-compression/04-post-compact-cleanup-and-message-collapsing/">压缩后清理与消息折叠</a></li>
 <li><a href="04-multi-agent-coordination/">多 Agent 协同</a></li>
+<li><a href="04-multi-agent-coordination/01-spawn-entry-and-model-inheritance/">Spawn 入口与模型继承</a></li>
+<li><a href="04-multi-agent-coordination/02-backend-selection-inprocess-tmux-iterm/">Backend 选择（in-process / tmux / iTerm）</a></li>
+<li><a href="04-multi-agent-coordination/03-permission-sync-mailbox-and-team-state/">权限同步、Mailbox 与团队状态</a></li>
+<li><a href="04-multi-agent-coordination/04-worktree-lifecycle-and-cleanup/">Worktree 生命周期与清理</a></li>
 <li><a href="05-mcp-protocol/">MCP 协议集成层</a></li>
+<li><a href="05-mcp-protocol/01-connection-lifecycle-and-auth/">连接生命周期与鉴权</a></li>
+<li><a href="05-mcp-protocol/02-tools-resources-commands-discovery/">Tools / Resources / Commands 发现</a></li>
+<li><a href="05-mcp-protocol/03-result-transform-and-elicitation-retry/">结果转换与 Elicitation 重试</a></li>
+<li><a href="05-mcp-protocol/04-cli-ui-management-and-plugin-integration/">CLI/UI 管理与插件集成</a></li>
 <li><a href="06-hook-mechanism/">Hook 机制</a></li>
+<li><a href="06-hook-mechanism/01-hook-config-registry-and-matchers/">Hook 配置注册与匹配器</a></li>
+<li><a href="06-hook-mechanism/02-exec-agent-http-prompt-hooks/">Agent / HTTP / Prompt Hook 执行器</a></li>
+<li><a href="06-hook-mechanism/03-tool-permission-decision-and-security-guards/">Tool 权限决策与安全防护</a></li>
+<li><a href="06-hook-mechanism/04-session-file-hooks-and-progress-ux/">Session/File Hook 与进度反馈</a></li>
 <li><a href="07-streaming-processing/">流式处理</a></li>
+<li><a href="07-streaming-processing/01-model-stream-to-cli-render-pipeline/">模型流到 CLI 渲染管线</a></li>
+<li><a href="07-streaming-processing/02-structured-io-protocol-and-request-correlation/">Structured I/O 协议与请求关联</a></li>
+<li><a href="07-streaming-processing/03-transport-layer-sse-websocket-hybrid/">传输层（SSE / WebSocket / Hybrid）</a></li>
+<li><a href="07-streaming-processing/04-streaming-tool-executor-backpressure-and-errors/">Streaming Tool Executor、背压与错误传播</a></li>
 <li><a href="08-skill-library/">Skill 技能库</a></li>
+<li><a href="08-skill-library/01-skill-discovery-loading-and-indexing/">Skill 发现、加载与索引</a></li>
+<li><a href="08-skill-library/02-skilltool-runtime-ui-and-permission-decision/">SkillTool 运行时、UI 与权限决策</a></li>
+<li><a href="08-skill-library/03-slash-command-translation-and-fork-execution/">Slash 转译与 Fork 执行</a></li>
+<li><a href="08-skill-library/04-bundled-skills-taxonomy-and-use-cases/">Bundled Skills 分类、合流语义与使用场景</a></li>
 <li><a href="09-cli-command-interface/">CLI 命令行界面</a></li>
+<li><a href="09-cli-command-interface/01-cli-entrypoint-fast-paths-and-bootstrap/">CLI 入口 fast-path 与启动</a></li>
+<li><a href="09-cli-command-interface/02-commander-assembly-preaction-and-init/">Commander 装配、preAction 与初始化</a></li>
+<li><a href="09-cli-command-interface/03-command-registry-and-slash-routing/">命令注册与 Slash 路由</a></li>
+<li><a href="09-cli-command-interface/04-structured-print-interactive-modes/">Structured / Print / Interactive 输出模式</a></li>
+<li><a href="09-cli-command-interface/05-plugin-bridge-install-command-families/">Plugin / Bridge / Install 命令族</a></li>
 <li><a href="10-cross-cutting/">Cross-cutting 运行专题</a></li>
+<li><a href="10-cross-cutting/01-kairos-persistent-assistant/">KAIROS 持久助手运行链</a></li>
+<li><a href="10-cross-cutting/02-buddy-mechanism-and-commands/">BUDDY 机制与命令投影</a></li>
+<li><a href="10-cross-cutting/03-ban-risk-closure-loop/">风险闭环：Auth / Policy / Refusal / Telemetry</a></li>
 </ol>
 
 

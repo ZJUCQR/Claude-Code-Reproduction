@@ -2575,17 +2575,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2839,17 +2828,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        阅读顺序
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2874,7 +2852,7 @@
 
 <h1 id="cross-cutting">Cross-cutting 运行专题（入口审计页）</h1>
 <h2 id="1-scope-evidence-boundary">1) Scope 与 Evidence Boundary</h2>
-<p>本页是 <code>docs/architecture/10-cross-cutting</code> 入口页，只负责跨模块专题的边界、导航与证据锚点。</p>
+<p>本页是 <code>docs/10-cross-cutting</code> 入口页，只负责跨模块专题的边界、导航与证据锚点。</p>
 <p>覆盖主题：</p>
 <ul>
 <li>KAIROS 持久助手与 Auto-Dream/Proactive 调度链</li>
@@ -3018,11 +2996,12 @@
 <li><code>src/services/api/errors.ts:getErrorMessageIfRefusal</code></li>
 <li><code>src/services/mcp/auth.ts:revokeServerTokens</code></li>
 <li><code>src/bridge/trustedDevice.ts:enrollTrustedDevice</code></li>
-<li><code>src/services/policyLimits/index.ts:isPolicyAllowed</code></li>
-</ul>
-<h3 id="_2">阅读顺序</h3>
-<ul>
-<li><a href="01-kairos-persistent-assistant/">01 KAIROS 持久助手运行链</a></li>
+<li>
+<p><code>src/services/policyLimits/index.ts:isPolicyAllowed</code></p>
+</li>
+<li>
+<p><a href="01-kairos-persistent-assistant/">01 KAIROS 持久助手运行链</a></p>
+</li>
 <li><a href="02-buddy-mechanism-and-commands/">02 BUDDY 机制与命令投影</a></li>
 <li><a href="03-ban-risk-closure-loop/">03 风险闭环（Auth / Policy / Refusal / Telemetry）</a></li>
 </ul>
